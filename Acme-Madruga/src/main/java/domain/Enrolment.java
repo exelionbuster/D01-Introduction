@@ -51,11 +51,11 @@ public class Enrolment extends DomainEntity {
 	}
 
 	public Member getMember() {
-		return this.brotherhood;
+		return this.member;
 	}
 
 	public void setMember(final Member member) {
-		return this.member;
+		this.member = member;
 	}
 
 }
