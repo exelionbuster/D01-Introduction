@@ -1,33 +1,47 @@
+
 package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
-@Entity 
+@Entity
 @Access(AccessType.PROPERTY)
 public class Spot {
 
-	private int row;
-	private int column;
-	
-	public Spot(){
+	private int		row;
+	private int		column;
+	private Request	request;
+
+
+	public Spot() {
 		super();
 	}
 
 	public int getRow() {
-		return row;
+		return this.row;
 	}
-	public void setRow(int row) {
+	public void setRow(final int row) {
 		this.row = row;
 	}
 
 	public int getColumn() {
-		return column;
+		return this.column;
 	}
-	public void setColumn(int column) {
+	public void setColumn(final int column) {
 		this.column = column;
 	}
-	
-	
+
+	//RELATIONSHIPS
+
+	@OneToOne(optional = false)
+	public Request getRequest() {
+		return this.request;
+	}
+
+	public void setRequest(final Request request) {
+		this.request = request;
+	}
+
 }

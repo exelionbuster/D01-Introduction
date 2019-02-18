@@ -7,6 +7,8 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -61,6 +63,9 @@ public class Procession extends DomainEntity {
 		this.moment = moment;
 	}
 
+	//RELATIONSHIPS
+
+	@OneToOne(optional = false)
 	public Brotherhood getBrotherhood() {
 		return this.brotherhood;
 	}
@@ -69,6 +74,7 @@ public class Procession extends DomainEntity {
 		this.brotherhood = brotherhood;
 	}
 
+	@OneToMany
 	public Collection<Request> getRequests() {
 		return this.requests;
 	}
@@ -77,6 +83,7 @@ public class Procession extends DomainEntity {
 		this.requests = requests;
 	}
 
+	@OneToMany
 	public Collection<HolyFloat> getFloats() {
 		return this.floats;
 	}

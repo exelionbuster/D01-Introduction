@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -58,6 +59,9 @@ public class Brotherhood extends Actor {
 		this.pictures = pictures;
 	}
 
+	//RELATIONSHIPS
+
+	@OneToMany
 	public Collection<Enrolment> getEnrolments() {
 		return this.enrolments;
 	}
@@ -66,6 +70,7 @@ public class Brotherhood extends Actor {
 		this.enrolments = enrolments;
 	}
 
+	@OneToMany
 	public Collection<Procession> getProcessions() {
 		return this.processions;
 	}
@@ -74,6 +79,7 @@ public class Brotherhood extends Actor {
 		this.processions = processions;
 	}
 
+	@OneToMany
 	public Collection<HolyFloat> getFloats() {
 		return this.floats;
 	}
