@@ -21,17 +21,17 @@ public class ActorService {
 		super();
 	}
 
-	// Managed repository -----------------------------------------------------
+	// Managed repository 
 
 	@Autowired
 	private ActorRepository actorRepository;
 
-	// Supporting Services ----------------------------------------------------
+	// Supporting Services 
 
 	@Autowired
 	private UserAccountService userAccountService;
 
-	// Simple CRUD methods ----------------------------------------------------
+	// CRUDs 
 
 	// FINDALL
 	public Collection<Actor> findAll() {
@@ -85,6 +85,7 @@ public class ActorService {
 	public Actor findByPrincipal() {
 
 		Actor res;
+
 		UserAccount userAccount;
 
 		// Compruebo que está logueado en el sistema

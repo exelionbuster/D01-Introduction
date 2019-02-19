@@ -1,70 +1,37 @@
-
 package domain;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
+@Entity 
 @Access(AccessType.PROPERTY)
-public class Request extends DomainEntity {
-
-	private String		status;
-	private String		rejectedReason;
-	private Member		member;
-	private Procession	procession;
-	private Spot		spot;
-
-
-	public Request() {
+public class Request {
+	
+	private String status;
+	private String rejectedReason;
+	
+	public Request(){
 		super();
 	}
 
+	
 	@NotNull
 	public String getStatus() {
-		return this.status;
+		return status;
 	}
-	public void setStatus(final String status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-
+	
 	public String getRejectedReason() {
-		return this.rejectedReason;
+		return rejectedReason;
 	}
-	public void setRejectedReason(final String rejectedReason) {
+	public void setRejectedReason(String rejectedReason) {
 		this.rejectedReason = rejectedReason;
 	}
 
-	//RELATIONSHIPS
-
-	@ManyToOne(optional = false)
-	public Member getMember() {
-		return this.member;
-	}
-
-	public void setMember(final Member member) {
-		this.member = member;
-	}
-
-	@ManyToOne(optional = false)
-	public Procession getProcession() {
-		return this.procession;
-	}
-
-	public void setProcession(final Procession procession) {
-		this.procession = procession;
-	}
-
-	@OneToOne(optional = true)
-	public Spot getSpot() {
-		return this.spot;
-	}
-
-	public void setSpot(final Spot spot) {
-		this.spot = spot;
-	}
-
+	
+	
 }

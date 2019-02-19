@@ -1,4 +1,3 @@
-
 package domain;
 
 import javax.persistence.Access;
@@ -8,78 +7,81 @@ import javax.persistence.Entity;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
-@Entity
+@Entity 
 @Access(AccessType.PROPERTY)
-public class Configuration extends DomainEntity {
+public class Configuration {
 
-	private String	positionsEN;
-	private String	positionsES;
-	private String	systemName;
-	private String	bannerURL;
-	private String	welcomeMessageEN;
-	private String	welcomeMessageES;
-	private String	PNDefaultCode;
-
-
+	private String positionsEN;
+	private String positionsES;
+	private String systemName;
+	private String bannerURL;
+	private String welcomeMessageEN;
+	private String welcomeMessageES;
+	private String PNDefaultCode;
+	
 	public Configuration() {
 		super();
 	}
-
+	
+	
 	@NotBlank
 	public String getPositionsEN() {
-		return this.positionsEN;
+		return positionsEN;
 	}
-	public void setPositionsEN(final String positionsEN) {
+	public void setPositionsEN(String positionsEN) {
 		this.positionsEN = positionsEN;
 	}
-
+	
 	@NotBlank
 	public String getPositionsES() {
-		return this.positionsES;
+		return positionsES;
 	}
-	public void setPositionsES(final String positionsES) {
+	public void setPositionsES(String positionsES) {
 		this.positionsES = positionsES;
 	}
-
+	
 	@NotBlank
 	public String getSystemName() {
-		return this.systemName;
+		return systemName;
 	}
-	public void setSystemName(final String systemName) {
+	public void setSystemName(String systemName) {
 		this.systemName = systemName;
 	}
-
+	
 	@NotBlank
 	@URL
 	public String getBannerURL() {
-		return this.bannerURL;
+		return bannerURL;
 	}
-	public void setBannerURL(final String bannerURL) {
+	public void setBannerURL(String bannerURL) {
 		this.bannerURL = bannerURL;
 	}
-
+	
 	@NotBlank
 	public String getWelcomeMessageEN() {
-		return this.welcomeMessageEN;
+		return welcomeMessageEN;
 	}
-	public void setWelcomeMessageEN(final String welcomeMessageEN) {
+	public void setWelcomeMessageEN(String welcomeMessageEN) {
 		this.welcomeMessageEN = welcomeMessageEN;
 	}
-
+	
 	@NotBlank
 	public String getWelcomeMessageES() {
-		return this.welcomeMessageES;
+		return welcomeMessageES;
 	}
-	public void setWelcomeMessageES(final String welcomeMessageES) {
+	public void setWelcomeMessageES(String welcomeMessageES) {
 		this.welcomeMessageES = welcomeMessageES;
 	}
-
+	
 	@NotBlank
 	public String getPNDefaultCode() {
-		return this.PNDefaultCode;
+		return PNDefaultCode;
 	}
-	public void setPNDefaultCode(final String pNDefaultCode) {
-		this.PNDefaultCode = pNDefaultCode;
+	public void setPNDefaultCode(String pNDefaultCode) {
+		PNDefaultCode = pNDefaultCode;
 	}
-
+	
+	
+	
+	
 }

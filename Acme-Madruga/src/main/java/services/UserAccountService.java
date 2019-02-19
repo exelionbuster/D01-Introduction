@@ -21,14 +21,14 @@ public class UserAccountService  {
 		super();
 	}
 	
-	//Managed repository ------------------------------------------------------
-	
+	// Managed repository
+
 	@Autowired
 	private UserAccountRepository userAccountRepository;
+
+	// Supporting services 
 	
-	//Supporting services -----------------------------------------------------
-	
-	//CRUD methods -----------------------------------------------------
+	//CRUDs
 	
 	//CREATE
 	public UserAccount create(final String authorityName){
@@ -52,27 +52,23 @@ public class UserAccountService  {
 	
 	//FINDONE
 	public UserAccount findOne(final int userAccountId){
-		//Declaro un userAccount vacío
+		
 		UserAccount res = null;
-		//Traigo el userAccount
 		res = this.userAccountRepository.findOne(userAccountId);
-		//Devuelve el userAccount si lo encuentra
 		return res;
 	}
 	
 	//FINDALL
 	public Collection<UserAccount> findAll(){
-		//Declaro colección vacía
+		
 		Collection<UserAccount> res = null;
-		//Traigo los userAccounts
 		res = this.userAccountRepository.findAll();
-		//Devuelvo la colección si encuentra
 		return res;
 	}
 	
 	//SAVE
 	public UserAccount save(final UserAccount userAccount){
-		//Declaro un userAccount vacío
+		
 		UserAccount res;
 		
 		//Compruebo que el userAccount por parámetro está completo
@@ -80,25 +76,20 @@ public class UserAccountService  {
 		Assert.notNull(userAccount.getUsername());
 		Assert.notNull(userAccount.getPassword());
 
-		//Llamo a save del repositorio para salvar la userAccount
 		res = this.userAccountRepository.save(userAccount);
 
-		//Devuelvo la userAccount
 		return res;
 	}
 	
+	// AUX
 	
-	// Other business methods -------------------------------------------------
-	
-	//Method to encrypt the password
+	//Metodo para encriptar la contraseña
 	public void encodePassword(final UserAccount userAccount) {
-		//Declaro el String para devolver
+		
 		String pass = null;
-		//Intento codificar la contraseña
+		//Codificar la contraseña
 		try{
-			//Obtengo y guardo en pass la contraseña generada mediante el Md5PasswordEncoder
 			pass = new Md5PasswordEncoder().encodePassword(userAccount.getPassword(), null);
-			//Actualizo el valor de la contraseña
 			userAccount.setPassword(pass);
 		}catch (Exception e) {
 			System.out.println("Exception catched in Md5PasswordEncoder: " + e.toString());
