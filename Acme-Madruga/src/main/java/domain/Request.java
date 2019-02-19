@@ -5,8 +5,9 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -16,14 +17,16 @@ public class Request extends DomainEntity {
 	private String		rejectedReason;
 	private Member		member;
 	private Procession	procession;
-	private Spot		spot;
+	private int			processionRow;
+	private int			processionColumn;
 
 
 	public Request() {
 		super();
 	}
 
-	@NotNull
+	@NotBlank
+	@Pattern(regexp = "^PENDING|APPROVED|REJECTED$")
 	public String getStatus() {
 		return this.status;
 	}
@@ -58,13 +61,20 @@ public class Request extends DomainEntity {
 		this.procession = procession;
 	}
 
-	@OneToOne(optional = true)
-	public Spot getSpot() {
-		return this.spot;
+	public int getProcessionRow() {
+		return this.processionRow;
 	}
 
-	public void setSpot(final Spot spot) {
-		this.spot = spot;
+	public void setProcessionRow(final int processionRow) {
+		this.processionRow = processionRow;
+	}
+
+	public int getProcessionColumn() {
+		return this.processionColumn;
+	}
+
+	public void setProcessionColumn(final int processionColumn) {
+		this.processionColumn = processionColumn;
 	}
 
 }

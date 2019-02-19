@@ -22,7 +22,7 @@ public class Member extends Actor {
 
 	//RELATIONSHIPS
 
-	@OneToMany
+	@OneToMany(mappedBy = "member")
 	public Collection<Enrolment> getEnrolments() {
 		return this.enrolments;
 	}
@@ -31,7 +31,7 @@ public class Member extends Actor {
 		this.enrolments = enrolments;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "member")
 	public Collection<Request> getRequests() {
 		return this.requests;
 	}

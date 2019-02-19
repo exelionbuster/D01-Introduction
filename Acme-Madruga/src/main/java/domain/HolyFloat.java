@@ -13,7 +13,6 @@ import org.hibernate.validator.constraints.NotBlank;
 public class HolyFloat extends DomainEntity {
 
 	private String		title, description, pictures;
-	private Procession	procession;
 	private Brotherhood	brotherhood;
 
 
@@ -48,15 +47,6 @@ public class HolyFloat extends DomainEntity {
 	}
 
 	//RELATIONSHIPS
-
-	@ManyToOne(optional = false)
-	public Procession getProcession() {
-		return this.procession;
-	}
-
-	public void setProcession(final Procession procession) {
-		this.procession = procession;
-	}
 
 	@ManyToOne(optional = false)
 	public Brotherhood getBrotherhood() {

@@ -61,7 +61,7 @@ public class Brotherhood extends Actor {
 
 	//RELATIONSHIPS
 
-	@OneToMany
+	@OneToMany(mappedBy = "brotherhood")
 	public Collection<Enrolment> getEnrolments() {
 		return this.enrolments;
 	}
@@ -70,7 +70,7 @@ public class Brotherhood extends Actor {
 		this.enrolments = enrolments;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "brotherhood")
 	public Collection<Procession> getProcessions() {
 		return this.processions;
 	}
@@ -79,7 +79,7 @@ public class Brotherhood extends Actor {
 		this.processions = processions;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy = "brotherhood")
 	public Collection<HolyFloat> getFloats() {
 		return this.floats;
 	}
