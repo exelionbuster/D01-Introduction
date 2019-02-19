@@ -65,11 +65,11 @@ public class Actor extends DomainEntity {
 		this.email = email;
 	}
 
-	public String getPhoneNumber() {
+	public String getPhone() {
 		return this.phone;
 	}
 
-	public void setPhoneNumber(final String phone) {
+	public void setPhone(final String phone) {
 		this.phone = phone;
 	}
 
