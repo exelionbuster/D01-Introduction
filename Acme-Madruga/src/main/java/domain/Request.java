@@ -4,12 +4,13 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Request {
+public class Request extends DomainEntity {
 
 	private String		status;
 	private String		rejectedReason;
@@ -39,7 +40,7 @@ public class Request {
 
 	//RELATIONSHIPS
 
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	public Member getMember() {
 		return this.member;
 	}
@@ -48,7 +49,7 @@ public class Request {
 		this.member = member;
 	}
 
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	public Procession getProcession() {
 		return this.procession;
 	}

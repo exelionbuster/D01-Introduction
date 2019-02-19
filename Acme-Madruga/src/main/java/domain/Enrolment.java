@@ -6,7 +6,7 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -45,7 +45,7 @@ public class Enrolment extends DomainEntity {
 
 	//RELATIONSHIPS
 
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	public Brotherhood getBrotherhood() {
 		return this.brotherhood;
 	}
@@ -54,7 +54,7 @@ public class Enrolment extends DomainEntity {
 		this.brotherhood = brotherhood;
 	}
 
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	public Member getMember() {
 		return this.member;
 	}

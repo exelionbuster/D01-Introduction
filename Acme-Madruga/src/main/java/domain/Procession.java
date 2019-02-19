@@ -7,8 +7,8 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -65,7 +65,7 @@ public class Procession extends DomainEntity {
 
 	//RELATIONSHIPS
 
-	@OneToOne(optional = false)
+	@ManyToOne(optional = true)
 	public Brotherhood getBrotherhood() {
 		return this.brotherhood;
 	}

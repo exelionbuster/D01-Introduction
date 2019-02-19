@@ -8,10 +8,10 @@ import javax.persistence.OneToOne;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class Spot {
+public class Spot extends DomainEntity {
 
-	private int		row;
-	private int		column;
+	private String	line;
+	private String	col;
 	private Request	request;
 
 
@@ -19,27 +19,24 @@ public class Spot {
 		super();
 	}
 
-	public int getRow() {
-		return this.row;
+	public String getLine() {
+		return this.line;
 	}
-	public void setRow(final int row) {
-		this.row = row;
-	}
-
-	public int getColumn() {
-		return this.column;
-	}
-	public void setColumn(final int column) {
-		this.column = column;
+	public void setLine(final String line) {
+		this.line = line;
 	}
 
-	//RELATIONSHIPS
+	public String getCol() {
+		return this.col;
+	}
+	public void setCol(final String col) {
+		this.col = col;
+	}
 
 	@OneToOne(optional = false)
 	public Request getRequest() {
 		return this.request;
 	}
-
 	public void setRequest(final Request request) {
 		this.request = request;
 	}

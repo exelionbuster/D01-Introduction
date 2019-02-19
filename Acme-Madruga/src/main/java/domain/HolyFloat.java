@@ -4,7 +4,7 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -49,7 +49,7 @@ public class HolyFloat extends DomainEntity {
 
 	//RELATIONSHIPS
 
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	public Procession getProcession() {
 		return this.procession;
 	}
@@ -58,7 +58,7 @@ public class HolyFloat extends DomainEntity {
 		this.procession = procession;
 	}
 
-	@OneToOne(optional = false)
+	@ManyToOne(optional = false)
 	public Brotherhood getBrotherhood() {
 		return this.brotherhood;
 	}

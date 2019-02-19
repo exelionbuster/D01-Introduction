@@ -101,7 +101,7 @@
 		<property name="surname" value="Ramirez Paz" />
 		<property name="photo" value="https://www.pinterest.es/pin/35612315" />
 		<property name="email" value="j.ramirez@gmail.com" />
-		<property name="phone" value="712537105" />
+		<property name="phoneNumber" value="712537105" />
 		<property name="address" value="C/Betis 23" />
 		<property name="userAccount" ref="userAccount1" />
 	</bean>
@@ -112,7 +112,7 @@
 		<property name="surname" value="Carmona Guillen" />
 		<property name="photo" value="https://www.pinterest.es/pin/356155456845" />
 		<property name="email" value="m.carmona@gmail.com" />
-		<property name="phone" value="617993736" />
+		<property name="phoneNumber" value="617993736" />
 		<property name="address" value="C/Villamar 98" />
 		<property name="userAccount" ref="userAccount2" />
 	</bean>
@@ -125,16 +125,25 @@
 		<property name="surname" value="Prado Nieves" />
 		<property name="photo" value="https://www.pinterest.es/pin/3563456765765" />
 		<property name="email" value="m.prado@gmail.com" />
-		<property name="phone" value="456843123" />
+		<property name="phoneNumber" value="456843123" />
 		<property name="address" value="C/Jurrasic 23" />
-		<property name="userAccount" ref="userAccount3" />
+		<property name="title" value="Hermandad de la Sed" />
+		<property name="establishmentDate" value="04/12/1987" />
+		<property name="pictures" value="" />
+		<property name="userAccount" ref="userAccount3" />	
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment1" />
+				<ref bean="enrolment2" />
+			</list>
+		</property>	
 		<property name="processions">
 			<list>
 				<ref bean="procession1" />
 				<ref bean="procession2" />
 			</list>
 		</property>
-		<property name="holyFloats">
+		<property name="floats">
 			<list>
 				<ref bean="holyFloat1" />
 				<ref bean="holyFloat2" />
@@ -149,19 +158,27 @@
 		<property name="photo"
 			value="https://www.pinterest.es/pin/3111111156765765" />
 		<property name="email" value="m.contreras@gmail.com" />
-		<property name="phone" value="689966387" />
+		<property name="phoneNumber" value="689966387" />
 		<property name="address" value="C/ America 45" />
+		<property name="title" value="Hermandad de Triana" />
+		<property name="establishmentDate" value="04/03/1975" />
+		<property name="pictures" value="" />
 		<property name="userAccount" ref="userAccount4" />
+		<property name="enrolments">
+			<list>
+
+			</list>
+		</property>	
 		<property name="processions">
 			<list>
 				<ref bean="procession3" />
 				<ref bean="procession4" />
 			</list>
 		</property>
-		<property name="holyFloats">
+		<property name="floats">
 			<list>
-				<ref bean="holyFloat5" />
-				<ref bean="holyFloat6" />
+				<ref bean="holyFloat3" />
+				<ref bean="holyFloat4" />
 			</list>
 		</property>
 	</bean>
@@ -174,7 +191,7 @@
 		<property name="surname" value="Manrique Aleman" />
 		<property name="photo" value="https://www.pinterest.es/pin/353455565765" />
 		<property name="email" value="a.manrique@gmail.com" />
-		<property name="phone" value="610386795" />
+		<property name="phoneNumber" value="610386795" />
 		<property name="address" value="C/Villamar 12" />
 		<property name="userAccount" ref="userAccount5" />
 		<property name="enrolments">
@@ -195,7 +212,7 @@
 		<property name="surname" value="Murillo Andrade" />
 		<property name="photo" value="https://www.pinterest.es/pin/353456765765" />
 		<property name="email" value="f.murillo@gmail.com" />
-		<property name="phone" value="356789012" />
+		<property name="phoneNumber" value="356789012" />
 		<property name="address" value="C/Betis 18" />
 		<property name="userAccount" ref="userAccount6" />
 		<property name="enrolments">
@@ -215,11 +232,13 @@
 	<bean id="procession1" class="domain.Procession">
 		<property name="title" value="Cristo de Burgos" />
 		<property name="ticker" value="190417-aeiou" />
-		<property name="description" value="" />
-		<property name="momment" value="" />
-		<property name="holyFloats">
+		<property name="description" value="Su estación de penitencia es el miercoles santo" />
+		<property name="moment" value="17/04/2019" />
+		<property name="brotherhood" ref="brotherhood1" />
+		<property name="floats">
 			<list>
 				<ref bean="holyFloat1" />
+				<ref bean="holyFloat2" />
 			</list>
 		</property>
 		<property name="requests">
@@ -232,11 +251,12 @@
 	<bean id="procession2" class="domain.Procession">
 		<property name="title" value="Pasion" />
 		<property name="ticker" value="190418-aeiou" />
-		<property name="description" value="" />
-		<property name="momment" value="" />
-		<property name="holyFloats">
+		<property name="description" value="Heredera directa de la antigua procesion del Pregon" />
+		<property name="moment" value="16/04/2019" />
+		<property name="brotherhood" ref="brotherhood1" />		
+		<property name="floats">
 			<list>
-				<ref bean="holyFloat2" />
+				
 			</list>
 		</property>
 		<property name="requests">
@@ -249,11 +269,12 @@
 		<bean id="procession3" class="domain.Procession">
 		<property name="title" value="El gran poder" />
 		<property name="ticker" value="190419-aeiou" />
-		<property name="description" value="" />
-		<property name="momment" value="" />
-		<property name="holyFloats">
+		<property name="description" value="Realiza su estacion de penitencia el viernes de madruga" />
+		<property name="moment" value="16/04/2019" />
+		<property name="brotherhood" ref="brotherhood2" />	
+		<property name="floats">
 			<list>
-				<ref bean="holyFloat1" />
+				<ref bean="holyFloat3" />
 			</list>
 		</property>
 		<property name="requests">
@@ -266,11 +287,12 @@
 	<bean id="procession4" class="domain.Procession">
 		<property name="title" value="Macarena" />
 		<property name="ticker" value="190419-aeiou" />
-		<property name="description" value="" />
-		<property name="momment" value="" />
-		<property name="holyFloats">
+		<property name="description" value="Localizada en el distrito de Macarena, sale durante la madruga" />
+		<property name="moment" value="19/04/2019" />
+		<property name="brotherhood" ref="brotherhood2" />		
+		<property name="floats">
 			<list>
-				<ref bean="holyFloat2" />
+				<ref bean="holyFloat4" />
 			</list>
 		</property>
 		<property name="requests">
@@ -284,51 +306,51 @@
 
 	<bean id="holyFloat1" class="domain.HolyFloat">
 		<property name="title" value="Virgen de la Palma" />
-		<property name="description" value="" />
+		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
-		<property name="procession" value="procession1" />
-		<property name="brotherhood" value="brotherhood1" />
+		<property name="procession" ref="procession1" />
+		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 	
 	<bean id="holyFloat2" class="domain.HolyFloat">
 		<property name="title" value="Jesus de la pasion" />
-		<property name="description" value="" />
+		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
-		<property name="procession" value="procession2" />
-		<property name="brotherhood" value="brotherhood1" />
+		<property name="procession" ref="procession1" />
+		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 	
 		<bean id="holyFloat3" class="domain.HolyFloat">
 		<property name="title" value="Cristo del gran poder" />
-		<property name="description" value="" />
+		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
-		<property name="procession" value="procession3" />
-		<property name="brotherhood" value="brotherhood2" />
+		<property name="procession" ref="procession3" />
+		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 	
 	<bean id="holyFloat4" class="domain.HolyFloat">
 		<property name="title" value="Virgen de la macarena" />
-		<property name="description" value="" />
+		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
-		<property name="procession" value="procession4" />
-		<property name="brotherhood" value="brotherhood2" />
+		<property name="procession" ref="procession4" />
+		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 		
 	
 	<!-- ENROLMENT -->
 	
 	<bean id="enrolment1" class="domain.Enrolment">
-		<property name="momment" value="16-02-2019" />
+		<property name="moment" value="16/02/2019" />
 		<property name="position" value="Vice president" />
-		<property name="brotherhood" value="brotherhood1" />
-		<property name="member" value="member1" />
+		<property name="brotherhood" ref="brotherhood1" />
+		<property name="member" ref="member1" />
 	</bean>
 	
 		<bean id="enrolment2" class="domain.Enrolment">
-		<property name="momment" value="14-02-2019" />
+		<property name="moment" value="16/02/2019" />
 		<property name="position" value="President" />
-		<property name="brotherhood" value="brotherhood1" />
-		<property name="member" value="member2" />		
+		<property name="brotherhood" ref="brotherhood1" />
+		<property name="member" ref="member2" />		
 	</bean>
 	
 	<!-- REQUEST -->
@@ -336,31 +358,32 @@
 	<bean id="request1" class="domain.Request">
 		<property name="status" value="ACCEPTED" />
 		<property name="rejectedReason" value="" />
-		<property name="member" value="member1" />
-		<property name="procession" value="procession1" />	
-		<property name="spot" value="spot1" />		
+		<property name="member" ref="member1" />
+		<property name="procession" ref="procession1" />	
+		<property name="spot" ref="spot1" />		
 	</bean>
 	
-		<bean id="request2" class="domain.Request">
+	<bean id="request2" class="domain.Request">
 		<property name="status" value="ACCEPTED" />
 		<property name="rejectedReason" value="" />
-		<property name="member" value="member2" />
-		<property name="procession" value="procession2" />
-		<property name="spot" value="spot2" />
+		<property name="member" ref="member2" />
+		<property name="procession" ref="procession2" />
+		<property name="spot" ref="spot2" />
 	</bean>
 	
 	<!--SPOT -->
 	
 	<bean id="spot1" class="domain.Spot">
-		<property name="row" value="14"/>
-		<property name="column" value="16"/>
-		<property name="enrolment" value="enrolment1"/>
+		<property name="line" value="14" />
+		<property name="col" value="16" />
+		<property name="request" ref="request1" />
 	</bean>
 
 	<bean id="spot2" class="domain.Spot">
-		<property name="row" value="96"/>
-		<property name="column" value="66"/>
-		<property name="enrolment" value="enrolment2"/>
+		<property name="line" value="96" />
+		<property name="col" value="66" />
+		<property name="request" ref="request2" />
+			
 	</bean>
 	
 	<!-- CONFIGURATION -->
@@ -368,11 +391,11 @@
 	<bean id="configuration" class="domain.Configuration" >
 		<property name="positionsEN" value="President, Vice President, Secretary, Treasurer, Historian, Fundraiser, Officer" />
 		<property name="positionsES" value="Presidente, Vicepresidente, Secretario, Tesorero, Historiador, Promotor, Vocal" />
-		<property name="systemaName" value="Acme Madruga" />
+		<property name="systemName" value="Acme Madruga" />
+		<property name="bannerURL" value="https://web.whatsapp.com/" />
 		<property name="welcomeMessageEN" value="Welcome to Acme Madruga, the site to organise your processions" />
 		<property name="welcomeMessageES" value="!Bienvenidos a Acme Madruga! Tu sitio para organizar procesiones." />
-		<property name="PNDefaultCode" value="+34" />
-		
+		<property name="PNDefaultCode" value="+34" />		
 	</bean>
 	
 
