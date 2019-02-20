@@ -16,14 +16,14 @@
        
 <tiles-definitions>
 
-	<definition name="administrator/dashboard" extends="master.page">	
-		<put-attribute name="title" value="Administrator: Stats" />
-		<put-attribute name="body" value="/views/administrator/dashboard.jsp" />
+	<definition name="enrolment/edit" extends="master.page">	
+		<put-attribute name="title" value="Enrolment" />
+		<put-attribute name="body" value="/views/enrolment/edit.jsp" />
 	</definition>
 	
-	<definition name="administrator/edit" extends="master.page">	
-		<put-attribute name="title" value="Administrator" />
-		<put-attribute name="body" value="/views/administrator/edit.jsp" />
+	<definition name="enrolment/list" extends="master.page">	
+		<put-attribute name="title" value="Enrolment list" />
+		<put-attribute name="body" value="/views/enrolment/list.jsp" />
 	</definition>
 	
 </tiles-definitions>
