@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Past;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,7 +18,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Enrolment extends DomainEntity {
 
 	private Date		moment;
-	private String		position;
+	private Date		dropOutMoment;
+	private Position	position;
 	private Brotherhood	brotherhood;
 	private Member		member;
 
@@ -28,6 +30,7 @@ public class Enrolment extends DomainEntity {
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Past
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -36,11 +39,15 @@ public class Enrolment extends DomainEntity {
 		this.moment = moment;
 	}
 
-	public String getPosition() {
-		return this.position;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Past
+	public Date getDropOutMoment() {
+		return this.dropOutMoment;
 	}
-	public void setPosition(final String position) {
-		this.position = position;
+
+	public void setDropOutMoment(final Date dropOutMoment) {
+		this.dropOutMoment = dropOutMoment;
 	}
 
 	//RELATIONSHIPS
@@ -61,6 +68,15 @@ public class Enrolment extends DomainEntity {
 
 	public void setMember(final Member member) {
 		this.member = member;
+	}
+
+	@ManyToOne(optional = true)
+	public Position getPosition() {
+		return this.position;
+	}
+
+	public void setPosition(final Position position) {
+		this.position = position;
 	}
 
 }
