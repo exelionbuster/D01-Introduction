@@ -28,9 +28,9 @@ public class Enrolment extends DomainEntity {
 		super();
 	}
 
+	@Past
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Past
 	public Date getMoment() {
 		return this.moment;
 	}

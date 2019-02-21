@@ -27,7 +27,7 @@
 	<acme:textbox code="float.name" path="title" />	
 	<acme:textarea code="float.description" path="description" />
 	<acme:textbox code="float.pictures" path="pictures" />	
-	<acme:select code="float.procession" path=procession" items="processions" itemValue="id" itemLabel="name"/>
+	<acme:select code="float.procession" path="procession" items="processions" itemLabel="name"/>
 
 	
 	<acme:submit code="float.submit" name="floatSubmit" /> 	

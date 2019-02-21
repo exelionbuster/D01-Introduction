@@ -357,16 +357,16 @@
 	<!-- ENROLMENT -->
 	
 	<bean id="enrolment1" class="domain.Enrolment">
-		<property name="moment" value="16/02/2019" />
-		<property name="dropOutMoment" value= "17/02/2019" />	
+		<property name="moment" value="02/17/2019" />
+		<property name="dropOutMoment" value= "02/18/2019" />	
 		<property name="position" ref="position1" />
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="member" ref="member1" />
 	</bean>
 	
 	<bean id="enrolment2" class="domain.Enrolment">
-		<property name="moment" value="16/02/2019" />
-		<property name="dropOutMoment" value= "15/02/2019" />
+		<property name="moment" value="02/17/2019" />
+		<property name="dropOutMoment" value= "02/18/2019" />
 		<property name="position" ref="position2" />
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="member" ref="member2" />		
