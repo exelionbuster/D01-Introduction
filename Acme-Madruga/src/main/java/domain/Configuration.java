@@ -12,33 +12,11 @@ import org.hibernate.validator.constraints.URL;
 @Access(AccessType.PROPERTY)
 public class Configuration extends DomainEntity {
 
-	private String	positionsEN;
-	private String	positionsES;
-	private String	systemName;
-	private String	bannerURL;
-	private String	welcomeMessageEN;
-	private String	welcomeMessageES;
-	private String	PNDefaultCode;
+	private String	systemName, bannerURL, welcomeMessage, PNDefaultCode, language;
 
 
 	public Configuration() {
 		super();
-	}
-
-	@NotBlank
-	public String getPositionsEN() {
-		return this.positionsEN;
-	}
-	public void setPositionsEN(final String positionsEN) {
-		this.positionsEN = positionsEN;
-	}
-
-	@NotBlank
-	public String getPositionsES() {
-		return this.positionsES;
-	}
-	public void setPositionsES(final String positionsES) {
-		this.positionsES = positionsES;
 	}
 
 	@NotBlank
@@ -59,19 +37,11 @@ public class Configuration extends DomainEntity {
 	}
 
 	@NotBlank
-	public String getWelcomeMessageEN() {
-		return this.welcomeMessageEN;
+	public String getWelcomeMessage() {
+		return this.welcomeMessage;
 	}
-	public void setWelcomeMessageEN(final String welcomeMessageEN) {
-		this.welcomeMessageEN = welcomeMessageEN;
-	}
-
-	@NotBlank
-	public String getWelcomeMessageES() {
-		return this.welcomeMessageES;
-	}
-	public void setWelcomeMessageES(final String welcomeMessageES) {
-		this.welcomeMessageES = welcomeMessageES;
+	public void setWelcomeMessage(final String welcomeMessage) {
+		this.welcomeMessage = welcomeMessage;
 	}
 
 	@NotBlank
@@ -80,6 +50,15 @@ public class Configuration extends DomainEntity {
 	}
 	public void setPNDefaultCode(final String pNDefaultCode) {
 		this.PNDefaultCode = pNDefaultCode;
+	}
+
+	@NotBlank
+	public String getLanguage() {
+		return this.language;
+	}
+
+	public void setLanguage(final String language) {
+		this.language = language;
 	}
 
 }
