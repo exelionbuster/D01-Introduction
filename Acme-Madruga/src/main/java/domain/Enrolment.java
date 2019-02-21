@@ -41,7 +41,6 @@ public class Enrolment extends DomainEntity {
 
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@Past
 	public Date getDropOutMoment() {
 		return this.dropOutMoment;
 	}
@@ -78,5 +77,5 @@ public class Enrolment extends DomainEntity {
 	public void setPosition(final Position position) {
 		this.position = position;
 	}
-
+	
 }
