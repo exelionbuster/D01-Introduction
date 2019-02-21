@@ -266,7 +266,7 @@
 		</property>
 	</bean>
 	
-		<bean id="procession3" class="domain.Procession">
+	<bean id="procession3" class="domain.Procession">
 		<property name="title" value="El gran poder" />
 		<property name="ticker" value="190439-aeiou" />
 		<property name="description" value="Realiza su estacion de penitencia el viernes de madruga" />
