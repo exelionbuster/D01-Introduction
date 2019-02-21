@@ -26,8 +26,8 @@ public class Enrolment extends DomainEntity {
 		super();
 	}
 
-	@Temporal(TemporalType.DATE)
 	@Past
+	@Temporal(TemporalType.DATE)
 	public Date getMoment() {
 		return this.moment;
 	}
