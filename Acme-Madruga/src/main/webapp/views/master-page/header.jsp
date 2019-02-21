@@ -40,7 +40,7 @@
 					<li><a href="procession/brotherhood/list.do"><spring:message code="master.page.brotherhood.procession" /></a></li>
 					<li><a href="float/brotherhood/list.do"><spring:message code="master.page.brotherhood.float" /></a></li>
 					<li><a href="enrolment/brotherhood/list.do"><spring:message code="master.page.brotherhood.enrolment" /></a></li>	
-					<li><a href="member/brotherhood/list.do"><spring:message code="master.page.brotherhood.enrolment" /></a></li>
+					<li><a href="member/brotherhood/list.do"><spring:message code="master.page.brotherhood.member" /></a></li>
 					<li><a href="request/brotherhood/list.do"><spring:message code="master.page.brotherhood.request" /></a></li>		
 					<li><a href="brotherhood/edit.do"><spring:message code="master.page.brotherhood.edit" /></a></li>							
 				</ul>

@@ -119,7 +119,6 @@ public class BrotherhoodController extends AbstractController {
 		Assert.notNull(brotherhood);
 
 		res = new ModelAndView("brotherhood/edit");
-
 		res.addObject("actionURI", "brotherhood/edit.do");
 		res.addObject("brotherhood", brotherhood);
 		res.addObject("message", message);

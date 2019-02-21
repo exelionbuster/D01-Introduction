@@ -66,7 +66,7 @@ public class BrotherhoodService {
 		res.setUserAccount(userAccount);
 		res.setProcessions(processions);
 		res.setEnrolments(enrolments);
-		res.setFloats(holyFloats);
+		res.setHolyFloats(holyFloats);
 
 		return res;
 	}
