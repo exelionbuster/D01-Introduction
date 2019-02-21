@@ -334,6 +334,8 @@
 	
 	<!-- POSITION -->
 	
+	<!-- EN -->
+	
 	<bean id="position1" class="domain.Position">
 		<property name="name" value="President" />
 		<property name="language" value="EN" />	
@@ -352,21 +354,134 @@
 				<ref bean="enrolment2" />
 			</list>
 		</property>
-	</bean>		
+	</bean>	
+
+	<bean id="position3" class="domain.Position">
+		<property name="name" value="Secretary" />
+		<property name="language" value="EN" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+			
+	<bean id="position4" class="domain.Position">
+		<property name="name" value="Treasurer" />
+		<property name="language" value="EN" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+
+	<bean id="position5" class="domain.Position">
+		<property name="name" value="Historian" />
+		<property name="language" value="EN" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+			
+	<bean id="position6" class="domain.Position">
+		<property name="name" value="Fundraiser" />
+		<property name="language" value="EN" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="position7" class="domain.Position">
+		<property name="name" value="Officer" />
+		<property name="language" value="EN" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+
+	<!-- ES -->
+	
+	<bean id="position8" class="domain.Position">
+		<property name="name" value="Presidente" />
+		<property name="language" value="ES" />	
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment1" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="position9" class="domain.Position">
+		<property name="name" value="Vicepresidente" />
+		<property name="language" value="ES" />	
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment2" />
+			</list>
+		</property>
+	</bean>	
+
+	<bean id="position10" class="domain.Position">
+		<property name="name" value="Secretario" />
+		<property name="language" value="ES" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+			
+	<bean id="position11" class="domain.Position">
+		<property name="name" value="Tesorero" />
+		<property name="language" value="ES" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+
+	<bean id="position12" class="domain.Position">
+		<property name="name" value="Historiador" />
+		<property name="language" value="ES" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+			
+	<bean id="position13" class="domain.Position">
+		<property name="name" value="Recaudador de fondos" />
+		<property name="language" value="ES" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="position14" class="domain.Position">
+		<property name="name" value="Oficial" />
+		<property name="language" value="ES" />	
+		<property name="enrolments">
+			<list>
+			</list>
+		</property>
+	</bean>	
+		
 	
 	<!-- ENROLMENT -->
 	
 	<bean id="enrolment1" class="domain.Enrolment">
-		<property name="moment" value="16/02/2019" />
-		<property name="dropOutMoment" value= "17/02/2019" />	
+		<property name="moment" value="2019/02/16" />
+		<property name="dropOutMoment"><null/></property>	
 		<property name="position" ref="position1" />
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="member" ref="member1" />
 	</bean>
 	
 	<bean id="enrolment2" class="domain.Enrolment">
-		<property name="moment" value="16/02/2019" />
-		<property name="dropOutMoment" value= "15/02/2019" />
+		<property name="moment" value="2019/02/18" />
+		<property name="dropOutMoment" value= "2019/02/19" />
 		<property name="position" ref="position2" />
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="member" ref="member2" />		
@@ -396,7 +511,7 @@
 	
 	<bean id="configuration1" class="domain.Configuration" >
 		<property name="systemName" value="Acme Madruga" />
-		<property name="bannerURL" value="https://web.whatsapp.com/" />
+		<property name="bannerURL" value="https://tinyurl.com/acme-madruga" />
 		<property name="welcomeMessage" value="Welcome to Acme Madruga, the site to organise your processions" />
 		<property name="PNDefaultCode" value="+34" />
 		<property name="language" value="EN" />		
@@ -404,10 +519,10 @@
 	
 	<bean id="configuration2" class="domain.Configuration" >
 		<property name="systemName" value="Acme Madruga" />
-		<property name="bannerURL" value="https://web.whatsapp.com/" />
+		<property name="bannerURL" value="https://tinyurl.com/acme-madruga" />
 		<property name="welcomeMessage" value="!Bienvenidos a Acme Madruga! Tu sitio para organizar procesiones." />
 		<property name="PNDefaultCode" value="+34" />
-		<property name="language" value="ESP" />			
+		<property name="language" value="ES" />			
 	</bean>
 	
 </beans>
