@@ -2,19 +2,19 @@
 package domain;
 
 import java.util.Collection;
+import java.util.Map;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
-import org.hibernate.validator.constraints.NotBlank;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Position extends DomainEntity {
 
-	private String					name, language;
+	private Map<String, String>		name;
 	private Collection<Enrolment>	enrolments;
 
 
@@ -22,22 +22,13 @@ public class Position extends DomainEntity {
 		super();
 	}
 
-	@NotBlank
-	public String getName() {
+	@ElementCollection(targetClass = String.class)
+	public Map<String, String> getName() {
 		return this.name;
 	}
 
-	public void setName(final String name) {
+	public void setName(final Map<String, String> name) {
 		this.name = name;
-	}
-
-	@NotBlank
-	public String getLanguage() {
-		return this.language;
-	}
-
-	public void setLanguage(final String language) {
-		this.language = language;
 	}
 
 	@OneToMany(mappedBy = "position")
