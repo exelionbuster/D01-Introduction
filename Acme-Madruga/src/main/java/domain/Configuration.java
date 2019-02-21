@@ -40,7 +40,7 @@ public class Configuration extends DomainEntity {
 	public String getWelcomeMessage() {
 		return this.welcomeMessage;
 	}
-	public void setWelcomeMessageEN(final String welcomeMessage) {
+	public void setWelcomeMessage(final String welcomeMessage) {
 		this.welcomeMessage = welcomeMessage;
 	}
 
