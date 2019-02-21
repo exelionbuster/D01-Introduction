@@ -337,8 +337,22 @@
 	<!-- EN -->
 	
 	<bean id="position1" class="domain.Position">
-		<property name="name" value="President" />
-		<property name="language" value="EN" />	
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>President</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Presidente</value>
+		        </entry>
+		    </map> 
+		</property>
 		<property name="enrolments">
 			<list>
 				<ref bean="enrolment1" />
@@ -347,8 +361,22 @@
 	</bean>
 	
 	<bean id="position2" class="domain.Position">
-		<property name="name" value="Vice president" />
-		<property name="language" value="EN" />	
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Vice president</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Vicepresidente</value>
+		        </entry>
+		    </map> 
+		</property>
 		<property name="enrolments">
 			<list>
 				<ref bean="enrolment2" />
@@ -357,117 +385,123 @@
 	</bean>	
 
 	<bean id="position3" class="domain.Position">
-		<property name="name" value="Secretary" />
-		<property name="language" value="EN" />	
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Secretary</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Secretario</value>
+		        </entry>
+		    </map> 
+		</property>
 		<property name="enrolments">
 			<list>
-			</list>
-		</property>
-	</bean>	
 			
-	<bean id="position4" class="domain.Position">
-		<property name="name" value="Treasurer" />
-		<property name="language" value="EN" />	
-		<property name="enrolments">
-			<list>
-			</list>
-		</property>
-	</bean>	
-
-	<bean id="position5" class="domain.Position">
-		<property name="name" value="Historian" />
-		<property name="language" value="EN" />	
-		<property name="enrolments">
-			<list>
-			</list>
-		</property>
-	</bean>	
-			
-	<bean id="position6" class="domain.Position">
-		<property name="name" value="Fundraiser" />
-		<property name="language" value="EN" />	
-		<property name="enrolments">
-			<list>
-			</list>
-		</property>
-	</bean>	
-	
-	<bean id="position7" class="domain.Position">
-		<property name="name" value="Officer" />
-		<property name="language" value="EN" />	
-		<property name="enrolments">
-			<list>
-			</list>
-		</property>
-	</bean>	
-
-	<!-- ES -->
-	
-	<bean id="position8" class="domain.Position">
-		<property name="name" value="Presidente" />
-		<property name="language" value="ES" />	
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment1" />
 			</list>
 		</property>
 	</bean>
 	
-	<bean id="position9" class="domain.Position">
-		<property name="name" value="Vicepresidente" />
-		<property name="language" value="ES" />	
+	<bean id="position4" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Treasurer</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Tesorero</value>
+		        </entry>
+		    </map> 
+		</property>
 		<property name="enrolments">
 			<list>
-				<ref bean="enrolment2" />
-			</list>
-		</property>
-	</bean>	
-
-	<bean id="position10" class="domain.Position">
-		<property name="name" value="Secretario" />
-		<property name="language" value="ES" />	
-		<property name="enrolments">
-			<list>
-			</list>
-		</property>
-	</bean>	
 			
-	<bean id="position11" class="domain.Position">
-		<property name="name" value="Tesorero" />
-		<property name="language" value="ES" />	
-		<property name="enrolments">
-			<list>
 			</list>
 		</property>
-	</bean>	
+	</bean>
 
-	<bean id="position12" class="domain.Position">
-		<property name="name" value="Historiador" />
-		<property name="language" value="ES" />	
+	<bean id="position5" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Historian</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Historiador</value>
+		        </entry>
+		    </map> 
+		</property>
 		<property name="enrolments">
 			<list>
-			</list>
-		</property>
-	</bean>	
 			
-	<bean id="position13" class="domain.Position">
-		<property name="name" value="Recaudador de fondos" />
-		<property name="language" value="ES" />	
+			</list>
+		</property>
+	</bean>
+			
+	<bean id="position6" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Fundraiser</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Promotor</value>
+		        </entry>
+		    </map> 
+		</property>
 		<property name="enrolments">
 			<list>
+			
+			</list>
+		</property>
+	</bean>
+	<bean id="position7" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Officer</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Vocal</value>
+		        </entry>
+		    </map> 
+		</property>
+		<property name="enrolments">
+			<list>
+			
 			</list>
 		</property>
 	</bean>	
-	
-	<bean id="position14" class="domain.Position">
-		<property name="name" value="Oficial" />
-		<property name="language" value="ES" />	
-		<property name="enrolments">
-			<list>
-			</list>
-		</property>
-	</bean>	
-		
 	
 	<!-- ENROLMENT -->
 	
