@@ -18,10 +18,45 @@
 	">
 
 	<util:list id="converters">
-		<!-- 
-			Add your own converters using entries of the following form: 
-			<bean class="converters.Class1ToClass2" /> 
-		-->
+	
+		<!-- ACTOR -->
+	<bean class="converters.ActorToStringConverter" /> 	
+	<bean class="converters.StringToActorConverter" /> 
+	
+		<!-- AUTHORITY -->
+	<bean class="converters.AuthorityToStringConverter" />
+	<bean class="converters.StringToAuthorityConverter" />
+		
+		<!-- BROTHERHOOD -->
+	<bean class="converters.BrotherhoodToStringConverter" /> 	
+	<bean class="converters.StringToBrotherhoodConverter" /> 	
+	
+		<!-- ENROLMENT -->
+	<bean class="converters.EnrolmentToStringConverter" />
+	<bean class="converters.StringToEnrolmentConverter" />
+	
+		<!-- HOLYFLOAT -->
+	<bean class="converters.HolyFloatToStringConverter" />
+	<bean class="converters.StringToHolyFloatConverter" />
+	
+			<!-- MEMBER -->
+	<bean class="converters.MemberToStringConverter" />
+	<bean class="converters.StringToMemberConverter" />
+	
+		<!-- PROCESSION -->
+	<bean class="converters.ProcessionToStringConverter" />
+	<bean class="converters.StringToProcessionConverter" />
+	
+			<!-- REQUEST -->
+	<bean class="converters.RequestToStringConverter" />
+	<bean class="converters.StringToRequestConverter" />
+	
+		<!-- USER ACCOUNT -->
+	<bean class="converters.UserAccountToStringConverter" />
+	<bean class="converters.StringToUserAccountConverter" />
+	
+		
+		
 	</util:list>
 	
 </beans>
