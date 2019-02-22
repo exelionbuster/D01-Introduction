@@ -40,9 +40,9 @@
 					<li><a href="procession/brotherhood/list.do"><spring:message code="master.page.brotherhood.procession" /></a></li>
 					<li><a href="float/brotherhood/list.do"><spring:message code="master.page.brotherhood.float" /></a></li>
 					<li><a href="enrolment/brotherhood/list.do"><spring:message code="master.page.brotherhood.enrolment" /></a></li>	
-					<li><a href="member/brotherhood/list.do"><spring:message code="master.page.brotherhood.enrolment" /></a></li>
+					<li><a href="member/brotherhood/list.do"><spring:message code="master.page.brotherhood.member" /></a></li>
 					<li><a href="request/brotherhood/list.do"><spring:message code="master.page.brotherhood.request" /></a></li>		
-					<li><a href="brotherhood/edit.do"><spring:message code="master.page.brotherhood.edit" /></a></li>							
+					<li><a href="brotherhood/brotherhood/edit.do"><spring:message code="master.page.brotherhood.edit" /></a></li>							
 				</ul>
 			</li>
 		</security:authorize>
@@ -51,9 +51,9 @@
 			<li><a class="fNiv"><spring:message	code="master.page.member" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="request/member/list.do"><spring:message code="master.page.member.float" /></a></li>
+					<li><a href="request/member/list.do"><spring:message code="master.page.member.request" /></a></li>
 					<li><a href="enrolment/member/list.do"><spring:message code="master.page.member.enrolment" /></a></li>	
-					<li><a href="member/edit.do"><spring:message code="master.page.member.edit" /></a></li>							
+					<li><a href="member/member/edit.do"><spring:message code="master.page.member.edit" /></a></li>							
 				</ul>
 			</li>
 		</security:authorize>
@@ -74,7 +74,7 @@
 				<ul>
 					<li class="arrow"></li>						
 					<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /> </a></li>
-					<li><a class="fNiv" href="brotherhood/list.do"><spring:message code="master.page.brotherhood.list" /></a></li>
+					<li><a href="brotherhood/list.do"><spring:message code="master.page.brotherhood.list" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

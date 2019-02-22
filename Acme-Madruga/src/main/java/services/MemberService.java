@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.MemberRepository;
@@ -15,6 +17,8 @@ import domain.Enrolment;
 import domain.Member;
 import domain.Request;
 
+@Service
+@Transactional
 public class MemberService {
 
 	// Constructor
@@ -95,7 +99,7 @@ public class MemberService {
 			res = this.memberRepository.save(member);
 
 		} else {
-
+			this.userAccountService.encodePassword(member.getUserAccount());
 			member.setUserAccount(this.userAccountService.save(member.getUserAccount()));
 			res = this.memberRepository.save(member);
 

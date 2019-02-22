@@ -21,7 +21,7 @@
 
 
 
-	<display:table name="brotherhoods" id="row"	requestURI="brotherhood/list.do" pagesize="5" class="displaytag">
+	<display:table name="brotherhoods" id="row"	requestURI="${actionURI}" pagesize="5" class="displaytag">
 
 		<display:column property="title" titleKey="brotherhood.title" />
 		<display:column property="establishmentDate" titleKey="brotherhood.establishmentDate" />

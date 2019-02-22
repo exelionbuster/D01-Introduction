@@ -7,20 +7,20 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import repositories.FloatRepository;
-import domain.HolyFloat;
+import repositories.MemberRepository;
+import domain.Member;
 
 @Component
 @Transactional
-public class StringToHolyFloatConverter implements Converter<String, HolyFloat> {
+public class StringToMemberConverter implements Converter<String, Member> {
 
 	@Autowired
-	FloatRepository	holyFloatRepository;
+	MemberRepository	memberRepository;
 
 
 	@Override
-	public HolyFloat convert(final String text) {
-		HolyFloat result;
+	public Member convert(final String text) {
+		Member result;
 		int id;
 
 		try {
@@ -28,7 +28,7 @@ public class StringToHolyFloatConverter implements Converter<String, HolyFloat> 
 				result = null;
 			else {
 				id = Integer.valueOf(text);
-				result = this.holyFloatRepository.findOne(id);
+				result = this.memberRepository.findOne(id);
 			}
 		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);

@@ -66,7 +66,7 @@ public class BrotherhoodService {
 		res.setUserAccount(userAccount);
 		res.setProcessions(processions);
 		res.setEnrolments(enrolments);
-		res.setFloats(holyFloats);
+		res.setHolyFloats(holyFloats);
 
 		return res;
 	}
@@ -108,6 +108,7 @@ public class BrotherhoodService {
 
 		} else {
 
+			this.userAccountService.encodePassword(brotherhood.getUserAccount());
 			brotherhood.setUserAccount(this.userAccountService.save(brotherhood.getUserAccount()));
 			res = this.brotherhoodRepository.save(brotherhood);
 
