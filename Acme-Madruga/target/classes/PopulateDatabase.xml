@@ -143,7 +143,7 @@
 				<ref bean="procession2" />
 			</list>
 		</property>
-		<property name="floats">
+		<property name="holyFloats">
 			<list>
 				<ref bean="holyFloat1" />
 				<ref bean="holyFloat2" />
@@ -175,7 +175,7 @@
 				<ref bean="procession4" />
 			</list>
 		</property>
-		<property name="floats">
+		<property name="holyFloats">
 			<list>
 				<ref bean="holyFloat3" />
 				<ref bean="holyFloat4" />
