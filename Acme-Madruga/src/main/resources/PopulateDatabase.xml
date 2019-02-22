@@ -266,7 +266,7 @@
 		</property>
 	</bean>
 	
-		<bean id="procession3" class="domain.Procession">
+	<bean id="procession3" class="domain.Procession">
 		<property name="title" value="El gran poder" />
 		<property name="ticker" value="190439-aeiou" />
 		<property name="description" value="Realiza su estacion de penitencia el viernes de madruga" />
@@ -334,9 +334,25 @@
 	
 	<!-- POSITION -->
 	
+	<!-- EN -->
+	
 	<bean id="position1" class="domain.Position">
-		<property name="name" value="President" />
-		<property name="language" value="EN" />	
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>President</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Presidente</value>
+		        </entry>
+		    </map> 
+		</property>
 		<property name="enrolments">
 			<list>
 				<ref bean="enrolment1" />
@@ -345,28 +361,161 @@
 	</bean>
 	
 	<bean id="position2" class="domain.Position">
-		<property name="name" value="Vice president" />
-		<property name="language" value="EN" />	
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Vice president</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Vicepresidente</value>
+		        </entry>
+		    </map> 
+		</property>
 		<property name="enrolments">
 			<list>
 				<ref bean="enrolment2" />
 			</list>
 		</property>
-	</bean>		
+	</bean>	
+
+	<bean id="position3" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Secretary</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Secretario</value>
+		        </entry>
+		    </map> 
+		</property>
+		<property name="enrolments">
+			<list>
+			
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="position4" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Treasurer</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Tesorero</value>
+		        </entry>
+		    </map> 
+		</property>
+		<property name="enrolments">
+			<list>
+			
+			</list>
+		</property>
+	</bean>
+
+	<bean id="position5" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Historian</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Historiador</value>
+		        </entry>
+		    </map> 
+		</property>
+		<property name="enrolments">
+			<list>
+			
+			</list>
+		</property>
+	</bean>
+			
+	<bean id="position6" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Fundraiser</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Promotor</value>
+		        </entry>
+		    </map> 
+		</property>
+		<property name="enrolments">
+			<list>
+			
+			</list>
+		</property>
+	</bean>
+	<bean id="position7" class="domain.Position">
+		<property name="name">
+		    <map>
+		        <entry>
+		            <key>
+		                <value>EN</value>
+		            </key>
+                    <value>Officer</value>
+		        </entry>        
+     	        <entry>
+		            <key>
+		                <value>ES</value>
+		            </key>
+                    <value>Vocal</value>
+		        </entry>
+		    </map> 
+		</property>
+		<property name="enrolments">
+			<list>
+			
+			</list>
+		</property>
+	</bean>	
 	
 	<!-- ENROLMENT -->
 	
 	<bean id="enrolment1" class="domain.Enrolment">
-		<property name="moment" value="02/17/2019" />
-		<property name="dropOutMoment" value= "02/18/2019" />	
+		<property name="moment" value="2019/02/16" />
+		<property name="dropOutMoment"><null/></property>	
 		<property name="position" ref="position1" />
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="member" ref="member1" />
 	</bean>
 	
 	<bean id="enrolment2" class="domain.Enrolment">
-		<property name="moment" value="02/17/2019" />
-		<property name="dropOutMoment" value= "02/18/2019" />
+		<property name="moment" value="2019/02/18" />
+		<property name="dropOutMoment" value= "2019/02/19" />
 		<property name="position" ref="position2" />
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="member" ref="member2" />		
@@ -396,7 +545,7 @@
 	
 	<bean id="configuration1" class="domain.Configuration" >
 		<property name="systemName" value="Acme Madruga" />
-		<property name="bannerURL" value="https://web.whatsapp.com/" />
+		<property name="bannerURL" value="https://tinyurl.com/acme-madruga" />
 		<property name="welcomeMessage" value="Welcome to Acme Madruga, the site to organise your processions" />
 		<property name="PNDefaultCode" value="+34" />
 		<property name="language" value="EN" />		
@@ -404,10 +553,10 @@
 	
 	<bean id="configuration2" class="domain.Configuration" >
 		<property name="systemName" value="Acme Madruga" />
-		<property name="bannerURL" value="https://web.whatsapp.com/" />
+		<property name="bannerURL" value="https://tinyurl.com/acme-madruga" />
 		<property name="welcomeMessage" value="!Bienvenidos a Acme Madruga! Tu sitio para organizar procesiones." />
 		<property name="PNDefaultCode" value="+34" />
-		<property name="language" value="ESP" />			
+		<property name="language" value="ES" />			
 	</bean>
 	
 </beans>

@@ -11,8 +11,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Past;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 @Entity
 @Access(AccessType.PROPERTY)
 public class Enrolment extends DomainEntity {
@@ -30,7 +28,7 @@ public class Enrolment extends DomainEntity {
 
 	@Past
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Past
 	public Date getMoment() {
 		return this.moment;
 	}
@@ -40,7 +38,6 @@ public class Enrolment extends DomainEntity {
 	}
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Past
 	public Date getDropOutMoment() {
 		return this.dropOutMoment;
