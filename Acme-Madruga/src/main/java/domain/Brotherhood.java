@@ -25,7 +25,7 @@ public class Brotherhood extends Actor {
 	private String					pictures;
 	private Collection<Enrolment>	enrolments;
 	private Collection<Procession>	processions;
-	private Collection<HolyFloat>	floats;
+	private Collection<HolyFloat>	holyFloats;
 
 
 	public Brotherhood() {
@@ -80,12 +80,12 @@ public class Brotherhood extends Actor {
 	}
 
 	@OneToMany(mappedBy = "brotherhood")
-	public Collection<HolyFloat> getFloats() {
-		return this.floats;
+	public Collection<HolyFloat> getHolyFloats() {
+		return this.holyFloats;
 	}
 
-	public void setFloats(final Collection<HolyFloat> floats) {
-		this.floats = floats;
+	public void setHolyFloats(final Collection<HolyFloat> holyFloats) {
+		this.holyFloats = holyFloats;
 	}
 
 }
