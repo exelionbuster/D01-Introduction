@@ -47,6 +47,10 @@
 	<bean class="converters.ProcessionToStringConverter" />
 	<bean class="converters.StringToProcessionConverter" />
 	
+			<!-- REQUEST -->
+	<bean class="converters.RequestToStringConverter" />
+	<bean class="converters.StringToRequestConverter" />
+	
 		<!-- USER ACCOUNT -->
 	<bean class="converters.UserAccountToStringConverter" />
 	<bean class="converters.StringToUserAccountConverter" />

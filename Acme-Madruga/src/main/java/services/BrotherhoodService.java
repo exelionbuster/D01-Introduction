@@ -108,6 +108,7 @@ public class BrotherhoodService {
 
 		} else {
 
+			this.userAccountService.encodePassword(brotherhood.getUserAccount());
 			brotherhood.setUserAccount(this.userAccountService.save(brotherhood.getUserAccount()));
 			res = this.brotherhoodRepository.save(brotherhood);
 

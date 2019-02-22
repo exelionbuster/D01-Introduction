@@ -8,9 +8,7 @@
  * http://www.tdg-seville.info/License.html
  */
 
-package controllers;
-
-import java.util.Collection;
+package controllers.brotherhood;
 
 import javax.validation.Valid;
 
@@ -23,11 +21,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.BrotherhoodService;
+import controllers.AbstractController;
 import domain.Brotherhood;
 
 @Controller
-@RequestMapping("/brotherhood")
-public class BrotherhoodController extends AbstractController {
+@RequestMapping("/brotherhood/brotherhood")
+public class ActorBrotherhoodController extends AbstractController {
 
 	// Services-----------------------------------------------------------------
 
@@ -37,39 +36,25 @@ public class BrotherhoodController extends AbstractController {
 
 	// Constructors -----------------------------------------------------------
 
-	public BrotherhoodController() {
+	public ActorBrotherhoodController() {
 		super();
 	}
 
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public ModelAndView list() {
-		ModelAndView res;
-		Collection<Brotherhood> brotherhoods;
-
-		brotherhoods = this.brotherhoodService.findAll();
-
-		res = new ModelAndView("brotherhood/list");
-		// Enviamos al modelo
-		res.addObject("brotherhoods", brotherhoods);
-
-		res.addObject("actionURI", "brotherhood/list.do");
-
-		return res;
-	}
-
-	@RequestMapping(value = "/create", method = RequestMethod.GET)
-	public ModelAndView create() {
-
-		ModelAndView res;
-		Brotherhood brotherhood;
-
-		brotherhood = this.brotherhoodService.create();
-		res = this.createEditModelAndView(brotherhood);
-
-		return res;
-	}
-
 	// Edition ----------------------------------------------------------------
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+	public ModelAndView display() {
+
+		ModelAndView result;
+
+		Brotherhood brotherhood;
+		brotherhood = this.brotherhoodService.findByPrincipal();
+		Assert.notNull(brotherhood);
+
+		result = this.createEditModelAndView(brotherhood, null);
+
+		return result;
+	}
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Brotherhood brotherhood, final BindingResult binding) {
 

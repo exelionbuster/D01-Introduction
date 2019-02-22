@@ -24,20 +24,22 @@
 	<form:hidden path="enrolments" />
 	<form:hidden path="processions" />
 	<form:hidden path="holyFloats" />
-	<form:hidden path="userAccount" />
+	<form:hidden path="userAccount.authorities" />
 	
 	<acme:textbox code="actor.name" path="name" />	
 	<acme:textbox code="actor.middleName" path="middleName" />
 	<acme:textbox code="actor.surname" path="surname" />
-	
+	<br>
+	<acme:textbox code="actor.email" path="email" />	
 	<acme:textbox code="actor.photoURL" path="photo" />
 	<acme:textbox code="actor.phoneNumber" path="phone" />
 	<acme:textbox code="actor.address" path="address" />
-	
+
+	<br>
 	<acme:textbox code="brotherhood.title" path="title" />
 	<acme:textbox code="brotherhood.establishmentDate" path="establishmentDate" />
 	<acme:textbox code="brotherhood.pictures" path="pictures" />
-	
+	<br>
 	<jstl:if test="${brotherhood.id == 0}">	
 	<acme:textbox code="actor.username" path="userAccount.username" />
 	<acme:password code="actor.password" path="userAccount.password" />
