@@ -171,6 +171,8 @@
 			<list>
 				<ref bean="enrolment1" />
 				<ref bean="enrolment2" />
+				<ref bean="enrolment3" />
+				<ref bean="enrolment4" />
 			</list>
 		</property>	
 		<property name="processions">
@@ -202,7 +204,8 @@
 		<property name="userAccount" ref="userAccount4" />
 		<property name="enrolments">
 			<list>
-
+				<ref bean="enrolment5" />
+				<ref bean="enrolment6" />
 			</list>
 		</property>	
 		<property name="processions">
@@ -215,6 +218,38 @@
 			<list>
 				<ref bean="holyFloat3" />
 				<ref bean="holyFloat4" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="brotherhood3" class="domain.Brotherhood">
+		<property name="name" value="Antonia" />
+		<property name="middleName" value="Jesús" />
+		<property name="surname" value="de Santos Vaca" />
+		<property name="photo"
+			value="https://pbs.twimg.com/media/C7f25GyWkAELKib.jpg" />
+		<property name="email" value="antonia.jdsv@gmail.com" />
+		<property name="phone" value="689955387" />
+		<property name="address" value="C/ Felipe II 45" />
+		<property name="title" value="La Sagrada Mortaja" />
+		<property name="establishmentDate" value="04/06/1945" />
+		<property name="pictures" value="http://hermandadsagradamortaja.org/wp-content/uploads/2016/02/CONVIVENCIA-2.jpg" />
+		<property name="userAccount" ref="userAccount7" />
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment7" />
+				<ref bean="enrolment8" />
+			</list>
+		</property>	
+		<property name="processions">
+			<list>
+				<ref bean="procession5" />
+			</list>
+		</property>
+		<property name="holyFloats">
+			<list>
+				<ref bean="holyFloat5" />
+				<ref bean="holyFloat6" />
 			</list>
 		</property>
 	</bean>
@@ -233,11 +268,15 @@
 		<property name="enrolments">
 			<list>
 				<ref bean="enrolment1" />
+				<ref bean="enrolment5" />
 			</list>
 		</property>
 		<property name="requests">
 			<list>
 				<ref bean="request1" />
+				<ref bean="request3" />
+				<ref bean="request4" />
+				<ref bean="request5" />
 			</list>
 		</property>
 	</bean>
@@ -254,11 +293,14 @@
 		<property name="enrolments">
 			<list>
 				<ref bean="enrolment2" />
+				<ref bean="enrolment8" />
 			</list>
 		</property>
 		<property name="requests">
 			<list>
 				<ref bean="request2" />
+				<ref bean="request6" />
+				<ref bean="request7" />
 			</list>
 		</property>
 	</bean>
