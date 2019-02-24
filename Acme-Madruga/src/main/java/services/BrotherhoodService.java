@@ -1,7 +1,6 @@
 
 package services;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +15,6 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Brotherhood;
-import domain.Enrolment;
-import domain.HolyFloat;
-import domain.Procession;
 import forms.BrotherhoodForm;
 
 @Service
@@ -59,14 +55,7 @@ public class BrotherhoodService {
 
 		final UserAccount userAccount = this.userAccountService.create("BROTHERHOOD");
 
-		final Collection<Procession> processions = new ArrayList<Procession>();
-		final Collection<Enrolment> enrolments = new ArrayList<Enrolment>();
-		final Collection<HolyFloat> holyFloats = new ArrayList<HolyFloat>();
-
 		res.setUserAccount(userAccount);
-		res.setProcessions(processions);
-		res.setEnrolments(enrolments);
-		res.setHolyFloats(holyFloats);
 
 		return res;
 	}

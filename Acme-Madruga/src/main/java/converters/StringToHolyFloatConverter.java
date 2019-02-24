@@ -8,19 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import repositories.FloatRepository;
-import domain.HolyFloat;
+import domain.Float;
 
 @Component
 @Transactional
-public class StringToHolyFloatConverter implements Converter<String, HolyFloat> {
+public class StringToHolyFloatConverter implements Converter<String, Float> {
 
 	@Autowired
 	FloatRepository	holyFloatRepository;
 
 
 	@Override
-	public HolyFloat convert(final String text) {
-		HolyFloat result;
+	public Float convert(final String text) {
+		Float result;
 		int id;
 
 		try {
