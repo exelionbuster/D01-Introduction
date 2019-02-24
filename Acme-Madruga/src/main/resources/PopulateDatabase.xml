@@ -206,6 +206,8 @@
 			<list>
 				<ref bean="enrolment5" />
 				<ref bean="enrolment6" />
+				<ref bean="enrolment10" />
+				<ref bean="enrolment12" />
 			</list>
 		</property>	
 		<property name="processions">
@@ -239,6 +241,8 @@
 			<list>
 				<ref bean="enrolment7" />
 				<ref bean="enrolment8" />
+				<ref bean="enrolment9" />
+				<ref bean="enrolment11" />
 			</list>
 		</property>	
 		<property name="processions">
@@ -269,6 +273,7 @@
 			<list>
 				<ref bean="enrolment1" />
 				<ref bean="enrolment5" />
+				<ref bean="enrolment9" />
 			</list>
 		</property>
 		<property name="requests">
@@ -294,6 +299,7 @@
 			<list>
 				<ref bean="enrolment2" />
 				<ref bean="enrolment8" />
+				<ref bean="enrolment10" />
 			</list>
 		</property>
 		<property name="requests">
@@ -318,6 +324,7 @@
 			<list>
 				<ref bean="enrolment3" />
 				<ref bean="enrolment6" />
+				<ref bean="enrolment11" />
 			</list>
 		</property>
 		<property name="requests">
@@ -343,6 +350,7 @@
 			<list>
 				<ref bean="enrolment4" />
 				<ref bean="enrolment7" />
+				<ref bean="enrolment12" />
 			</list>
 		</property>
 		<property name="requests">
@@ -495,7 +503,7 @@
 		<property name="brotherhood" ref="brotherhood3" />
 	</bean>
 
-	<bean id="holyFloat4" class="domain.HolyFloat">
+	<bean id="holyFloat6" class="domain.HolyFloat">
 		<property name="title" value="Divina Pastora de Capuchinos restaurada" />
 		<property name="description" value="Contratar a Cecilia Giménez Zueco fue un error, pero la verdad es que ahora se ve apetecible" />
 		<property name="pictures" value="https://www.comprarmicafetera.com/wp-content/uploads/2015/11/capuccino-e1446822130642.jpg" />
@@ -575,7 +583,8 @@
 		</property>
 		<property name="enrolments">
 			<list>
-				<ref bean="enrolment3" />			
+				<ref bean="enrolment3" />
+				<ref bean="enrolment12" />			
 			</list>
 		</property>
 	</bean>
@@ -623,7 +632,7 @@
 		</property>
 		<property name="enrolments">
 			<list>
-			
+				<ref bean="enrolment9" />			
 			</list>
 		</property>
 	</bean>
@@ -647,10 +656,11 @@
 		</property>
 		<property name="enrolments">
 			<list>
-			
+				<ref bean="enrolment10" />			
 			</list>
 		</property>
 	</bean>
+
 	<bean id="position7" class="domain.Position">
 		<property name="name">
 		    <map>
@@ -670,7 +680,7 @@
 		</property>
 		<property name="enrolments">
 			<list>
-			
+				<ref bean="enrolment11" />
 			</list>
 		</property>
 	</bean>	
@@ -686,13 +696,93 @@
 	</bean>
 	
 	<bean id="enrolment2" class="domain.Enrolment">
-		<property name="moment" value="2019/02/18" />
-		<property name="dropOutMoment" value= "2019/02/19" />
+		<property name="moment" value="2019/02/16" />
+		<property name="dropOutMoment"><null/></property>	
 		<property name="position" ref="position2" />
 		<property name="brotherhood" ref="brotherhood1" />
-		<property name="member" ref="member2" />		
+		<property name="member" ref="member2" />
 	</bean>
 	
+	<bean id="enrolment3" class="domain.Enrolment">
+		<property name="moment" value="2019/02/17" />
+		<property name="dropOutMoment"><null/></property>	
+		<property name="position" ref="position3" />
+		<property name="brotherhood" ref="brotherhood1" />
+		<property name="member" ref="member3" />
+	</bean>
+	
+	<bean id="enrolment4" class="domain.Enrolment">
+		<property name="moment" value="2019/02/18" />
+		<property name="dropOutMoment"><null/></property>	
+		<property name="position" ref="position4" />
+		<property name="brotherhood" ref="brotherhood1" />
+		<property name="member" ref="member4" />
+	</bean>
+	
+	<bean id="enrolment5" class="domain.Enrolment">
+		<property name="moment" value="2019/02/18" />
+		<property name="dropOutMoment"><null/></property>	
+		<property name="position" ref="position1" />
+		<property name="brotherhood" ref="brotherhood2" />
+		<property name="member" ref="member1" />
+	</bean>
+	
+	<bean id="enrolment6" class="domain.Enrolment">
+		<property name="moment" value="2019/02/19" />
+		<property name="dropOutMoment"><null/></property>	
+		<property name="position" ref="position2" />
+		<property name="brotherhood" ref="brotherhood2" />
+		<property name="member" ref="member3" />
+	</bean>
+	
+	<bean id="enrolment7" class="domain.Enrolment">
+		<property name="moment" value="2019/02/20" />
+		<property name="dropOutMoment"><null/></property>	
+		<property name="position" ref="position1" />
+		<property name="brotherhood" ref="brotherhood3" />
+		<property name="member" ref="member4" />
+	</bean>
+	
+	<bean id="enrolment8" class="domain.Enrolment">
+		<property name="moment" value="2019/02/20" />
+		<property name="dropOutMoment"><null/></property>	
+		<property name="position" ref="position2" />
+		<property name="brotherhood" ref="brotherhood3" />
+		<property name="member" ref="member2" />
+	</bean>
+	
+	<bean id="enrolment9" class="domain.Enrolment">
+		<property name="moment" value="2019/02/18" />
+		<property name="dropOutMoment" value= "2019/02/19" />
+		<property name="position" ref="position5" />
+		<property name="brotherhood" ref="brotherhood3" />
+		<property name="member" ref="member1" />		
+	</bean>
+
+	<bean id="enrolment10" class="domain.Enrolment">
+		<property name="moment" value="2019/02/18" />
+		<property name="dropOutMoment" value= "2019/02/19" />
+		<property name="position" ref="position6" />
+		<property name="brotherhood" ref="brotherhood2" />
+		<property name="member" ref="member2" />
+	</bean>
+
+	<bean id="enrolment11" class="domain.Enrolment">
+		<property name="moment" value="2019/02/18" />
+		<property name="dropOutMoment" value= "2019/02/19" />
+		<property name="position" ref="position7" />
+		<property name="brotherhood" ref="brotherhood3" />
+		<property name="member" ref="member3" />
+	</bean>
+
+	<bean id="enrolment12" class="domain.Enrolment">
+		<property name="moment" value="2019/02/18" />
+		<property name="dropOutMoment" value= "2019/02/19" />
+		<property name="position" ref="position3" />
+		<property name="brotherhood" ref="brotherhood2" />
+		<property name="member" ref="member4" />
+	</bean>
+
 	<!-- REQUEST -->
 	
 	<bean id="request1" class="domain.Request">
@@ -700,7 +790,7 @@
 		<property name="rejectedReason" value="" />
 		<property name="member" ref="member1" />
 		<property name="procession" ref="procession1" />	
-		<property name="processionRow" value="34" />
+		<property name="processionRow" value="1" />
 		<property name="processionColumn" value="12" />		
 	</bean>
 	
@@ -709,10 +799,118 @@
 		<property name="rejectedReason" value="" />
 		<property name="member" ref="member2" />
 		<property name="procession" ref="procession2" />
-		<property name="processionRow" value="45" />
+		<property name="processionRow" value="2" />
 		<property name="processionColumn" value="56" />
 	</bean>
+
+	<bean id="request3" class="domain.Request">
+		<property name="status" value="APPROVED" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member1" />
+		<property name="procession" ref="procession2" />	
+		<property name="processionRow" value="1" />
+		<property name="processionColumn" value="56" />		
+	</bean>
 	
+	<bean id="request4" class="domain.Request">
+		<property name="status" value="PENDING" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member1" />
+		<property name="procession" ref="procession3" />
+		<property name="processionRow" value="0" />
+		<property name="processionColumn" value="0" />
+	</bean>
+
+	<bean id="request5" class="domain.Request">
+		<property name="status" value="APPROVED" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member1" />
+		<property name="procession" ref="procession4" />	
+		<property name="processionRow" value="1" />
+		<property name="processionColumn" value="14" />		
+	</bean>
+	
+	<bean id="request6" class="domain.Request">
+		<property name="status" value="PENDING" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member2" />
+		<property name="procession" ref="procession1" />
+		<property name="processionRow" value="1" />
+		<property name="processionColumn" value="10" />
+	</bean>
+
+	<bean id="request7" class="domain.Request">
+		<property name="status" value="APPROVED" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member2" />
+		<property name="procession" ref="procession5" />	
+		<property name="processionRow" value="2" />
+		<property name="processionColumn" value="10" />		
+	</bean>
+	
+	<bean id="request8" class="domain.Request">
+		<property name="status" value="APPROVED" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member3" />
+		<property name="procession" ref="procession1" />
+		<property name="processionRow" value="2" />
+		<property name="processionColumn" value="2" />
+	</bean>
+
+	<bean id="request9" class="domain.Request">
+		<property name="status" value="REJECTED" />
+		<property name="rejectedReason" value="We don't think your appearance lives up to our expectations" />
+		<property name="member" ref="member3" />
+		<property name="procession" ref="procession2" />	
+		<property name="processionRow" value="0" />
+		<property name="processionColumn" value="0" />		
+	</bean>
+	
+	<bean id="request10" class="domain.Request">
+		<property name="status" value="PENDING" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member3" />
+		<property name="procession" ref="procession3" />
+		<property name="processionRow" value="0" />
+		<property name="processionColumn" value="0" />
+	</bean>
+
+	<bean id="request11" class="domain.Request">
+		<property name="status" value="PENDING" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member3" />
+		<property name="procession" ref="procession4" />	
+		<property name="processionRow" value="0" />
+		<property name="processionColumn" value="0" />		
+	</bean>
+	
+	<bean id="request12" class="domain.Request">
+		<property name="status" value="APPROVED" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member4" />
+		<property name="procession" ref="procession1" />
+		<property name="processionRow" value="2" />
+		<property name="processionColumn" value="10" />
+	</bean>
+
+	<bean id="request13" class="domain.Request">
+		<property name="status" value="REJECTED" />
+		<property name="rejectedReason" value="Last time, you dropped your candle and set on fire the bishop's cassock" />
+		<property name="member" ref="member4" />
+		<property name="procession" ref="procession2" />	
+		<property name="processionRow" value="0" />
+		<property name="processionColumn" value="0" />		
+	</bean>
+	
+	<bean id="request14" class="domain.Request">
+		<property name="status" value="PENDING" />
+		<property name="rejectedReason" value="" />
+		<property name="member" ref="member4" />
+		<property name="procession" ref="procession5" />
+		<property name="processionRow" value="0" />
+		<property name="processionColumn" value="0" />
+	</bean>
+
 	<!-- CONFIGURATION -->
 	
 	<bean id="configuration1" class="domain.Configuration" >
