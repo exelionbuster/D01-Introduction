@@ -74,5 +74,5 @@ public class Enrolment extends DomainEntity {
 	public void setPosition(final Position position) {
 		this.position = position;
 	}
-
+	
 }
