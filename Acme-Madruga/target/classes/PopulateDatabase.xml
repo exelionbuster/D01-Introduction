@@ -167,26 +167,6 @@
 		<property name="establishmentDate" value="04/12/1987" />
 		<property name="pictures" value="" />
 		<property name="userAccount" ref="userAccount3" />	
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment1" />
-				<ref bean="enrolment2" />
-				<ref bean="enrolment3" />
-				<ref bean="enrolment4" />
-			</list>
-		</property>	
-		<property name="processions">
-			<list>
-				<ref bean="procession1" />
-				<ref bean="procession2" />
-			</list>
-		</property>
-		<property name="holyFloats">
-			<list>
-				<ref bean="holyFloat1" />
-				<ref bean="holyFloat2" />
-			</list>
-		</property>
 	</bean>
 
 	<bean id="brotherhood2" class="domain.Brotherhood">
@@ -202,26 +182,6 @@
 		<property name="establishmentDate" value="04/03/1975" />
 		<property name="pictures" value="" />
 		<property name="userAccount" ref="userAccount4" />
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment5" />
-				<ref bean="enrolment6" />
-				<ref bean="enrolment10" />
-				<ref bean="enrolment12" />
-			</list>
-		</property>	
-		<property name="processions">
-			<list>
-				<ref bean="procession3" />
-				<ref bean="procession4" />
-			</list>
-		</property>
-		<property name="holyFloats">
-			<list>
-				<ref bean="holyFloat3" />
-				<ref bean="holyFloat4" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="brotherhood3" class="domain.Brotherhood">
@@ -237,25 +197,6 @@
 		<property name="establishmentDate" value="04/06/1945" />
 		<property name="pictures" value="http://hermandadsagradamortaja.org/wp-content/uploads/2016/02/CONVIVENCIA-2.jpg" />
 		<property name="userAccount" ref="userAccount7" />
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment7" />
-				<ref bean="enrolment8" />
-				<ref bean="enrolment9" />
-				<ref bean="enrolment11" />
-			</list>
-		</property>	
-		<property name="processions">
-			<list>
-				<ref bean="procession5" />
-			</list>
-		</property>
-		<property name="holyFloats">
-			<list>
-				<ref bean="holyFloat5" />
-				<ref bean="holyFloat6" />
-			</list>
-		</property>
 	</bean>
 	
 	<!-- MEMBER -->
@@ -269,21 +210,6 @@
 		<property name="phone" value="610386795" />
 		<property name="address" value="C/Villamar 12" />
 		<property name="userAccount" ref="userAccount5" />
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment1" />
-				<ref bean="enrolment5" />
-				<ref bean="enrolment9" />
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request1" />
-				<ref bean="request3" />
-				<ref bean="request4" />
-				<ref bean="request5" />
-			</list>
-		</property>
 	</bean>
 
 	<bean id="member2" class="domain.Member">
@@ -295,20 +221,6 @@
 		<property name="phone" value="356789012" />
 		<property name="address" value="C/Betis 18" />
 		<property name="userAccount" ref="userAccount6" />
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment2" />
-				<ref bean="enrolment8" />
-				<ref bean="enrolment10" />
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request2" />
-				<ref bean="request6" />
-				<ref bean="request7" />
-			</list>
-		</property>
 	</bean>
 
 	<bean id="member3" class="domain.Member">
@@ -320,21 +232,6 @@
 		<property name="phone" value="687955654" />
 		<property name="address" value="C/ Fernandez de Ribera 52" />
 		<property name="userAccount" ref="userAccount8" />
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment3" />
-				<ref bean="enrolment6" />
-				<ref bean="enrolment11" />
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request8" />
-				<ref bean="request9" />
-				<ref bean="request10" />
-				<ref bean="request11" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="member4" class="domain.Member">
@@ -346,20 +243,6 @@
 		<property name="phone" value="666666666" />
 		<property name="address" value="C/ Av. de la Reina Mercedes s/n" />
 		<property name="userAccount" ref="userAccount9" />
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment4" />
-				<ref bean="enrolment7" />
-				<ref bean="enrolment12" />
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request12" />
-				<ref bean="request13" />
-				<ref bean="request14" />
-			</list>
-		</property>
 	</bean>
 	
 	<!-- PROCESSION -->
@@ -370,18 +253,11 @@
 		<property name="description" value="Su estación de penitencia es el miercoles santo" />
 		<property name="moment" value="17/04/2019" />
 		<property name="brotherhood" ref="brotherhood1" />
+		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
-				<ref bean="holyFloat1" />
-				<ref bean="holyFloat2" />
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request1" />
-				<ref bean="request6" />
-				<ref bean="request6" />
-				<ref bean="request12" />
+				<ref bean="float1" />
+				<ref bean="float2" />
 			</list>
 		</property>
 	</bean>
@@ -392,18 +268,11 @@
 		<property name="description" value="Heredera directa de la antigua procesion del Pregon" />
 		<property name="moment" value="16/04/2019" />
 		<property name="brotherhood" ref="brotherhood1" />		
+		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
-				<ref bean="holyFloat1" />
-				<ref bean="holyFloat2" />
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request2" />
-				<ref bean="request3" />
-				<ref bean="request9" />
-				<ref bean="request13" />
+				<ref bean="float1" />
+				<ref bean="float2" />
 			</list>
 		</property>
 	</bean>
@@ -413,16 +282,11 @@
 		<property name="ticker" value="190439-aeiou" />
 		<property name="description" value="Realiza su estacion de penitencia el viernes de madruga" />
 		<property name="moment" value="16/04/2019" />
-		<property name="brotherhood" ref="brotherhood2" />	
+		<property name="brotherhood" ref="brotherhood2" />
+		<property name="draft" value="false" />	
 		<property name="floats">
 			<list>
-				<ref bean="holyFloat3" />
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request4" />
-				<ref bean="request10" />				
+				<ref bean="float3" />
 			</list>
 		</property>
 	</bean>
@@ -433,15 +297,10 @@
 		<property name="description" value="Localizada en el distrito de Macarena, sale durante la madruga" />
 		<property name="moment" value="19/04/2019" />
 		<property name="brotherhood" ref="brotherhood2" />		
+		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
-				<ref bean="holyFloat4" />
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request5" />
-				<ref bean="request11" />				
+				<ref bean="float4" />
 			</list>
 		</property>
 	</bean>
@@ -452,58 +311,68 @@
 		<property name="description" value="En honor a la Divina Pastora de las almas Coronada de Capuchinos" />
 		<property name="moment" value="20/04/2019" />
 		<property name="brotherhood" ref="brotherhood3" />		
+		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
-				<ref bean="holyFloat5" />
-				<ref bean="holyFloat6" />
+				<ref bean="float5" />
+				<ref bean="float6" />
 			</list>
 		</property>
-		<property name="requests">
+	</bean>
+	
+	<bean id="procession6" class="domain.Procession">
+		<property name="title" value="A decidir" />
+		<property name="ticker" value="190430-aeiou" />
+		<property name="description" value="Cuando lo sepamos, lo pondremos" />
+		<property name="moment" value="30/04/2019" />
+		<property name="brotherhood" ref="brotherhood3" />		
+		<property name="draft" value="true" />
+		<property name="floats">
 			<list>
-				<ref bean="request7" />
-				<ref bean="request14" />				
+				<ref bean="float5" />
+				<ref bean="float6" />
 			</list>
 		</property>
 	</bean>
 
 	<!-- HOLY FLOAT -->
 
-	<bean id="holyFloat1" class="domain.HolyFloat">
+	<bean id="float1" class="domain.Float">
 		<property name="title" value="Virgen de la Palma" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 	
-	<bean id="holyFloat2" class="domain.HolyFloat">
+	<bean id="float2" class="domain.Float">
 		<property name="title" value="Jesus de la pasion" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 	
-		<bean id="holyFloat3" class="domain.HolyFloat">
+		<bean id="float3" class="domain.Float">
 		<property name="title" value="Cristo del gran poder" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 	
-	<bean id="holyFloat4" class="domain.HolyFloat">
+	<bean id="float4" class="domain.Float">
 		<property name="title" value="Virgen de la macarena" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 
-	<bean id="holyFloat5" class="domain.HolyFloat">
+	<bean id="float5" class="domain.Float">
 		<property name="title" value="Divina Pastora de Capuchinos" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="http://www.rafaes.com/glorias-2008/RAFAES-2394915992349999348599348581394910018.jpg" />
 		<property name="brotherhood" ref="brotherhood3" />
 	</bean>
 
-	<bean id="holyFloat6" class="domain.HolyFloat">
+	<bean id="float6" class="domain.Float">
 		<property name="title" value="Divina Pastora de Capuchinos restaurada" />
 		<property name="description" value="Contratar a Cecilia Giménez Zueco fue un error, pero la verdad es que ahora se ve apetecible" />
 		<property name="pictures" value="https://www.comprarmicafetera.com/wp-content/uploads/2015/11/capuccino-e1446822130642.jpg" />
@@ -529,13 +398,6 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment1" />
-				<ref bean="enrolment5" />
-				<ref bean="enrolment7" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="position2" class="domain.Position">
@@ -554,13 +416,6 @@
                     <value>Vicepresidente</value>
 		        </entry>
 		    </map> 
-		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment2" />
-				<ref bean="enrolment6" />
-				<ref bean="enrolment8" />
-			</list>
 		</property>
 	</bean>	
 
@@ -581,12 +436,6 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment3" />
-				<ref bean="enrolment12" />			
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="position4" class="domain.Position">
@@ -605,11 +454,6 @@
                     <value>Tesorero</value>
 		        </entry>
 		    </map> 
-		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment4" />			
-			</list>
 		</property>
 	</bean>
 
@@ -630,11 +474,6 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment9" />			
-			</list>
-		</property>
 	</bean>
 			
 	<bean id="position6" class="domain.Position">
@@ -654,11 +493,6 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment10" />			
-			</list>
-		</property>
 	</bean>
 
 	<bean id="position7" class="domain.Position">
@@ -677,11 +511,6 @@
                     <value>Vocal</value>
 		        </entry>
 		    </map> 
-		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment11" />
-			</list>
 		</property>
 	</bean>	
 	

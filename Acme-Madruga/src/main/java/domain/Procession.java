@@ -24,7 +24,7 @@ public class Procession extends DomainEntity {
 	private String						title, ticker, description;
 	private Date						moment;
 	private Brotherhood					brotherhood;
-	private boolean						isDraft;
+	private boolean						draft;
 	private Collection<domain.Float>	floats;
 
 
@@ -78,6 +78,14 @@ public class Procession extends DomainEntity {
 		this.brotherhood = brotherhood;
 	}
 
+	public boolean isDraft() {
+		return this.draft;
+	}
+
+	public void setDraft(final boolean draft) {
+		this.draft = draft;
+	}
+
 	@ManyToMany
 	public Collection<domain.Float> getFloats() {
 		return this.floats;
@@ -85,14 +93,6 @@ public class Procession extends DomainEntity {
 
 	public void setFloats(final Collection<domain.Float> floats) {
 		this.floats = floats;
-	}
-
-	public boolean isDraft() {
-		return this.isDraft;
-	}
-
-	public void setDraft(final boolean isDraft) {
-		this.isDraft = isDraft;
 	}
 
 }
