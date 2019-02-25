@@ -22,11 +22,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Procession extends DomainEntity {
 
-	private String				title, ticker, description;
-	private Date				moment;
-	private Brotherhood			brotherhood;
-	private Collection<Request>	requests;
-	private Collection<HolyFloat>	holyFloats;
+	private String					title, ticker, description;
+	private Date					moment;
+	private Brotherhood				brotherhood;
+	private Collection<Request>		requests;
+	private Collection<domain.Float> floats;
 
 
 	public Procession() {
@@ -79,6 +79,7 @@ public class Procession extends DomainEntity {
 		this.brotherhood = brotherhood;
 	}
 
+	@Valid
 	@OneToMany(mappedBy = "procession")
 	public Collection<Request> getRequests() {
 		return this.requests;
@@ -88,13 +89,14 @@ public class Procession extends DomainEntity {
 		this.requests = requests;
 	}
 
+	@Valid
 	@ManyToMany
-	public Collection<HolyFloat> getFloats() {
-		return this.holyFloats;
+	public Collection<domain.Float> getFloats() {
+		return this.floats;
 	}
 
-	public void setFloats(final Collection<HolyFloat> holyFloats) {
-		this.holyFloats = holyFloats;
+	public void setFloats(final Collection<domain.Float> holyFloats) {
+		this.floats = holyFloats;
 	}
 
 }

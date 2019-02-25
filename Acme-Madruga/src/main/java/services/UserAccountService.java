@@ -35,7 +35,7 @@ public class UserAccountService {
 
 	//CREATE
 	public UserAccount create(final String authorityName) {
-		//Compruebo que el parámetro no es null
+
 		Assert.notNull(authorityName);
 
 		final UserAccount res = new UserAccount();
@@ -50,26 +50,26 @@ public class UserAccountService {
 
 		authorities.add(authority);
 
+		res.setAuthorities(authorities);
+
 		return res;
 	}
 
 	//FINDONE
 	public UserAccount findOne(final int userAccountId) {
-		//Declaro un userAccount vacío
+
 		UserAccount res = null;
-		//Traigo el userAccount
 		res = this.userAccountRepository.findOne(userAccountId);
-		//Devuelve el userAccount si lo encuentra
+
 		return res;
 	}
 
 	//FINDALL
 	public Collection<UserAccount> findAll() {
-		//Declaro colección vacía
+
 		Collection<UserAccount> res = null;
-		//Traigo los userAccounts
 		res = this.userAccountRepository.findAll();
-		//Devuelvo la colección si encuentra
+
 		return res;
 	}
 

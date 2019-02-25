@@ -9,6 +9,7 @@ import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -32,6 +33,7 @@ public class Position extends DomainEntity {
 	}
 
 	@OneToMany(mappedBy = "position")
+	@Valid
 	public Collection<Enrolment> getEnrolments() {
 		return this.enrolments;
 	}

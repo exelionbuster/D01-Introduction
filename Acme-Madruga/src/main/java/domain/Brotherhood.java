@@ -3,15 +3,15 @@ package domain;
 
 // import java.util.Collection;
 
-import java.util.Collection;
+
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,9 +23,7 @@ public class Brotherhood extends Actor {
 	private String					title;
 	private Date					establishmentDate;
 	private String					pictures;
-	private Collection<Enrolment>	enrolments;
-	private Collection<Procession>	processions;
-	private Collection<HolyFloat>	holyFloats;
+
 
 
 	public Brotherhood() {
@@ -59,33 +57,7 @@ public class Brotherhood extends Actor {
 		this.pictures = pictures;
 	}
 
-	//RELATIONSHIPS
 
-	@OneToMany(mappedBy = "brotherhood")
-	public Collection<Enrolment> getEnrolments() {
-		return this.enrolments;
-	}
 
-	public void setEnrolments(final Collection<Enrolment> enrolments) {
-		this.enrolments = enrolments;
-	}
-
-	@OneToMany(mappedBy = "brotherhood")
-	public Collection<Procession> getProcessions() {
-		return this.processions;
-	}
-
-	public void setProcessions(final Collection<Procession> processions) {
-		this.processions = processions;
-	}
-
-	@OneToMany(mappedBy = "brotherhood")
-	public Collection<HolyFloat> getHolyFloats() {
-		return this.holyFloats;
-	}
-
-	public void setHolyFloats(final Collection<HolyFloat> holyFloats) {
-		this.holyFloats = holyFloats;
-	}
 
 }

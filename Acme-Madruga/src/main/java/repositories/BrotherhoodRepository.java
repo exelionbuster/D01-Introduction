@@ -20,6 +20,6 @@ import domain.Brotherhood;
 public interface BrotherhoodRepository extends JpaRepository<Brotherhood, Integer> {
 
 	@Query("select b from Brotherhood b where b.userAccount.id = ?1")
-	Brotherhood finByUserAccountId(int id);
+	Brotherhood findByUserAccountId(int id);
 
 }

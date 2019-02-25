@@ -17,7 +17,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Brotherhood;
 import domain.Enrolment;
-import domain.HolyFloat;
+import domain.Float;
 import domain.Procession;
 import forms.BrotherhoodForm;
 
@@ -39,13 +39,10 @@ public class BrotherhoodService {
 	// Supporting Services
 
 	@Autowired
-	private ActorService			actorService;
+	private UserAccountService	userAccountService;
 
-	@Autowired
-	private UserAccountService		userAccountService;
-
-	@Autowired
-	private Validator				validator;
+/*	@Autowired
+	private Validator	validator;*/
 
 
 	// Simple CRUD methods
@@ -53,23 +50,19 @@ public class BrotherhoodService {
 	//CREATE
 	public Brotherhood create() {
 
-		final Authority authority = new Authority();
+		Authority authority = new Authority();
 		authority.setAuthority("BROTHERHOOD");
-		final Brotherhood res = new Brotherhood();
+		Brotherhood res = new Brotherhood();
 
-		final UserAccount userAccount = this.userAccountService.create("BROTHERHOOD");
+		UserAccount userAccount = this.userAccountService.create("BROTHERHOOD");
 
-		final Collection<Procession> processions = new ArrayList<Procession>();
-		final Collection<Enrolment> enrolments = new ArrayList<Enrolment>();
-		final Collection<HolyFloat> holyFloats = new ArrayList<HolyFloat>();
 
 		res.setUserAccount(userAccount);
-		res.setProcessions(processions);
-		res.setEnrolments(enrolments);
-		res.setHolyFloats(holyFloats);
+
 
 		return res;
 	}
+	
 	//FINDALL
 	public Collection<Brotherhood> findAll() {
 
@@ -125,19 +118,20 @@ public class BrotherhoodService {
 		UserAccount userAccount;
 		final Authority authority = new Authority();
 		authority.setAuthority("BROTHERHOOD");
-
-		Assert.notNull(LoginService.getPrincipal());
-
+		
 		userAccount = LoginService.getPrincipal();
+		
+		Assert.notNull(userAccount);
+		
 
 		Assert.isTrue(userAccount.getAuthorities().contains(authority));
 
-		res = this.brotherhoodRepository.finByUserAccountId(userAccount.getId());
+		res = this.brotherhoodRepository.findByUserAccountId(userAccount.getId());
 
 		return res;
 	}
 
-	public Brotherhood reconstruct(final BrotherhoodForm brotherhoodForm, final BindingResult binding) {
+/*	public Brotherhood reconstruct(BrotherhoodForm brotherhoodForm, BindingResult binding) {
 		Brotherhood result;
 
 		result = this.brotherhoodRepository.findOne(brotherhoodForm.getId());
@@ -152,6 +146,6 @@ public class BrotherhoodService {
 		this.validator.validate(result, binding);
 
 		return result;
-	}
+	}*/
 
 }

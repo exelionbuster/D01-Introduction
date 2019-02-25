@@ -17,20 +17,27 @@
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="${actionURI}" modelAttribute="holyFloat">
+<form:form action="${actionURI}" modelAttribute="floatObject">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />		
 	<form:hidden path="brotherhood" />
 
 	
-	<acme:textbox code="float.name" path="title" />	
+	<acme:textbox code="float.title" path="title" />	
 	<acme:textarea code="float.description" path="description" />
 	<acme:textbox code="float.pictures" path="pictures" />	
-	<acme:select code="float.procession" path="procession" items="processions" itemLabel="name"/>
 
 	
-	<acme:submit code="float.submit" name="floatSubmit" /> 	
+	
+	<acme:submit code="float.submit" name="save" /> 	
 	<acme:cancel url="float/brotherhood/list.do" code="float.cancel"/>
 	
+	<jstl:if test="${floatObject.id!= 0}">	
+		<input type="submit" name="delete"
+			value="<spring:message code="float.delete" />"
+			onclick="return confirm('<spring:message code="float.confirm.delete" />')" />&nbsp;
+	</jstl:if>
+	
 </form:form>
+

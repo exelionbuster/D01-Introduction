@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.validation.Valid;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -22,6 +23,7 @@ public class Member extends Actor {
 
 	//RELATIONSHIPS
 
+	@Valid
 	@OneToMany(mappedBy = "member")
 	public Collection<Enrolment> getEnrolments() {
 		return this.enrolments;
@@ -31,6 +33,7 @@ public class Member extends Actor {
 		this.enrolments = enrolments;
 	}
 
+	@Valid
 	@OneToMany(mappedBy = "member")
 	public Collection<Request> getRequests() {
 		return this.requests;

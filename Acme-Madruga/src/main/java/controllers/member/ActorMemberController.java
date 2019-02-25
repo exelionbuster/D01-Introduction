@@ -1,5 +1,5 @@
 /*
- * BrotherhoodController.java
+ * MemberController.java
  * 
  * Copyright (C) 2019 Universidad de Sevilla
  * 
@@ -8,7 +8,7 @@
  * http://www.tdg-seville.info/License.html
  */
 
-package controllers.brotherhood;
+package controllers.member;
 
 import javax.validation.Valid;
 
@@ -20,23 +20,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.BrotherhoodService;
+import services.MemberService;
 import controllers.AbstractController;
-import domain.Brotherhood;
+import domain.Member;
 
 @Controller
-@RequestMapping("/actor/brotherhood")
-public class ActorBrotherhoodController extends AbstractController {
+@RequestMapping("/actor/member")
+public class ActorMemberController extends AbstractController {
 
 	// Services-----------------------------------------------------------------
 
 	@Autowired
-	public BrotherhoodService	brotherhoodService;
+	public MemberService	memberService;
 
 
 	// Constructors -----------------------------------------------------------
 
-	public ActorBrotherhoodController() {
+	public ActorMemberController() {
 		super();
 	}
 
@@ -45,59 +45,60 @@ public class ActorBrotherhoodController extends AbstractController {
 	public ModelAndView edit() {
 
 		ModelAndView result;
-		Brotherhood brotherhood = this.brotherhoodService.findByPrincipal();
-		Assert.notNull(brotherhood);
+		Member member;
+		member = this.memberService.findByPrincipal();
+		Assert.notNull(member);
 
-		result = this.createEditModelAndView(brotherhood, null);
+		result = this.createEditModelAndView(member);
 
 		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid Brotherhood brotherhood, BindingResult binding) {
+	public ModelAndView save(@Valid final Member member, final BindingResult binding) {
 
 		ModelAndView res;
-		//Brotherhood brotherhood;
+		//Member member;
 
-		//brotherhood = this.brotherhoodService.reconstruct(brotherhood, binding);
+		//member = this.memberService.reconstruct(member, binding);
 
 		if (binding.hasErrors()) {
-			
-			res = this.createEditModelAndView(brotherhood);
+			System.out.println("ERRORES: " + binding.toString());
+			res = this.createEditModelAndView(member);
 		} else
 			try {
 
-				this.brotherhoodService.save(brotherhood);
+				this.memberService.save(member);
 
 				res = new ModelAndView("redirect:../welcome/index.do");
-				res.addObject("name", brotherhood.getName());
-				
+				res.addObject("name", member.getName());
+				;
 			} catch (final Throwable oops) {
-				res = this.createEditModelAndView(brotherhood, "brotherhood.commit.error");
+				res = this.createEditModelAndView(member, "member.commit.error");
 			}
 		return res;
 	}
 
 	// Ancillary methods ------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(final Brotherhood brotherhood) {
+	protected ModelAndView createEditModelAndView(final Member member) {
 
 		ModelAndView res;
 
-		res = this.createEditModelAndView(brotherhood, null);
+		res = this.createEditModelAndView(member, null);
 
 		return res;
 	}
 
-	protected ModelAndView createEditModelAndView(final Brotherhood brotherhood, final String message) {
+	protected ModelAndView createEditModelAndView(final Member member, final String message) {
 
 		ModelAndView res;
 
-		Assert.notNull(brotherhood);
+		Assert.notNull(member);
 
-		res = new ModelAndView("brotherhood/edit");
-		res.addObject("actionURI", "brotherhood/edit.do");
-		res.addObject("brotherhood", brotherhood);
+		res = new ModelAndView("member/edit");
+		res.addObject("actionURI", "member/edit.do");
+		res.addObject("member", member);
 		res.addObject("message", message);
 
 		return res;

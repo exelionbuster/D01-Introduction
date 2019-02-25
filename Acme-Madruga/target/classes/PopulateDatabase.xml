@@ -131,24 +131,6 @@
 		<property name="establishmentDate" value="04/12/1987" />
 		<property name="pictures" value="" />
 		<property name="userAccount" ref="userAccount3" />	
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment1" />
-				<ref bean="enrolment2" />
-			</list>
-		</property>	
-		<property name="processions">
-			<list>
-				<ref bean="procession1" />
-				<ref bean="procession2" />
-			</list>
-		</property>
-		<property name="floats">
-			<list>
-				<ref bean="holyFloat1" />
-				<ref bean="holyFloat2" />
-			</list>
-		</property>
 	</bean>
 
 	<bean id="brotherhood2" class="domain.Brotherhood">
@@ -164,23 +146,6 @@
 		<property name="establishmentDate" value="04/03/1975" />
 		<property name="pictures" value="" />
 		<property name="userAccount" ref="userAccount4" />
-		<property name="enrolments">
-			<list>
-
-			</list>
-		</property>	
-		<property name="processions">
-			<list>
-				<ref bean="procession3" />
-				<ref bean="procession4" />
-			</list>
-		</property>
-		<property name="floats">
-			<list>
-				<ref bean="holyFloat3" />
-				<ref bean="holyFloat4" />
-			</list>
-		</property>
 	</bean>
 	
 	<!-- MEMBER -->
@@ -304,28 +269,28 @@
 
 	<!-- HOLY FLOAT -->
 
-	<bean id="holyFloat1" class="domain.HolyFloat">
+	<bean id="holyFloat1" class="domain.Float">
 		<property name="title" value="Virgen de la Palma" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 	
-	<bean id="holyFloat2" class="domain.HolyFloat">
+	<bean id="holyFloat2" class="domain.Float">
 		<property name="title" value="Jesus de la pasion" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 	
-		<bean id="holyFloat3" class="domain.HolyFloat">
+		<bean id="holyFloat3" class="domain.Float">
 		<property name="title" value="Cristo del gran poder" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 	
-	<bean id="holyFloat4" class="domain.HolyFloat">
+	<bean id="holyFloat4" class="domain.Float">
 		<property name="title" value="Virgen de la macarena" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
