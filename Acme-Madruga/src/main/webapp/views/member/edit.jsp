@@ -29,16 +29,17 @@
 	<acme:textbox code="actor.middleName" path="middleName" />
 	<acme:textbox code="actor.surname" path="surname" />
 	
-	<acme:textbox code="actor.photoURL" path="photoURL" />
-	<acme:textbox code="actor.phoneNumber" path="phoneNumber" />
+	<acme:textbox code="actor.email" path="email" />	
+	<acme:textbox code="actor.photoURL" path="photo" />
+	<acme:textbox code="actor.phoneNumber" path="phone" />
 	<acme:textbox code="actor.address" path="address" />
-		
-	<jstl:if test="id == 0">	
+	<br>
+	<jstl:if test="${member.id == 0}">	
 	<acme:textbox code="actor.username" path="userAccount.username" />
 	<acme:password code="actor.password" path="userAccount.password" />
 	</jstl:if>
 	
-	<acme:submit code="actor.submit" name="actorSubmit" /> 	
+	<acme:submit code="actor.submit" name="save" /> 	
 	<acme:cancel url="welcome/index.do" code="actor.cancel"/>
 	
 	

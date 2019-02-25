@@ -37,11 +37,19 @@
 	
 		<!-- HOLYFLOAT -->
 	<bean class="converters.HolyFloatToStringConverter" />
-	<bean class="converters.StringToAuthorityConverter" />
+	<bean class="converters.StringToHolyFloatConverter" />
+	
+			<!-- MEMBER -->
+	<bean class="converters.MemberToStringConverter" />
+	<bean class="converters.StringToMemberConverter" />
 	
 		<!-- PROCESSION -->
 	<bean class="converters.ProcessionToStringConverter" />
 	<bean class="converters.StringToProcessionConverter" />
+	
+			<!-- REQUEST -->
+	<bean class="converters.RequestToStringConverter" />
+	<bean class="converters.StringToRequestConverter" />
 	
 		<!-- USER ACCOUNT -->
 	<bean class="converters.UserAccountToStringConverter" />

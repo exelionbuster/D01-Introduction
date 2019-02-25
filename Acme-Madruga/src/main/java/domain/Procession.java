@@ -10,7 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -22,11 +21,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Procession extends DomainEntity {
 
-	private String				title, ticker, description;
-	private Date				moment;
-	private Brotherhood			brotherhood;
-	private Collection<Request>	requests;
-	private Collection<HolyFloat>	holyFloats;
+	private String						title, ticker, description;
+	private Date						moment;
+	private Brotherhood					brotherhood;
+	private boolean						draft;
+	private Collection<domain.Float>	floats;
 
 
 	public Procession() {
@@ -79,22 +78,21 @@ public class Procession extends DomainEntity {
 		this.brotherhood = brotherhood;
 	}
 
-	@OneToMany(mappedBy = "procession")
-	public Collection<Request> getRequests() {
-		return this.requests;
+	public boolean isDraft() {
+		return this.draft;
 	}
 
-	public void setRequests(final Collection<Request> requests) {
-		this.requests = requests;
+	public void setDraft(final boolean draft) {
+		this.draft = draft;
 	}
 
 	@ManyToMany
-	public Collection<HolyFloat> getFloats() {
-		return this.holyFloats;
+	public Collection<domain.Float> getFloats() {
+		return this.floats;
 	}
 
-	public void setFloats(final Collection<HolyFloat> holyFloats) {
-		this.holyFloats = holyFloats;
+	public void setFloats(final Collection<domain.Float> floats) {
+		this.floats = floats;
 	}
 
 }

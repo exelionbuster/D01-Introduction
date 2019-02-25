@@ -5,20 +5,20 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.HolyFloat;
+import domain.Request;
 
 @Component
 @Transactional
-public class HolyFloatToStringConverter implements Converter<HolyFloat, String> {
+public class RequestToStringConverter implements Converter<Request, String> {
 
 	@Override
-	public String convert(final HolyFloat holyFloat) {
+	public String convert(final Request request) {
 		String result;
 
-		if (holyFloat == null)
+		if (request == null)
 			result = null;
 		else
-			result = String.valueOf(holyFloat.getId());
+			result = String.valueOf(request.getId());
 		return result;
 	}
 
