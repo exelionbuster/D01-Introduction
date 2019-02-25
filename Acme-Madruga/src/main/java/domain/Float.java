@@ -12,13 +12,13 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Access(AccessType.PROPERTY)
 @Table(name = "`float`")
-public class HolyFloat extends DomainEntity {
+public class Float extends DomainEntity {
 
 	private String		title, description, pictures;
 	private Brotherhood	brotherhood;
 
 
-	public HolyFloat() {
+	public Float() {
 		super();
 	}
 
