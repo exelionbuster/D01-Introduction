@@ -11,7 +11,6 @@ import repositories.RequestRepository;
 @Transactional
 public class RequestService {
 
-	//TODO request service
 	@Autowired
 	private RequestRepository	requestRepository;
 

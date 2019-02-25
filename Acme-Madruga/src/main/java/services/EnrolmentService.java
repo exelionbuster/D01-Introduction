@@ -11,7 +11,6 @@ import repositories.EnrolmentRepository;
 @Transactional
 public class EnrolmentService {
 
-	//TODO enrolment service
 	@Autowired
 	private EnrolmentRepository	enrolmentRepository;
 

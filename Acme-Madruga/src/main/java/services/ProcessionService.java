@@ -27,6 +27,9 @@ public class ProcessionService {
 	@Autowired
 	private BrotherhoodService		brotherhoodService;
 
+	@Autowired
+	private RequestService			requestService;
+
 
 	public Procession create() {
 		Procession result;
@@ -73,7 +76,7 @@ public class ProcessionService {
 		Assert.notNull(principal);
 		String ticker = this.createTicker(p);
 		final Collection<Procession> all = this.findAll();
-
+		//TODO Ticker uniqueness
 		for (final Procession proc : all)
 			if (proc.getTicker().equals(ticker))
 				ticker = this.createTicker(p);
@@ -81,9 +84,21 @@ public class ProcessionService {
 		result = this.processionRepository.save(p);
 		return result;
 	}
+
+	//TODO method findAllByProcessionId in requestService
+	public void delete(final Procession p) {
+		Assert.notNull(p);
+		final Brotherhood principal = this.brotherhoodService.findByPrincipal();
+		Assert.notNull(principal);
+		//		final Collection<Request> requests;
+		//		requests = this.requestService.findAllByProcessionId(p.getId());
+		//		for (final Request r : requests)
+		//			if (!r.getStatus().equals("APPROVED"))
+		//				this.requestService.delete(r);
+		this.processionRepository.delete(p);
+	}
+
 	private String createTicker(final Procession p) {
-		/* CREA UN TICKER ALEATORIO QUE SIGUE EL PATTERN */
-		// Declaración de variables;
 		String result;
 		Integer anyo, mes, dia;
 		int min, max;
@@ -109,15 +124,15 @@ public class ProcessionService {
 
 		result = anyoString + mesString + diaString + "-";
 
-		// Creacion de las 5 letras aleatorias
 		min = 65;
 		max = 90;
 
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 5; i++) {
 			final int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
 			c = (char) randomNum;
 			result = result + c;
 		}
 		return result;
 	}
+
 }
