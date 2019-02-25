@@ -10,7 +10,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -25,7 +24,7 @@ public class Procession extends DomainEntity {
 	private String						title, ticker, description;
 	private Date						moment;
 	private Brotherhood					brotherhood;
-	private Collection<Request>			requests;
+	private boolean						isDraft;
 	private Collection<domain.Float>	floats;
 
 
@@ -79,15 +78,6 @@ public class Procession extends DomainEntity {
 		this.brotherhood = brotherhood;
 	}
 
-	@OneToMany(mappedBy = "procession")
-	public Collection<Request> getRequests() {
-		return this.requests;
-	}
-
-	public void setRequests(final Collection<Request> requests) {
-		this.requests = requests;
-	}
-
 	@ManyToMany
 	public Collection<domain.Float> getFloats() {
 		return this.floats;
@@ -95,6 +85,14 @@ public class Procession extends DomainEntity {
 
 	public void setFloats(final Collection<domain.Float> floats) {
 		this.floats = floats;
+	}
+
+	public boolean isDraft() {
+		return this.isDraft;
+	}
+
+	public void setDraft(final boolean isDraft) {
+		this.isDraft = isDraft;
 	}
 
 }
