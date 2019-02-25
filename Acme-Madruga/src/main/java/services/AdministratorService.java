@@ -1,3 +1,4 @@
+
 package services;
 
 import java.util.Collection;
@@ -7,12 +8,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import domain.Administrator;
-
 import repositories.AdministratorRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Administrator;
 
 @Service
 @Transactional
@@ -22,33 +22,32 @@ public class AdministratorService {
 		super();
 	}
 
+
 	// Managed repository
 
 	@Autowired
-	private AdministratorRepository administratorRepository;
+	private AdministratorRepository	administratorRepository;
 
 	// Supporting Services
 
 	@Autowired
-	private ActorService actorService;
+	private ActorService			actorService;
 
 	@Autowired
-	private UserAccountService userAccountService;
+	private UserAccountService		userAccountService;
+
 
 	// CRUD's
-	
+
 	//Solo los admins pueden crear otros admins
 	public Administrator create() {
-
 		// Para verificar que solo un admin pueda crear otro admin
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
-		Assert.isTrue(this.findByPrincipal().getUserAccount().getAuthorities()
-				.contains(authority));
+		Assert.isTrue(this.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
 		Administrator res;
-		UserAccount userAccount = this.userAccountService
-				.create("ADMINISTRATOR");
+		final UserAccount userAccount = this.userAccountService.create("ADMINISTRATOR");
 
 		res = new Administrator();
 		res.setUserAccount(userAccount);
@@ -62,16 +61,16 @@ public class AdministratorService {
 		return res;
 	}
 
-	public Administrator findOne(int administratorId) {
+	public Administrator findOne(final int administratorId) {
 		Assert.isTrue(administratorId != 0);
 		Administrator res;
 		res = this.administratorRepository.findOne(administratorId);
 		return res;
 	}
-	
-	public Administrator save(Administrator administrator) {
 
-		Authority authority = new Authority();
+	public Administrator save(final Administrator administrator) {
+
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
@@ -88,7 +87,7 @@ public class AdministratorService {
 
 		Administrator res;
 		UserAccount userAccount;
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		// Asegurarme que está en el sistema
@@ -96,11 +95,9 @@ public class AdministratorService {
 		userAccount = LoginService.getPrincipal();
 		Assert.isTrue(userAccount.getAuthorities().contains(authority));
 
-		res = this.administratorRepository
-				.findAdministratorByUserAccountId(userAccount.getId());
+		res = this.administratorRepository.findByUserAccountId(userAccount.getId());
 
 		return res;
 	}
-	
-	
+
 }

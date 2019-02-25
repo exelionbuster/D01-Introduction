@@ -517,7 +517,6 @@
 	<!-- ENROLMENT -->
 	
 	<bean id="enrolment1" class="domain.Enrolment">
-
 		<property name="moment" value="2019/02/16" />
 		<property name="dropOutMoment"><null/></property>	
 		<property name="position" ref="position1" />
