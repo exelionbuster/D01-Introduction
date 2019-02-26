@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
-import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +14,7 @@ import org.springframework.util.Assert;
 import repositories.ProcessionRepository;
 import domain.Brotherhood;
 import domain.Procession;
+import domain.Request;
 
 @Service
 @Transactional
@@ -74,12 +74,9 @@ public class ProcessionService {
 		Assert.notNull(p);
 		final Brotherhood principal = this.brotherhoodService.findByPrincipal();
 		Assert.notNull(principal);
-		String ticker = this.createTicker(p);
-		final Collection<Procession> all = this.findAll();
+		final String ticker = ProcessionService.generateTicker(p);
+		p.setTicker(ticker);
 		//TODO Ticker uniqueness
-		for (final Procession proc : all)
-			if (proc.getTicker().equals(ticker))
-				ticker = this.createTicker(p);
 		Procession result;
 		result = this.processionRepository.save(p);
 		return result;
@@ -90,49 +87,75 @@ public class ProcessionService {
 		Assert.notNull(p);
 		final Brotherhood principal = this.brotherhoodService.findByPrincipal();
 		Assert.notNull(principal);
-		//		final Collection<Request> requests;
-		//		requests = this.requestService.findAllByProcessionId(p.getId());
-		//		for (final Request r : requests)
-		//			if (!r.getStatus().equals("APPROVED"))
-		//				this.requestService.delete(r);
+		final Collection<Request> requests;
+		requests = this.requestService.findAllByProcessionId(p.getId());
+		for (final Request r : requests)
+			if (!r.getStatus().equals("APPROVED"))
+				this.requestService.delete(r);
 		this.processionRepository.delete(p);
 	}
 
-	private String createTicker(final Procession p) {
+	protected static String createTickerDate(final Procession p) {
 		String result;
-		Integer anyo, mes, dia;
-		int min, max;
-		char c;
+		Integer year, month, day;
+
 		final Date date = p.getMoment();
 		final Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 
-		anyo = cal.get(Calendar.YEAR);
-		mes = cal.get(Calendar.MONTH) + 1;
-		dia = cal.get(Calendar.DAY_OF_MONTH);
+		year = cal.get(Calendar.YEAR);
+		month = cal.get(Calendar.MONTH) + 1;
+		day = cal.get(Calendar.DAY_OF_MONTH);
 
-		String anyoString = anyo.toString();
-		String mesString = mes.toString();
-		String diaString = dia.toString();
+		String yearString = year.toString();
+		String monthString = month.toString();
+		String dayString = day.toString();
 
-		//Add the 0 when >10 or <10
-		anyoString = anyoString.substring(2, 4);
-		if (mes < 10)
-			mesString = "0" + mesString;
-		if (dia < 10)
-			diaString = "0" + diaString;
+		//Add the 0 when <10 and substring the year
+		yearString = yearString.substring(2, 4);
+		if (month < 10)
+			monthString = "0" + monthString;
+		if (day < 10)
+			dayString = "0" + dayString;
 
-		result = anyoString + mesString + diaString + "-";
-
-		min = 65;
-		max = 90;
-
-		for (int i = 0; i < 5; i++) {
-			final int randomNum = ThreadLocalRandom.current().nextInt(min, max + 1);
-			c = (char) randomNum;
-			result = result + c;
-		}
+		result = yearString + monthString + dayString;
 		return result;
+	}
+
+	/*
+	 * This method generates an alphanumeric code of 6 digits
+	 */
+	protected static String generateAlphaNumericCode() {
+
+		String res = "";
+		final String abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		final String numeros = "0123456789";
+		final String alfanumerico = abecedario + numeros;
+
+		final int top_alfanumerico = alfanumerico.length() - 1;
+
+		char c;
+
+		for (int i = 0; i < 6; i++) {
+			final int numeroAleatorio = (int) Math.floor(Math.random() * top_alfanumerico);
+			c = alfanumerico.charAt(numeroAleatorio);
+			res += c;
+		}
+		return res;
+	}
+
+	/*
+	 * This is a method to generate a unique Ticker for the system,
+	 * which is necessary for several objects in the system
+	 */
+	protected static String generateTicker(final Procession p) {
+
+		String res = null;
+		final String fechaActual = ProcessionService.createTickerDate(p);
+		final String alphanumericCode = ProcessionService.generateAlphaNumericCode();
+		res = fechaActual + "-" + alphanumericCode;
+
+		return res;
 	}
 
 }
