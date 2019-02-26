@@ -70,16 +70,34 @@ public class RequestService {
 		return res;
 	}
 
+	/*
+	 * public Procession save(final Procession p) {
+	 * Assert.notNull(p);
+	 * final Brotherhood principal = this.brotherhoodService.findByPrincipal();
+	 * Assert.notNull(principal);
+	 * String ticker = this.createTicker(p);
+	 * final Collection<Procession> all = this.findAll();
+	 * 
+	 * for (final Procession proc : all)
+	 * if (proc.getTicker().equals(ticker))
+	 * ticker = this.createTicker(p);
+	 * Procession result;
+	 * result = this.processionRepository.save(p);
+	 * return result;
+	 */
+
 	public Request save(final Request request) {
 		Assert.notNull(request);
-		return this.requestRepository.save(request);
+		Request result;
+		result = this.requestRepository.save(request);
+		return result;
 	}
 
 	public void delete(final Request request) {
-		Assert.notNull(request); //TODO: diferencia entre Assert e If
-		//		Assert.isTrue(request.getStatus()=="PENDING");
+		Assert.notNull(request);
 		Actor a;
 		a = this.actorService.findByPrincipal();
+		Assert.notNull(a);
 		if (a instanceof Member) {
 			if (request.getStatus().equals("PENDING"))
 				this.requestRepository.delete(request);

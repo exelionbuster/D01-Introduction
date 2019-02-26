@@ -53,24 +53,24 @@ public class RequestServiceTest extends AbstractTest {
 
 	@Test
 	public void testFindByStatusRequest() {
-		super.authenticate("member1");
-		final Request request;
+		super.authenticate("member2");
+		final Request request, saved;
 		final Collection<Request> all;
 
 		request = this.requestService.create();
 		request.setStatus("APPROVED");
-		this.requestService.save(request);
+		saved = this.requestService.save(request);
 
 		all = this.requestService.findByStatus("APPROVED");
 
-		Assert.isTrue(all.contains(request));
+		Assert.isTrue(all.contains(saved) == true);
 		super.unauthenticate();
 
 	}
 
 	@Test
 	public void testFindByIdRequest() {
-		super.authenticate("member1");
+		super.authenticate("member2");
 		final Request request, saved;
 
 		request = this.requestService.create();
@@ -83,7 +83,7 @@ public class RequestServiceTest extends AbstractTest {
 
 	@Test
 	public void testDeleteRequest() {
-		super.authenticate("member1");
+		super.authenticate("member2");
 		final Request request, saved;
 		final Collection<Request> all, all2;
 
