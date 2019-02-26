@@ -18,21 +18,17 @@ import domain.Administrator;
 @Transactional
 public class AdministratorService {
 
-	// Constructor
-	// -------------------------------------------------------------------
 	public AdministratorService() {
 		super();
 	}
 
 
 	// Managed repository
-	// ------------------------------------------------------------
 
 	@Autowired
 	private AdministratorRepository	administratorRepository;
 
 	// Supporting Services
-	// -----------------------------------------------------------
 
 	@Autowired
 	private ActorService			actorService;
@@ -41,43 +37,34 @@ public class AdministratorService {
 	private UserAccountService		userAccountService;
 
 
-	// Simple CRUD methods -----------------------------------------------------
+	// CRUD's
 
+	//Solo los admins pueden crear otros admins
 	public Administrator create() {
-
+		// Para verificar que solo un admin pueda crear otro admin
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
-
-		Assert.isTrue(this.findByPrincipal().getUserAccount().getAuthorities().contains(authority), "You are not logged as ADMINISTRADOR in create");
+		Assert.isTrue(this.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
 		Administrator res;
-
 		final UserAccount userAccount = this.userAccountService.create("ADMINISTRATOR");
 
 		res = new Administrator();
-
 		res.setUserAccount(userAccount);
 
 		return res;
 	}
 
 	public Collection<Administrator> findAll() {
-
 		Collection<Administrator> res = null;
-
 		res = this.administratorRepository.findAll();
-
 		return res;
 	}
 
 	public Administrator findOne(final int administratorId) {
-
 		Assert.isTrue(administratorId != 0);
-
 		Administrator res;
-
 		res = this.administratorRepository.findOne(administratorId);
-
 		return res;
 	}
 
@@ -86,44 +73,33 @@ public class AdministratorService {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
-		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority), "You are not logged as ADMINISTRATOR in save");
-
+		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 		Assert.notNull(administrator);
 
 		Administrator res;
-
-		if (administrator.getId() != 0) {
-
-			Assert.isTrue(this.findByPrincipal().getId() == administrator.getId());
-
-			res = this.administratorRepository.save(administrator);
-		} else {
-
-			this.userAccountService.encodePassword(administrator.getUserAccount());
-
-			res = this.administratorRepository.save(administrator);
-
-		}
+		res = this.administratorRepository.save(administrator);
 		return res;
 	}
 
-	// Other business methods -------------------------------------------------
+	// Others CRUD's
 
-	// Find Actor Logged in the system
 	public Administrator findByPrincipal() {
 
 		Administrator res;
 		UserAccount userAccount;
-		final Authority authority = new Authority();
+
+		Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
+		// Asegurarme que está en el sistema
 		Assert.notNull(LoginService.getPrincipal());
 		userAccount = LoginService.getPrincipal();
 		Assert.isTrue(userAccount.getAuthorities().contains(authority));
 
-		res = this.administratorRepository.finByUserAccountId(userAccount.getId());
+		res = this.administratorRepository.findByUserAccountId(userAccount.getId());
 
 		return res;
 	}
 
+	//ME FALTA HACER METODO QUE SE ENCARGA DE LAS ESTADISTICAS, NECESITO LAS QUERYS
 }

@@ -1,7 +1,6 @@
 
 package domain;
 
-
 import java.util.Map;
 
 import javax.persistence.Access;
@@ -14,7 +13,7 @@ import javax.persistence.Entity;
 @Access(AccessType.PROPERTY)
 public class Position extends DomainEntity {
 
-	private Map<String, String>		name;
+	private Map<String, String>	name;
 
 
 
@@ -30,7 +29,5 @@ public class Position extends DomainEntity {
 	public void setName(final Map<String, String> name) {
 		this.name = name;
 	}
-
-
 
 }

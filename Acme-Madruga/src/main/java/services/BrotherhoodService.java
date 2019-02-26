@@ -137,7 +137,7 @@ public class BrotherhoodService {
 		result.setPhone(brotherhoodForm.getPhone());
 		result.setPhoto(brotherhoodForm.getPhoto());
 
-		this.validator.validate(result, binding);
+		//this.validator.validate(result, binding);
 
 		return result;
 	}*/

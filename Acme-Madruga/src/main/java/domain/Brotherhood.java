@@ -3,7 +3,6 @@ package domain;
 
 // import java.util.Collection;
 
-
 import java.util.Date;
 
 import javax.persistence.Access;
@@ -20,9 +19,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Brotherhood extends Actor {
 
-	private String					title;
-	private Date					establishmentDate;
-	private String					pictures;
+	private String	title;
+	private Date	establishmentDate;
+	private String	pictures;
 
 
 
@@ -56,8 +55,5 @@ public class Brotherhood extends Actor {
 	public void setPictures(final String pictures) {
 		this.pictures = pictures;
 	}
-
-
-
 
 }

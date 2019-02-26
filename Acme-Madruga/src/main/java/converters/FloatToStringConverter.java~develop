@@ -9,7 +9,11 @@ import domain.Float;
 
 @Component
 @Transactional
+<<<<<<< HEAD:Acme-Madruga/src/main/java/converters/HolyFloatToStringConverter.java
 public class HolyFloatToStringConverter implements Converter<Float, String> {
+=======
+public class FloatToStringConverter implements Converter<Float, String> {
+>>>>>>> develop:Acme-Madruga/src/main/java/converters/FloatToStringConverter.java
 
 	@Override
 	public String convert(final Float holyFloat) {

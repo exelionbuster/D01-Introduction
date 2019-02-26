@@ -27,7 +27,7 @@ public class Enrolment extends DomainEntity {
 		super();
 	}
 
-	@Temporal(TemporalType.DATE)	
+	@Temporal(TemporalType.DATE)
 	@Past
 	public Date getMoment() {
 		return this.moment;
@@ -77,5 +77,5 @@ public class Enrolment extends DomainEntity {
 	public void setPosition(final Position position) {
 		this.position = position;
 	}
-
+	
 }

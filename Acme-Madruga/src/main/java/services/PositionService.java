@@ -10,95 +10,71 @@ import org.springframework.util.Assert;
 
 import repositories.PositionRepository;
 import security.Authority;
-
 import domain.Position;
-
-
-
 
 @Service
 @Transactional
 public class PositionService {
 
-	// Constructor
 	public PositionService() {
 		super();
 	}
 
 
 	// Managed repository
-
 	@Autowired
 	private PositionRepository	positionRepository;
 
 	// Supporting Services
-
 	@Autowired
-	private AdministratorService	administratorService;
+	private ActorService		actorService;
 
 
-	// Simple CRUD methods
+	// CRUD's
 
-	//CREATE
 	public Position create() {
+		final Authority authority = new Authority();
+		authority.setAuthority("ADMINISTRATOR");
+		// Compruebo que el que esta logueado es un admin
+		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
+		final Position res = new Position();
+		return res;
 
-		checkAdministrator();
-		Position result = new Position();	
-		//result.setName(name);
-		
-
-
-		return result;
 	}
-	
-	//FINDALL
+
 	public Collection<Position> findAll() {
-
-		Collection<Position> result = null;
-		result = this.positionRepository.findAll();
-
-		return result;
-	}
-
-	//FINDONE
-	public Position findOne(final int positionId) {
-
-		Assert.isTrue(positionId != 0);
-		Position result;
-		result = this.positionRepository.findOne(positionId);
-
-		return result;
-	}
-	
-	public Position save(Position position) {
-
-		checkAdministrator();
-		Assert.notNull(position);
-		Position res;
-
-		res = this.positionRepository.save(position);
-
+		Collection<Position> res = null;
+		res = this.positionRepository.findAll();
 		return res;
 	}
 
-	public void delete(Position position) {
-
-		checkAdministrator();
-		Assert.notNull(position);
-		this.positionRepository.delete(position);
-		
+	public Position findOne(final int positionId) {
+		Assert.isTrue(positionId != 0);
+		Position res;
+		res = this.positionRepository.findOne(positionId);
+		return res;
 	}
 
-
-	// Other business methods -------------------------------------------------
-
-	private void checkAdministrator() {
-		Authority authority = new Authority();
+	public Position save(final Position position) {
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
+		// Compruebo que el que esta logueado es un admin
+		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
+		Assert.notNull(position);
 
-		Assert.isTrue(this.administratorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority), "You are not logged as ADMINISTRATOR in edit");
-
+		Position res = null;
+		res = this.positionRepository.save(position);
+		return res;
 	}
 
+	public void delete(final Position position) {
+		final Authority authority = new Authority();
+		authority.setAuthority("ADMINISTRATOR");
+		// Compruebo que el que esta logueado es un admin
+		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
+		Assert.notNull(position);
+		Assert.isTrue(position.getId() != 0);
+		this.positionRepository.delete(position);
+	}
 
 }

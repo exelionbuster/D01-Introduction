@@ -6,7 +6,6 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -18,7 +17,7 @@ public class Float extends DomainEntity {
 	private String		title, description, pictures;
 	private Brotherhood	brotherhood;
 
-	
+
 	public Float() {
 		super();
 	}
@@ -52,7 +51,6 @@ public class Float extends DomainEntity {
 	//RELATIONSHIPS
 
 	@ManyToOne(optional = false)
-	@Valid
 	public Brotherhood getBrotherhood() {
 		return this.brotherhood;
 	}
@@ -60,6 +58,5 @@ public class Float extends DomainEntity {
 	public void setBrotherhood(final Brotherhood brotherhood) {
 		this.brotherhood = brotherhood;
 	}
-
 
 }
