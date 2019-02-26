@@ -1,22 +1,21 @@
 
 package domain;
 
-import java.util.Collection;
+
 import java.util.Map;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.validation.Valid;
+
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Position extends DomainEntity {
 
 	private Map<String, String>		name;
-	private Collection<Enrolment>	enrolments;
+
 
 
 	public Position() {
@@ -32,14 +31,6 @@ public class Position extends DomainEntity {
 		this.name = name;
 	}
 
-	@OneToMany(mappedBy = "position")
-	@Valid
-	public Collection<Enrolment> getEnrolments() {
-		return this.enrolments;
-	}
 
-	public void setEnrolments(final Collection<Enrolment> enrolments) {
-		this.enrolments = enrolments;
-	}
 
 }

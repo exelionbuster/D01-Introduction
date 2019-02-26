@@ -34,9 +34,7 @@
 	<acme:cancel url="float/brotherhood/list.do" code="float.cancel"/>
 	
 	<jstl:if test="${floatObject.id!= 0}">	
-		<input type="submit" name="delete"
-			value="<spring:message code="float.delete" />"
-			onclick="return confirm('<spring:message code="float.confirm.delete" />')" />&nbsp;
+	<acme:submit code="float.delete" name="delete" />		
 	</jstl:if>
 	
 </form:form>

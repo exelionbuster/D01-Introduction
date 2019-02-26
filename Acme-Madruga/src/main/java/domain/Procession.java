@@ -95,8 +95,8 @@ public class Procession extends DomainEntity {
 		return this.floats;
 	}
 
-	public void setFloats(final Collection<domain.Float> holyFloats) {
-		this.floats = holyFloats;
+	public void setFloats(final Collection<domain.Float> floats) {
+		this.floats = floats;
 	}
 
 }

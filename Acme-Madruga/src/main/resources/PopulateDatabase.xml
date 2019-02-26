@@ -202,8 +202,8 @@
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="floats">
 			<list>
-				<ref bean="holyFloat1" />
-				<ref bean="holyFloat2" />
+				<ref bean="float1" />
+				<ref bean="float2" />
 			</list>
 		</property>
 		<property name="requests">
@@ -239,7 +239,7 @@
 		<property name="brotherhood" ref="brotherhood2" />	
 		<property name="floats">
 			<list>
-				<ref bean="holyFloat3" />
+				<ref bean="float3" />
 			</list>
 		</property>
 		<property name="requests">
@@ -257,7 +257,7 @@
 		<property name="brotherhood" ref="brotherhood2" />		
 		<property name="floats">
 			<list>
-				<ref bean="holyFloat4" />
+				<ref bean="float4" />
 			</list>
 		</property>
 		<property name="requests">
@@ -269,28 +269,28 @@
 
 	<!-- HOLY FLOAT -->
 
-	<bean id="holyFloat1" class="domain.Float">
+	<bean id="float1" class="domain.Float">
 		<property name="title" value="Virgen de la Palma" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 	
-	<bean id="holyFloat2" class="domain.Float">
+	<bean id="float2" class="domain.Float">
 		<property name="title" value="Jesus de la pasion" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood1" />
 	</bean>
 	
-		<bean id="holyFloat3" class="domain.Float">
+		<bean id="float3" class="domain.Float">
 		<property name="title" value="Cristo del gran poder" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
 		<property name="brotherhood" ref="brotherhood2" />
 	</bean>
 	
-	<bean id="holyFloat4" class="domain.Float">
+	<bean id="float4" class="domain.Float">
 		<property name="title" value="Virgen de la macarena" />
 		<property name="description" value="Descripcion" />
 		<property name="pictures" value="" />
@@ -318,11 +318,6 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment1" />
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="position2" class="domain.Position">
@@ -341,11 +336,6 @@
                     <value>Vicepresidente</value>
 		        </entry>
 		    </map> 
-		</property>
-		<property name="enrolments">
-			<list>
-				<ref bean="enrolment2" />
-			</list>
 		</property>
 	</bean>	
 
@@ -366,11 +356,6 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-			
-			</list>
-		</property>
 	</bean>
 	
 	<bean id="position4" class="domain.Position">
@@ -390,11 +375,7 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-			
-			</list>
-		</property>
+
 	</bean>
 
 	<bean id="position5" class="domain.Position">
@@ -414,11 +395,7 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-			
-			</list>
-		</property>
+
 	</bean>
 			
 	<bean id="position6" class="domain.Position">
@@ -438,11 +415,7 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-			
-			</list>
-		</property>
+
 	</bean>
 	<bean id="position7" class="domain.Position">
 		<property name="name">
@@ -461,11 +434,7 @@
 		        </entry>
 		    </map> 
 		</property>
-		<property name="enrolments">
-			<list>
-			
-			</list>
-		</property>
+
 	</bean>	
 	
 	<!-- ENROLMENT -->

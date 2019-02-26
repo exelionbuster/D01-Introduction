@@ -1,25 +1,20 @@
 
 package services;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
+
 
 import repositories.BrotherhoodRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Brotherhood;
-import domain.Enrolment;
-import domain.Float;
-import domain.Procession;
-import forms.BrotherhoodForm;
 
 @Service
 @Transactional
@@ -116,13 +111,12 @@ public class BrotherhoodService {
 
 		Brotherhood res;
 		UserAccount userAccount;
-		final Authority authority = new Authority();
+		Authority authority = new Authority();
 		authority.setAuthority("BROTHERHOOD");
 		
 		userAccount = LoginService.getPrincipal();
 		
-		Assert.notNull(userAccount);
-		
+		Assert.notNull(userAccount);		
 
 		Assert.isTrue(userAccount.getAuthorities().contains(authority));
 

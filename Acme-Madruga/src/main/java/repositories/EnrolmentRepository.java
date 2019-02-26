@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import domain.Enrolment;
-import domain.Float;
+
 
 @Repository
 public interface EnrolmentRepository extends JpaRepository<Enrolment, Integer> {

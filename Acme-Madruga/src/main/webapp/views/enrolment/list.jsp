@@ -8,31 +8,53 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
-<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
-<%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="isAuthenticated()">
 
-	<display:table name="floats" id="row"
-		requestURI="enrolment/brotherhood/list.do" pagesize="5"
-		class="displaytag">
 
-		<display:column property="momment" titleKey="enrolment.momment" />
-		<display:column property="position" titleKey="enrolment.position" />		
-		<display:column property="member.name" titleKey="enrolment.member" />				
+<display:table name="enrolments" id="row"
+	requestURI="enrolment/brotherhood/list.do" pagesize="5"
+	class="displaytag">
+
+
+	<display:column property="member.name" titleKey="enrolment.member" />
+
+	<display:column titleKey="enrolment.position">
 		
-		<security:authorize access="hasRole('brotherhood')">
-		<acme:edit titleKey="enrolment.edit" code="enrolment.edit" url="enrolment/brotherhood/edit.do?Id=${id}" />			
-		</security:authorize>
+	<jstl:out value="${row.position.name.get('EN')}" />
+			
+	</display:column>
 
-	</display:table>
+	<display:column property="moment" titleKey="enrolment.moment" />
+
+	<display:column property="dropOutMoment"
+		titleKey="enrolment.dropoutmoment" />
+
+
+	<security:authorize access="hasRole('BROTHERHOOD')">
+		<display:column titleKey="enrolment.edit">
+			<a href="enrolment/brotherhood/edit.do?enrolmentId=${row.id}"> <spring:message
+					code="enrolment.edit.select" />
+			</a>
+		</display:column>
+		<display:column>
+			<a href="enrolment/brotherhood/edit.do?enrolmentId=${row.id}"> <spring:message
+					code="enrolment.remove" />
+			</a>
+		</display:column>
+	</security:authorize>
+
+</display:table>
 
 
 
-</security:authorize>
+

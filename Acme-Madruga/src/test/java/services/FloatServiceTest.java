@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.Collection;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,34 +11,38 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-
 import utilities.AbstractTest;
-import domain.Brotherhood;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
 	"classpath:spring/datasource.xml", "classpath:spring/config/packages.xml"
 })
 @Transactional
-public class BrotherhoodServiceTest extends AbstractTest {
+public class FloatServiceTest extends AbstractTest {
 
 	@Autowired
-	private BrotherhoodService	brotherhoodService;
+	private FloatService floatService;
 
 
-	// FINDBYPRINCIPAL
+
 	@Test
-	public void testFindByPrincipal() {
+	public void testDelete() {
 
 		super.authenticate("brotherhood2");
+		
+		domain.Float floatObj, saved;
+		Collection<domain.Float> floats;
+		floatObj = floatService.create();
+		floatObj.setTitle("La lanzada");
+		floatObj.setDescription("La descripcion");
+		saved = this.floatService.save(floatObj);
+		
+		floats = this.floatService.findAll();
+		Assert.isTrue(floats.contains(saved));
+		this.floatService.delete(saved);		
+		floats = this.floatService.findAll();		
+		Assert.isTrue(!floats.contains(saved));
 
-		Brotherhood brotherhood;
-		
-		brotherhood = this.brotherhoodService.findByPrincipal();		
-		
-		System.out.println("Nombre " + brotherhood.getName());
-		Assert.notNull(brotherhood);
-		
 		super.unauthenticate();
 	}
 }

@@ -24,8 +24,12 @@
 	<form:hidden path="member" />
 	<form:hidden path="brotherhood" />
 	
+	<acme:select path="position" code="enrolment.position" items="positions" itemLabel="name" />
 	
-	<acme:submit code="enrolment.submit" name="" /> 	
-	<acme:cancel url="enrolment/brotherhood/list.do" code="enrolment.cancel"/>
+	<acme:submit code="enrolment.submit" name="save" /> 	
+	<acme:cancel url="enrolment/brotherhood/list.do" code="enrolment.cancel"/>	
 	
 </form:form>
+
+<spring:message code="enrolment.data" />
+

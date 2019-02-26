@@ -9,8 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import domain.Enrolment;
+import domain.Member;
 
 import repositories.EnrolmentRepository;
+import services.BrotherhoodService;
+
 import security.Authority;
 
 @Service
@@ -24,6 +27,12 @@ public class EnrolmentService {
 	@Autowired
 	private BrotherhoodService	brotherhoodService;
 	
+	@Autowired
+	private MemberService	memberService;
+
+	
+
+	
 	//CREATE
 	public Enrolment create() {
 		
@@ -33,6 +42,7 @@ public class EnrolmentService {
 
 		return result;
 	}
+	
 	//FINDALL
 	public Collection<Enrolment> findAll() {
 
@@ -67,19 +77,46 @@ public class EnrolmentService {
 	public Collection<Enrolment> getAllEnrolmentsByBrotherhood() {
 		
 		Collection<Enrolment> result;	
-		
+		checkBrotherhood();
 		result = this.enrolmentRepository.findAllEnrolmentsByBrotherhood
 			(this.brotherhoodService.findByPrincipal().getId());
 		
 		return result;
 	}
 	
+	public void removeMember(Enrolment enrolment){
+		checkBrotherhood();
+		
+	}
+	
 	private void checkBrotherhood() {
 		Authority authority = new Authority();
 		authority.setAuthority("BROTHERHOOD");
 
-		Assert.isTrue(this.brotherhoodService.findByPrincipal().getUserAccount().getAuthorities().contains(authority), "You are not logged as BROTHERHOOD in create");
+		Assert.isTrue(this.brotherhoodService.findByPrincipal().getUserAccount().getAuthorities().contains(authority), "You are not logged as BROTHERHOOD in edit");
 
 	}
+	
+	private void checkMember() {
+		Authority authority = new Authority();
+		authority.setAuthority("MEMBER");
+
+		Assert.isTrue(this.memberService.findByPrincipal().getUserAccount().getAuthorities().contains(authority), "You are not logged as MEMBER in create");
+
+	}
+	
+	public void enrollMember(Member member){
+		checkBrotherhood();
+		
+	}
+	
+
+	
+	public void dropOut(Member member){
+		checkMember();
+		
+	}
+	
+	
 
 }

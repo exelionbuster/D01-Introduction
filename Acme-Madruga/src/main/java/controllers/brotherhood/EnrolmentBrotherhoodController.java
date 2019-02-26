@@ -15,7 +15,6 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -25,8 +24,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.EnrolmentService;
+import services.PositionService;
+import services.ProcessionService;
 import controllers.AbstractController;
 import domain.Enrolment;
+import domain.Position;
 
 @Controller
 @RequestMapping("/enrolment/brotherhood")
@@ -36,6 +38,9 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 
 	@Autowired
 	public EnrolmentService	enrolmentService;
+	
+	@Autowired
+	private PositionService	positionService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -47,31 +52,34 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 
-		ModelAndView resultult;
+		ModelAndView result;
 
 		Collection<Enrolment> enrolments = this.enrolmentService.getAllEnrolmentsByBrotherhood();
 
-		resultult = new ModelAndView("enrolment/list");
-		resultult.addObject("enrolments", enrolments);
-		resultult.addObject("requestURI", "enrolment/brotherhood/list.do");
+		
+		result = new ModelAndView("enrolment/list");
+		result.addObject("enrolments", enrolments);
+		result.addObject("requestURI", "enrolment/brotherhood/list.do");
 
-		return resultult;
+		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public ModelAndView edit(@RequestParam int enrolmentId) {
-		// Creamos los objetos resultultado
-		ModelAndView resultult;
+		// Creamos los objetos resultado
+		ModelAndView result;
 		Enrolment enrolment;
-
+		
 		// Se busca el actor a editar, claramente ya debe existir
 		enrolment = this.enrolmentService.findOne(enrolmentId);
 		Assert.notNull(enrolment);
 		// Se devuelve la vista corresultpondiente
-		resultult = createEditModelAndView(enrolment);
+		result = createEditModelAndView(enrolment);
 
-		return resultult;
+		return result;
 	}
+	
+
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Enrolment enrolment, final BindingResult binding) {
@@ -111,7 +119,10 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 		Assert.notNull(enrolment);
 
 		result = new ModelAndView("enrolment/edit");
-		result.addObject("actionURI", "enrolment/brotherhood/edit.do");
+		Collection<Position> positions = this.positionService.findAll();
+		
+		result.addObject("actionURI", "enrolment/brotherhood/edit.do");		
+		result.addObject("positions", positions);
 		result.addObject("enrolment", enrolment);
 		result.addObject("message", message);
 

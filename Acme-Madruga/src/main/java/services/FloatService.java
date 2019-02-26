@@ -8,21 +8,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import repositories.BrotherhoodRepository;
 import repositories.FloatRepository;
 import security.Authority;
-import domain.Brotherhood;
 import domain.Float;
-import domain.Procession;
 
 @Service
 @Transactional
 public class FloatService {
 
+	
 	public FloatService() {
 		super();
 	}
-
 
 	// Managed repository
 
@@ -48,9 +45,9 @@ public class FloatService {
 		return res;
 	}
 	//FINDALL
-	public Collection<Float> findAll() {
+	public Collection<domain.Float> findAll() {
 
-		Collection<Float> res = null;
+		Collection<domain.Float> res = null;
 		res = this.floatRepository.findAll();
 
 		return res;
@@ -73,7 +70,7 @@ public class FloatService {
 		Assert.notNull(floatObject);
 		Float res;
 
-		res = this.floatRepository.saveAndFlush(floatObject);
+		res = this.floatRepository.save(floatObject);
 
 		return res;
 	}
@@ -81,12 +78,14 @@ public class FloatService {
 	public void delete(domain.Float floatObject) {
 
 		checkBrotherhood();
+		Assert.notNull(floatObject);
 		this.floatRepository.delete(floatObject);
+		
 	}
 
 	public Collection<Float> getAllFloatsByBrotherhood() {
 		Collection<Float> res;
-
+		checkBrotherhood();
 		res = this.floatRepository.findAllFloatsByBrotherhood(this.brotherhoodService.findByPrincipal().getId());
 
 		return res;
@@ -99,5 +98,7 @@ public class FloatService {
 		Assert.isTrue(this.brotherhoodService.findByPrincipal().getUserAccount().getAuthorities().contains(authority), "You are not logged as BROTHERHOOD in create");
 
 	}
+	
+
 
 }

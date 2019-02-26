@@ -15,7 +15,6 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -97,26 +96,26 @@ public class FloatBrotherhoodController extends AbstractController {
 
 		//brotherhood = this.brotherhoodService.reconstruct(brotherhood, binding);
 
-		if (binding.hasErrors()) {
+		if (binding.hasErrors()) 
 			res = this.createEditModelAndView(floatObject);
-		} else{
+		else
 			try {
 
 				this.floatService.save(floatObject);
 				res = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				res = this.createEditModelAndView(floatObject, "float.commit.error");}
+				res = this.createEditModelAndView(floatObject, "float.commit.error");
 			}
+		
 		return res;
 	}
 
 	// delete
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final domain.Float floatObject, final BindingResult binding) {
+	public ModelAndView delete(@Valid final domain.Float floatObject, final BindingResult binding) {
 		ModelAndView res;
-		System.out.println("BINDING" + binding.toString());
+
 		try {
-			System.out.println("BINDING" + binding.toString());
 			this.floatService.delete(floatObject);
 			res = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
@@ -125,6 +124,8 @@ public class FloatBrotherhoodController extends AbstractController {
 
 		return res;
 	}
+	
+
 
 	// Ancillary methods ------------------------------------------------------
 
