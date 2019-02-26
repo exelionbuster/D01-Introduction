@@ -25,15 +25,16 @@ public class RequestServiceTest extends AbstractTest {
 	// Service under test ------------------------------------------
 
 	@Autowired
-	private RequestService	requestService;
+	private RequestService		requestService;
 
+	@Autowired
+	private ProcessionService	processionService;
 
-	//		@Autowired
-	//		private MemberService memberService;
 
 	// Tests -------------------------------------------------------
 	@Test
 	public void testSaveRequest() {
+		super.authenticate("member1");
 		final Request request, saved;
 		final Collection<Request> all;
 
@@ -41,54 +42,72 @@ public class RequestServiceTest extends AbstractTest {
 
 		//			...INITIALISE THE REQUEST...
 
-		request.setStatus("ACCEPTED");
+		request.setStatus("APPROVED");
 
 		saved = this.requestService.save(request);
 		all = this.requestService.findAll();
 
 		Assert.isTrue(all.contains(saved));
+		super.unauthenticate();
 	}
 
 	@Test
 	public void testFindByStatusRequest() {
+		super.authenticate("member1");
 		final Request request;
 		final Collection<Request> all;
 
 		request = this.requestService.create();
-		request.setStatus("ACCEPTED");
+		request.setStatus("APPROVED");
 		this.requestService.save(request);
-		//TODO: aquí haría falta un save()?
 
-		all = this.requestService.findByStatus("ACCEPTED");
+		all = this.requestService.findByStatus("APPROVED");
 
 		Assert.isTrue(all.contains(request));
+		super.unauthenticate();
 
 	}
 
 	@Test
 	public void testFindByIdRequest() {
+		super.authenticate("member1");
 		final Request request, saved;
 
 		request = this.requestService.create();
 		saved = this.requestService.save(request);
 
 		Assert.isTrue(this.requestService.findById(saved.getId()) == request);
+		super.unauthenticate();
 
 	}
 
 	@Test
 	public void testDeleteRequest() {
+		super.authenticate("member1");
 		final Request request, saved;
-		final Collection<Request> all;
+		final Collection<Request> all, all2;
 
 		request = this.requestService.create();
 		saved = this.requestService.save(request);
 		all = this.requestService.findAll();
 
+		Assert.isTrue(all.contains(saved) == true);
+
 		this.requestService.delete(saved);
 
-		Assert.isTrue(all.contains(saved) == false);
+		all2 = this.requestService.findAll();
+
+		Assert.isTrue(all2.contains(saved) == false);
+		super.unauthenticate();
 
 	}
+
+	//	@Test
+	//	public void findAllByProcessionId() {
+	//		final Collection<Procession> principal = this.processionService.findAll();
+	//		Procession p = 
+	//		
+	//
+	//	}
 
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Validator;
 
 import repositories.BrotherhoodRepository;
 import security.Authority;
@@ -40,9 +39,11 @@ public class BrotherhoodService {
 	@Autowired
 	private UserAccountService		userAccountService;
 
-	@Autowired
-	private Validator				validator;
 
+	/*
+	 * @Autowired
+	 * private Validator validator;
+	 */
 
 	// Simple CRUD methods
 
@@ -138,7 +139,7 @@ public class BrotherhoodService {
 		result.setPhone(brotherhoodForm.getPhone());
 		result.setPhoto(brotherhoodForm.getPhoto());
 
-		this.validator.validate(result, binding);
+		//		this.validator.validate(result, binding);
 
 		return result;
 	}
