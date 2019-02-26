@@ -87,7 +87,8 @@ public class AdministratorService {
 
 		Administrator res;
 		UserAccount userAccount;
-		final Authority authority = new Authority();
+
+		Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		// Asegurarme que está en el sistema
@@ -100,4 +101,5 @@ public class AdministratorService {
 		return res;
 	}
 
+	//ME FALTA HACER METODO QUE SE ENCARGA DE LAS ESTADISTICAS, NECESITO LAS QUERYS
 }
