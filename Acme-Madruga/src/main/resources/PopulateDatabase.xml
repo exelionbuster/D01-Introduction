@@ -253,7 +253,7 @@
 		<property name="description" value="Su estación de penitencia es el miercoles santo" />
 		<property name="moment" value="17/04/2019" />
 		<property name="brotherhood" ref="brotherhood1" />
-		<property name="isDraft" value="false" />
+		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
 				<ref bean="float1" />
@@ -268,7 +268,7 @@
 		<property name="description" value="Heredera directa de la antigua procesion del Pregon" />
 		<property name="moment" value="16/04/2019" />
 		<property name="brotherhood" ref="brotherhood1" />		
-		<property name="isDraft" value="false" />
+		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
 				<ref bean="float1" />
@@ -283,7 +283,7 @@
 		<property name="description" value="Realiza su estacion de penitencia el viernes de madruga" />
 		<property name="moment" value="16/04/2019" />
 		<property name="brotherhood" ref="brotherhood2" />
-		<property name="isDraft" value="false" />	
+		<property name="draft" value="false" />	
 		<property name="floats">
 			<list>
 				<ref bean="float3" />
@@ -297,7 +297,7 @@
 		<property name="description" value="Localizada en el distrito de Macarena, sale durante la madruga" />
 		<property name="moment" value="19/04/2019" />
 		<property name="brotherhood" ref="brotherhood2" />		
-		<property name="isDraft" value="false" />
+		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
 				<ref bean="float4" />
@@ -311,7 +311,7 @@
 		<property name="description" value="En honor a la Divina Pastora de las almas Coronada de Capuchinos" />
 		<property name="moment" value="20/04/2019" />
 		<property name="brotherhood" ref="brotherhood3" />		
-		<property name="isDraft" value="false" />
+		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
 				<ref bean="float5" />
@@ -323,10 +323,10 @@
 	<bean id="procession6" class="domain.Procession">
 		<property name="title" value="A decidir" />
 		<property name="ticker" value="190430-aeiou" />
-		<property name="description" value="" />
+		<property name="description" value="Cuando lo sepamos, lo pondremos" />
 		<property name="moment" value="30/04/2019" />
 		<property name="brotherhood" ref="brotherhood3" />		
-		<property name="isDraft" value="true" />
+		<property name="draft" value="true" />
 		<property name="floats">
 			<list>
 				<ref bean="float5" />

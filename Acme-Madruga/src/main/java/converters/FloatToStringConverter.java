@@ -9,7 +9,7 @@ import domain.Float;
 
 @Component
 @Transactional
-public class HolyFloatToStringConverter implements Converter<Float, String> {
+public class FloatToStringConverter implements Converter<Float, String> {
 
 	@Override
 	public String convert(final Float holyFloat) {
