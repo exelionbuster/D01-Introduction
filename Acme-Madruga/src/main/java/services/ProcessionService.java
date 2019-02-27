@@ -82,17 +82,28 @@ public class ProcessionService {
 		return result;
 	}
 
-	//TODO method findAllByProcessionId in requestService
-	public void delete(final Procession p) {
+	public String delete(final Procession p) {
+		String res;
 		Assert.notNull(p);
 		final Brotherhood principal = this.brotherhoodService.findByPrincipal();
 		Assert.notNull(principal);
 		final Collection<Request> requests;
 		requests = this.requestService.findAllByProcessionId(p.getId());
+		boolean pending = true;
 		for (final Request r : requests)
-			if (!r.getStatus().equals("APPROVED"))
+			if (!r.getStatus().equals("PENDING")) {
+				pending = false;
+				break;
+			}
+		if (pending == true) {
+			for (final Request r : requests)
 				this.requestService.delete(r);
-		this.processionRepository.delete(p);
+			this.processionRepository.delete(p);
+			res = "delete.success";
+		} else
+			res = "delete.fail";
+		return res;
+
 	}
 
 	protected static String createTickerDate(final Procession p) {
