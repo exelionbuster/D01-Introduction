@@ -12,7 +12,7 @@ import domain.Float;
 
 @Component
 @Transactional
-public class StringToHolyFloatConverter implements Converter<String, Float> {
+public class StringToFloatConverter implements Converter<String, Float> {
 
 	@Autowired
 	FloatRepository	holyFloatRepository;

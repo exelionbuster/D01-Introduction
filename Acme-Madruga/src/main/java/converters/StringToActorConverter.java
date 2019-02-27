@@ -1,6 +1,5 @@
+
 package converters;
-
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -16,10 +15,11 @@ import domain.Actor;
 public class StringToActorConverter implements Converter<String, Actor> {
 
 	@Autowired
-	ActorRepository actorRepository;
+	ActorRepository	actorRepository;
+
 
 	@Override
-	public Actor convert(String text) {
+	public Actor convert(final String text) {
 		Actor result;
 		int id;
 		try {
@@ -27,9 +27,9 @@ public class StringToActorConverter implements Converter<String, Actor> {
 				result = null;
 			else {
 				id = Integer.valueOf(text);
-				result = actorRepository.findOne(id);
+				result = this.actorRepository.findOne(id);
 			}
-		} catch (Throwable oops) {
+		} catch (final Throwable oops) {
 			throw new IllegalArgumentException(oops);
 		}
 		return result;

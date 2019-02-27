@@ -36,8 +36,8 @@
 	<bean class="converters.StringToEnrolmentConverter" />
 	
 		<!-- HOLYFLOAT -->
-	<bean class="converters.HolyFloatToStringConverter" />
-	<bean class="converters.StringToHolyFloatConverter" />
+	<bean class="converters.FloatToStringConverter" />
+	<bean class="converters.StringToFloatConverter" />
 	
 			<!-- MEMBER -->
 	<bean class="converters.MemberToStringConverter" />
