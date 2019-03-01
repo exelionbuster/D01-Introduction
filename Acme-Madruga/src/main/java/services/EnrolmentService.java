@@ -23,7 +23,6 @@ import security.Authority;
 @Transactional
 public class EnrolmentService {
 
-	//TODO enrolment service
 	@Autowired
 	private EnrolmentRepository	enrolmentRepository;
 	

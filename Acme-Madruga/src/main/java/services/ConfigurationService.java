@@ -14,7 +14,6 @@ import domain.Configuration;
 @Transactional
 public class ConfigurationService {
 
-	//TODO configuration service
 	@Autowired
 	private ConfigurationRepository	configurationRepository;
 
