@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import repositories.MemberRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Enrolment;
 import domain.Member;
+import domain.Request;
 
 @Service
 @Transactional
@@ -41,9 +44,6 @@ public class MemberService {
 		Member res = new Member();
 
 		UserAccount userAccount = this.userAccountService.create("MEMBER");
-
-		Collection<Request> requests = new ArrayList<Request>();
-		Collection<Enrolment> enrolments = new ArrayList<Enrolment>();
 
 		res.setUserAccount(userAccount);
 

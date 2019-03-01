@@ -28,7 +28,7 @@ public class BrotherhoodServiceTest extends AbstractTest {
 	@Test
 	public void testFindByPrincipal() {
 
-		super.authenticate("brotherhood2");
+		super.authenticate("brotherhood1");
 
 		Brotherhood brotherhood;
 		

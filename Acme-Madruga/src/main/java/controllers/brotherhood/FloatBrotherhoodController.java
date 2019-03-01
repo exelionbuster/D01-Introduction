@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -96,25 +97,23 @@ public class FloatBrotherhoodController extends AbstractController {
 
 		//brotherhood = this.brotherhoodService.reconstruct(brotherhood, binding);
 
-		if (binding.hasErrors()) 
+		if (binding.hasErrors())
 			res = this.createEditModelAndView(floatObject);
 		else
 			try {
-
 				this.floatService.save(floatObject);
 				res = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
 				res = this.createEditModelAndView(floatObject, "float.commit.error");
 			}
-		
+
 		return res;
 	}
 
 	// delete
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(@Valid final domain.Float floatObject, final BindingResult binding) {
+	public ModelAndView delete(final domain.Float floatObject) {
 		ModelAndView res;
-
 		try {
 			this.floatService.delete(floatObject);
 			res = new ModelAndView("redirect:list.do");
@@ -124,8 +123,6 @@ public class FloatBrotherhoodController extends AbstractController {
 
 		return res;
 	}
-	
-
 
 	// Ancillary methods ------------------------------------------------------
 

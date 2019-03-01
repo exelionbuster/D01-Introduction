@@ -182,8 +182,6 @@
 		<property name="establishmentDate" value="04/03/1975" />
 		<property name="pictures" value="" />
 		<property name="userAccount" ref="userAccount4" />
-<<<<<<< HEAD
-=======
 	</bean>
 	
 	<bean id="brotherhood3" class="domain.Brotherhood">
@@ -199,7 +197,6 @@
 		<property name="establishmentDate" value="04/06/1945" />
 		<property name="pictures" value="http://hermandadsagradamortaja.org/wp-content/uploads/2016/02/CONVIVENCIA-2.jpg" />
 		<property name="userAccount" ref="userAccount7" />
->>>>>>> develop
 	</bean>
 	
 	<!-- MEMBER -->
@@ -261,14 +258,6 @@
 			<list>
 				<ref bean="float1" />
 				<ref bean="float2" />
-<<<<<<< HEAD
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				<ref bean="request1" />
-=======
->>>>>>> develop
 			</list>
 		</property>
 	</bean>
@@ -298,14 +287,7 @@
 		<property name="floats">
 			<list>
 				<ref bean="float3" />
-<<<<<<< HEAD
-			</list>
-		</property>
-		<property name="requests">
-			<list>
-				
-=======
->>>>>>> develop
+
 			</list>
 		</property>
 	</bean>
@@ -333,12 +315,9 @@
 		<property name="draft" value="false" />
 		<property name="floats">
 			<list>
-<<<<<<< HEAD
 				<ref bean="float4" />
-=======
 				<ref bean="float5" />
 				<ref bean="float6" />
->>>>>>> develop
 			</list>
 		</property>
 	</bean>
@@ -478,10 +457,7 @@
 		        </entry>
 		    </map> 
 		</property>
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 	</bean>
 
 	<bean id="position5" class="domain.Position">
@@ -501,10 +477,7 @@
 		        </entry>
 		    </map> 
 		</property>
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 	</bean>
 			
 	<bean id="position6" class="domain.Position">
@@ -524,10 +497,7 @@
 		        </entry>
 		    </map> 
 		</property>
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
 	</bean>
 
 	<bean id="position7" class="domain.Position">
@@ -547,10 +517,6 @@
 		        </entry>
 		    </map> 
 		</property>
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
 	</bean>	
 	
 	<!-- ENROLMENT -->

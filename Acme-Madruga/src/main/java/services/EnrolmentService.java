@@ -1,7 +1,10 @@
 
 package services;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
+import java.util.Date;
+import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,8 +40,9 @@ public class EnrolmentService {
 	public Enrolment create() {
 		
 		Enrolment result = new Enrolment();
-
-		result.setBrotherhood(this.brotherhoodService.findByPrincipal());
+		
+		result.setMember(this.memberService.findByPrincipal());
+		result.setMoment(Calendar.getInstance().getTime());
 
 		return result;
 	}
@@ -69,7 +73,7 @@ public class EnrolmentService {
 		Assert.notNull(enrolment);
 		Enrolment result;
 
-		result = this.enrolmentRepository.saveAndFlush(enrolment);
+		result = this.enrolmentRepository.save(enrolment);
 
 		return result;
 	}
@@ -84,10 +88,6 @@ public class EnrolmentService {
 		return result;
 	}
 	
-	public void removeMember(Enrolment enrolment){
-		checkBrotherhood();
-		
-	}
 	
 	private void checkBrotherhood() {
 		Authority authority = new Authority();
@@ -105,15 +105,25 @@ public class EnrolmentService {
 
 	}
 	
-	public void enrollMember(Member member){
+	public void enrollMember(){
+		checkMember();
+				
+	}
+		
+	public void dropOutByBrotherhood(Enrolment enrolment){
 		checkBrotherhood();
+		enrolment.setDropOutMoment(Calendar.getInstance().getTime());
+		Assert.notNull(enrolment.getDropOutMoment());
+		enrolment = this.enrolmentRepository.save(enrolment);
+		
 		
 	}
 	
-
-	
-	public void dropOut(Member member){
-		checkMember();
+	public void dropOutByMember(Enrolment enrolment){
+		checkBrotherhood();		
+		enrolment.setDropOutMoment(Calendar.getInstance().getTime());
+		Assert.notNull(enrolment.getDropOutMoment());
+		enrolment = this.enrolmentRepository.save(enrolment);
 		
 	}
 	

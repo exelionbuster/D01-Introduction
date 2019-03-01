@@ -24,12 +24,24 @@
 	<form:hidden path="member" />
 	<form:hidden path="brotherhood" />
 	
-	<acme:select path="position" code="enrolment.position" items="positions" itemLabel="name" />
+
 	
+	<jstl:choose>
+	<jstl:when test="${locale eq 'en'}">		
+	<acme:select path="position" code="enrolment.position" items="${positions}" itemLabel="${name}" />
+	
+	</jstl:when>
+	<jstl:when test="${locale eq 'es'}">	
+	<acme:select path="position" code="enrolment.position" items="${positions}" itemLabel="${name}" />				
+	</jstl:when>
+	</jstl:choose>	
+	
+
+	
+			
 	<acme:submit code="enrolment.submit" name="save" /> 	
 	<acme:cancel url="enrolment/brotherhood/list.do" code="enrolment.cancel"/>	
 	
 </form:form>
 
-<spring:message code="enrolment.data" />
 

@@ -29,9 +29,14 @@
 	<display:column property="member.name" titleKey="enrolment.member" />
 
 	<display:column titleKey="enrolment.position">
-		
+	<jstl:choose>
+	<jstl:when test="${locale eq 'en'}">	
 	<jstl:out value="${row.position.name.get('EN')}" />
-			
+	</jstl:when>
+	<jstl:when test="${locale eq 'es'}">	
+	<jstl:out value="${row.position.name.get('ES')}" />					
+	</jstl:when>
+	</jstl:choose>		
 	</display:column>
 
 	<display:column property="moment" titleKey="enrolment.moment" />
@@ -47,7 +52,7 @@
 			</a>
 		</display:column>
 		<display:column>
-			<a href="enrolment/brotherhood/edit.do?enrolmentId=${row.id}"> <spring:message
+			<a href="enrolment/brotherhood/drop.do?enrolmentId=${row.id}"> <spring:message
 					code="enrolment.remove" />
 			</a>
 		</display:column>

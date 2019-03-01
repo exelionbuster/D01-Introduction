@@ -11,10 +11,12 @@
 package controllers.brotherhood;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -38,7 +40,7 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 
 	@Autowired
 	public EnrolmentService	enrolmentService;
-	
+
 	@Autowired
 	private PositionService	positionService;
 
@@ -55,10 +57,11 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 		ModelAndView result;
 
 		Collection<Enrolment> enrolments = this.enrolmentService.getAllEnrolmentsByBrotherhood();
+		Locale locale = LocaleContextHolder.getLocale();
 
-		
 		result = new ModelAndView("enrolment/list");
 		result.addObject("enrolments", enrolments);
+		result.addObject("locale", locale);
 		result.addObject("requestURI", "enrolment/brotherhood/list.do");
 
 		return result;
@@ -69,7 +72,7 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 		// Creamos los objetos resultado
 		ModelAndView result;
 		Enrolment enrolment;
-		
+
 		// Se busca el actor a editar, claramente ya debe existir
 		enrolment = this.enrolmentService.findOne(enrolmentId);
 		Assert.notNull(enrolment);
@@ -78,8 +81,6 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 
 		return result;
 	}
-	
-
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(@Valid final Enrolment enrolment, final BindingResult binding) {
@@ -88,16 +89,28 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 		//Brotherhood brotherhood;
 
 		//brotherhood = this.brotherhoodService.reconstruct(brotherhood, binding);
-
-		if (binding.hasErrors()) {
-			result = this.createEditModelAndView(enrolment);
-		} else{
 			try {
 				this.enrolmentService.save(enrolment);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(enrolment, "enrolment.commit.error");}
+				result = this.createEditModelAndView(enrolment, "enrolment.commit.error");
 			}
+		
+		return result;
+	}
+
+	@RequestMapping(value = "/drop", method = RequestMethod.GET)
+	public ModelAndView drop(@Valid final Enrolment enrolment) {
+
+	try {
+		ModelAndView result;		
+		this.enrolmentService.dropOutByBrotherhood(enrolment);
+		result = this.list();
+		} catch (final Throwable oops) {
+			result = this.list();
+			result.addObject("message", "enrolment.commit.error");
+		}				
+		
 		return result;
 	}
 
@@ -120,9 +133,11 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 
 		result = new ModelAndView("enrolment/edit");
 		Collection<Position> positions = this.positionService.findAll();
-		
-		result.addObject("actionURI", "enrolment/brotherhood/edit.do");		
+		Locale locale = LocaleContextHolder.getLocale();
+
+		result.addObject("actionURI", "enrolment/brotherhood/edit.do");
 		result.addObject("positions", positions);
+		result.addObject("locale", locale);
 		result.addObject("enrolment", enrolment);
 		result.addObject("message", message);
 
