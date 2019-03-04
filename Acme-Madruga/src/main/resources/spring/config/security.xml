@@ -46,6 +46,7 @@
 		<security:intercept-url pattern="/dashboard/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/actor/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
 		<security:intercept-url pattern="/configuration/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
+		<security:intercept-url pattern="/position/administrator/**" access="hasRole('ADMINISTRATOR')" /> 
 		
 		
 		<security:intercept-url pattern="/member/brotherhood/**" access="hasRole('BROTHERHOOD')" /> 

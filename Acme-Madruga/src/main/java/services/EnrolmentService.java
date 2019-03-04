@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Brotherhood;
 import domain.Enrolment;
 import domain.Member;
 
@@ -33,14 +34,18 @@ public class EnrolmentService {
 	private MemberService	memberService;
 
 	
-
+	public EnrolmentService() {
+		super();
+	}
+	
 	
 	//CREATE
 	public Enrolment create() {
 		
-		Enrolment result = new Enrolment();
-		
+		checkMember();
+		Enrolment result = new Enrolment();		
 		result.setMember(this.memberService.findByPrincipal());
+		result.setBrotherhood(new Brotherhood());
 		result.setMoment(Calendar.getInstance().getTime());
 
 		return result;
@@ -61,7 +66,7 @@ public class EnrolmentService {
 		Assert.isTrue(floatId != 0);
 		Enrolment result;
 		result = this.enrolmentRepository.findOne(floatId);
-
+		
 		return result;
 	}
 
@@ -70,10 +75,10 @@ public class EnrolmentService {
 
 		checkBrotherhood();
 		Assert.notNull(enrolment);
-		Enrolment result;
-
+		Enrolment result = null;		
 		result = this.enrolmentRepository.save(enrolment);
-
+		result.setBrotherhood(this.brotherhoodService.findByPrincipal());
+		
 		return result;
 	}
 
@@ -112,6 +117,7 @@ public class EnrolmentService {
 	public void dropOutByBrotherhood(Enrolment enrolment){
 		checkBrotherhood();
 		enrolment.setDropOutMoment(Calendar.getInstance().getTime());
+		enrolment.setBrotherhood(this.brotherhoodService.findByPrincipal());
 		Assert.notNull(enrolment.getDropOutMoment());
 		enrolment = this.enrolmentRepository.save(enrolment);
 		

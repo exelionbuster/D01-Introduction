@@ -46,6 +46,7 @@
 		<!-- PROCESSION -->
 	<bean class="converters.ProcessionToStringConverter" />
 	<bean class="converters.StringToProcessionConverter" />
+	
 		<!-- POSITION -->
 	<bean class="converters.PositionToStringConverter" />
 	<bean class="converters.StringToPositionConverter" />

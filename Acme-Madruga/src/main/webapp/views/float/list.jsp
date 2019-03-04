@@ -32,12 +32,16 @@
 		</a>		
 		</display:column>
 		
+		<security:authorize access="hasRole('BROTHERHOOD')">
+		<acme:edit titleKey="float.edit" code="float.edit" url="float/brotherhood/edit.do?floatId=${row.id}" />
+		</security:authorize>
+		
 		
 	</display:table>
 	
 	<div>
-	<a href="float/brotherhood/create.do"> <spring:message
-			code="float.create" /></a>
+	<a href="float/brotherhood/create.do"> 
+	<spring:message	code="float.create" /></a>
 	</div>
 
 

@@ -77,9 +77,9 @@ public class FloatService {
 
 	public void delete(domain.Float floatObject) {
 
-		checkBrotherhood();
+		checkBrotherhood();	
 		Assert.notNull(floatObject);
-		this.floatRepository.delete(floatObject);
+		this.floatRepository.delete(floatObject);		
 		
 	}
 

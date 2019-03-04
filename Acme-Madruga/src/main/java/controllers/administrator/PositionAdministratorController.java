@@ -1,62 +1,56 @@
-/*
- * BrotherhoodController.java
- * 
- * Copyright (C) 2019 Universidad de Sevilla
- * 
- * The use of this project is hereby constrained to the conditions of the
- * TDG Licence, a copy of which you may download from
- * http://www.tdg-seville.info/License.html
- */
-
-package controllers.brotherhood;
+package controllers.administrator;
 
 import java.util.Collection;
+import java.util.Locale;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import services.BrotherhoodService;
-import services.FloatService;
+import services.AdministratorService;
+import services.PositionService;
 import controllers.AbstractController;
+import domain.Position;
+
 
 @Controller
-@RequestMapping("/float/brotherhood")
-public class FloatBrotherhoodController extends AbstractController {
+@RequestMapping("/position/administrator")
+public class PositionAdministratorController extends AbstractController {
 
 	// Services-----------------------------------------------------------------
 
 	@Autowired
-	public BrotherhoodService	brotherhoodService;
+	public AdministratorService	administratorService;
 
 	@Autowired
-	public FloatService			floatService;
-
+	public PositionService positionService;
 
 	// Constructors -----------------------------------------------------------
 
-	public FloatBrotherhoodController() {
+	public PositionAdministratorController() {
 		super();
 	}
-
+	
 	// Listing ----------------------------------------------------------------
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list() {
 
 		ModelAndView result;
-		Collection<domain.Float> floats = this.floatService.getAllFloatsByBrotherhood();
+		Collection<Position> positions = this.positionService.findAll();
+		Locale locale = LocaleContextHolder.getLocale();
 
-		result = new ModelAndView("float/list");
-		result.addObject("floats", floats);
-		result.addObject("requestURI", "float/brotherhood/list.do");
+		result = new ModelAndView("position/list");
+		result.addObject("positions", positions);
+		result.addObject("locale", locale);
+		result.addObject("requestURI", "position/administrator/list.do");
 
 		return result;
 	}
@@ -66,31 +60,31 @@ public class FloatBrotherhoodController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
 		ModelAndView res;
-		domain.Float floatObject;
+		Position position;
 
-		floatObject = this.floatService.create();
-		res = this.createEditModelAndView(floatObject);
+		position = this.positionService.create();
+		res = this.createEditModelAndView(position);
 
 		return res;
 	}
-
+	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView edit(@RequestParam int floatId) {
+	public ModelAndView edit(@RequestParam int positionId) {
 		// Creamos los objetos resultado
 		ModelAndView result;
-		domain.Float floatObject;
+		Position position;
 
 		// Se busca el actor a editar, claramente ya debe existir
-		floatObject = this.floatService.findOne(floatId);
-		Assert.notNull(floatObject);
+		position = this.positionService.findOne(positionId);
+		Assert.notNull(position);
 		// Se devuelve la vista correspondiente
-		result = createEditModelAndView(floatObject);
+		result = createEditModelAndView(position);
 
 		return result;
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final domain.Float floatObject, final BindingResult binding) {
+	public ModelAndView save(@Valid final Position position, final BindingResult binding) {
 
 		ModelAndView res;
 		//Brotherhood brotherhood;
@@ -98,13 +92,13 @@ public class FloatBrotherhoodController extends AbstractController {
 		//brotherhood = this.brotherhoodService.reconstruct(brotherhood, binding);
 
 		if (binding.hasErrors())
-			res = this.createEditModelAndView(floatObject);
+			res = this.createEditModelAndView(position);
 		else
 			try {
-				this.floatService.save(floatObject);
+				this.positionService.save(position);
 				res = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				res = this.createEditModelAndView(floatObject, "float.commit.error");
+				res = this.createEditModelAndView(position, "float.commit.error");
 			}
 
 		return res;
@@ -112,14 +106,14 @@ public class FloatBrotherhoodController extends AbstractController {
 
 	// delete
 	@RequestMapping(value = "/delete", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final domain.Float floatObject) {
+	public ModelAndView delete(final Position position) {
 		ModelAndView res;
 		
 		try {
-			this.floatService.delete(floatObject);
+			this.positionService.delete(position);
 			res = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
-			res = this.createEditModelAndView(floatObject, "float.commit.error");
+			res = this.createEditModelAndView(position, "position.commit.error");
 		}
 
 		return res;
@@ -127,27 +121,26 @@ public class FloatBrotherhoodController extends AbstractController {
 
 	// Ancillary methods ------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(final domain.Float floatObject) {
+	protected ModelAndView createEditModelAndView(final Position position) {
 
 		ModelAndView res;
 
-		res = this.createEditModelAndView(floatObject, null);
+		res = this.createEditModelAndView(position, null);
 
 		return res;
 	}
 
-	protected ModelAndView createEditModelAndView(final domain.Float floatObject, final String message) {
+	protected ModelAndView createEditModelAndView(final Position position, final String message) {
 
 		ModelAndView res;
 
-		Assert.notNull(floatObject);
+		Assert.notNull(position);
 
-		res = new ModelAndView("float/edit");
-		res.addObject("actionURI", "float/brotherhood/edit.do");
-		res.addObject("floatObject", floatObject);
+		res = new ModelAndView("position/edit");
+		res.addObject("actionURI", "position/administrator/edit.do");
+		res.addObject("position", position);
 		res.addObject("message", message);
 
 		return res;
 	}
-
 }

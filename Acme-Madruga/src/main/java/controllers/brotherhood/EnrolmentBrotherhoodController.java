@@ -27,7 +27,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.EnrolmentService;
 import services.PositionService;
-import services.ProcessionService;
 import controllers.AbstractController;
 import domain.Enrolment;
 import domain.Position;
@@ -42,7 +41,7 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 	public EnrolmentService	enrolmentService;
 
 	@Autowired
-	private PositionService	positionService;
+	private PositionService	positionService;	
 
 
 	// Constructors -----------------------------------------------------------
@@ -101,11 +100,10 @@ public class EnrolmentBrotherhoodController extends AbstractController {
 
 	@RequestMapping(value = "/drop", method = RequestMethod.GET)
 	public ModelAndView drop(@Valid final Enrolment enrolment) {
-
-	try {
-		ModelAndView result;		
+		ModelAndView result;
+	try {				
 		this.enrolmentService.dropOutByBrotherhood(enrolment);
-		result = this.list();
+		result = new ModelAndView("redirect:list.do");
 		} catch (final Throwable oops) {
 			result = this.list();
 			result.addObject("message", "enrolment.commit.error");

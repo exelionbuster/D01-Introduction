@@ -11,6 +11,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import domain.Enrolment;
+import domain.Position;
+
 import utilities.AbstractTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,6 +26,25 @@ public class FloatServiceTest extends AbstractTest {
 	@Autowired
 	private FloatService floatService;
 
+	
+
+	@Test
+	public void testSave() {
+
+		domain.Float floatObject, saved;		
+		Collection<domain.Float> floats = this.floatService.findAll();
+		
+		super.authenticate("brotherhood2");
+		floatObject = this.floatService.create();
+			
+		floatObject.setTitle("Macarena");
+		floatObject.setDescription("Macarena");
+		saved = this.floatService.save(floatObject);
+		floats = this.floatService.findAll();
+		Assert.isTrue(floats.contains(saved));
+
+		super.unauthenticate();
+	}
 
 
 	@Test

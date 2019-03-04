@@ -1,5 +1,5 @@
 <%--
- * select.tag
+ * textbox.tag
  *
  * Copyright (C) 2019 Universidad de Sevilla
  * 
@@ -18,28 +18,25 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
-<%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-
 <%-- Attributes --%> 
-
-<%@ attribute name="titleKey" required="true" %>
+ 
+<%@ attribute name="path" required="true" %>
 <%@ attribute name="code" required="true" %>
-<%@ attribute name="url" required="true" %>
 
+<%@ attribute name="readonly" required="false" %>
 
-
-
+<jstl:if test="${readonly == null}">
+	<jstl:set var="readonly" value="false" />
+</jstl:if>
 
 <%-- Definition --%>
 
-			<display:column titleKey="${titleKey}">
-				<a href="${url}"> 
-					<spring:message	code="${code}" /></a>
-			</display:column>
-
-
-
-
-
+<div>
+	<form:label path="${path}">
+		<spring:message code="${code}" />
+	</form:label>	
+	<form:input path="${path}" readonly="${readonly}" />	
+	<form:errors path="${path}" cssClass="error" />
+</div>	

@@ -8,40 +8,51 @@
  * http://www.tdg-seville.info/License.html
  --%>
 
-<%@page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 
-<%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
-<%@taglib prefix="jstl"	uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 <form:form action="${actionURI}" modelAttribute="enrolment">
 
 	<form:hidden path="id" />
-	<form:hidden path="version" />		
+	<form:hidden path="version" />
 	<form:hidden path="member" />
 	<form:hidden path="brotherhood" />
+
+
+	<form:select path="position">
+		<jstl:choose>
+			<jstl:when test="${locale eq 'en'}">
+				<jstl:forEach items="${positions}" var="position">
+					<form:option value="${position.id}"
+						label="${position.name.get('EN')}" />
+				</jstl:forEach>
+
+			</jstl:when>
+			<jstl:when test="${locale eq 'es'}">
+				<jstl:forEach items="${positions}" var="position">
+					<form:option value="${position.id}"
+						label="${position.name.get('ES')}" />
+				</jstl:forEach>
+			</jstl:when>
+		</jstl:choose>
+	</form:select>
 	
 
-	
-	<jstl:choose>
-	<jstl:when test="${locale eq 'en'}">		
-	<acme:select path="position" code="enrolment.position" items="${positions}" itemLabel="${name}" />
-	
-	</jstl:when>
-	<jstl:when test="${locale eq 'es'}">	
-	<acme:select path="position" code="enrolment.position" items="${positions}" itemLabel="${name}" />				
-	</jstl:when>
-	</jstl:choose>	
-	
 
-	
-			
-	<acme:submit code="enrolment.submit" name="save" /> 	
-	<acme:cancel url="enrolment/brotherhood/list.do" code="enrolment.cancel"/>	
-	
+
+
+	<acme:submit code="enrolment.submit" name="save" />
+	<acme:cancel url="enrolment/brotherhood/list.do"
+		code="enrolment.cancel" />
+
 </form:form>
 
 
