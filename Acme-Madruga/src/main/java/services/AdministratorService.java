@@ -121,7 +121,7 @@ public class AdministratorService {
 		userAccount = LoginService.getPrincipal();
 		Assert.isTrue(userAccount.getAuthorities().contains(authority));
 
-		res = this.administratorRepository.finByUserAccountId(userAccount.getId());
+		res = this.administratorRepository.findByUserAccountId(userAccount.getId());
 
 		return res;
 	}
