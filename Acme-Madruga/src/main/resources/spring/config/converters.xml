@@ -36,8 +36,8 @@
 	<bean class="converters.StringToEnrolmentConverter" />
 	
 		<!-- HOLYFLOAT -->
-	<bean class="converters.HolyFloatToStringConverter" />
-	<bean class="converters.StringToHolyFloatConverter" />
+	<bean class="converters.FloatToStringConverter" />
+	<bean class="converters.StringToFloatConverter" />
 	
 			<!-- MEMBER -->
 	<bean class="converters.MemberToStringConverter" />
@@ -47,6 +47,10 @@
 	<bean class="converters.ProcessionToStringConverter" />
 	<bean class="converters.StringToProcessionConverter" />
 	
+		<!-- POSITION -->
+	<bean class="converters.PositionToStringConverter" />
+	<bean class="converters.StringToPositionConverter" />
+	
 			<!-- REQUEST -->
 	<bean class="converters.RequestToStringConverter" />
 	<bean class="converters.StringToRequestConverter" />
@@ -55,8 +59,7 @@
 	<bean class="converters.UserAccountToStringConverter" />
 	<bean class="converters.StringToUserAccountConverter" />
 	
-		
-		
+			
 	</util:list>
 	
 </beans>

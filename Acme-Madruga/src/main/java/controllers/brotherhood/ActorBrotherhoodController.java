@@ -25,7 +25,7 @@ import controllers.AbstractController;
 import domain.Brotherhood;
 
 @Controller
-@RequestMapping("/brotherhood/brotherhood")
+@RequestMapping("/actor/brotherhood")
 public class ActorBrotherhoodController extends AbstractController {
 
 	// Services-----------------------------------------------------------------
@@ -42,12 +42,10 @@ public class ActorBrotherhoodController extends AbstractController {
 
 	// Edition ----------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public ModelAndView display() {
+	public ModelAndView edit() {
 
 		ModelAndView result;
-
-		Brotherhood brotherhood;
-		brotherhood = this.brotherhoodService.findByPrincipal();
+		Brotherhood brotherhood = this.brotherhoodService.findByPrincipal();
 		Assert.notNull(brotherhood);
 
 		result = this.createEditModelAndView(brotherhood, null);
@@ -56,7 +54,7 @@ public class ActorBrotherhoodController extends AbstractController {
 	}
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Brotherhood brotherhood, final BindingResult binding) {
+	public ModelAndView save(@Valid Brotherhood brotherhood, BindingResult binding) {
 
 		ModelAndView res;
 		//Brotherhood brotherhood;
@@ -64,7 +62,7 @@ public class ActorBrotherhoodController extends AbstractController {
 		//brotherhood = this.brotherhoodService.reconstruct(brotherhood, binding);
 
 		if (binding.hasErrors()) {
-			System.out.println("ERRORES: " + binding.toString());
+			
 			res = this.createEditModelAndView(brotherhood);
 		} else
 			try {
@@ -73,7 +71,7 @@ public class ActorBrotherhoodController extends AbstractController {
 
 				res = new ModelAndView("redirect:../welcome/index.do");
 				res.addObject("name", brotherhood.getName());
-				;
+				
 			} catch (final Throwable oops) {
 				res = this.createEditModelAndView(brotherhood, "brotherhood.commit.error");
 			}

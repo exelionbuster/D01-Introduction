@@ -1,6 +1,7 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,31 +13,26 @@ import repositories.MemberRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Enrolment;
 import domain.Member;
+import domain.Request;
 
 @Service
 @Transactional
 public class MemberService {
-
-	// Constructor
-	public MemberService() {
-		super();
-	}
-
-
+	
 	// Managed repository
 
 	@Autowired
 	private MemberRepository	memberRepository;
 
-	// Supporting Services
-
-	@Autowired
-	private ActorService		actorService;
-
 	@Autowired
 	private UserAccountService	userAccountService;
 
+	// Constructor
+	public MemberService() {
+		super();
+	}
 
 	// Simple CRUD methods
 
@@ -45,9 +41,9 @@ public class MemberService {
 
 		final Authority authority = new Authority();
 		authority.setAuthority("MEMBER");
-		final Member res = new Member();
+		Member res = new Member();
 
-		final UserAccount userAccount = this.userAccountService.create("MEMBER");
+		UserAccount userAccount = this.userAccountService.create("MEMBER");
 
 		res.setUserAccount(userAccount);
 
@@ -102,12 +98,11 @@ public class MemberService {
 
 	// Other business methods -------------------------------------------------
 
-	// Find Customer Logged in the system
 	public Member findByPrincipal() {
 
 		Member res;
 		UserAccount userAccount;
-		final Authority authority = new Authority();
+		Authority authority = new Authority();
 		authority.setAuthority("MEMBER");
 
 		Assert.notNull(LoginService.getPrincipal());
@@ -116,7 +111,7 @@ public class MemberService {
 
 		Assert.isTrue(userAccount.getAuthorities().contains(authority));
 
-		res = this.memberRepository.finByUserAccountId(userAccount.getId());
+		res = this.memberRepository.findByUserAccountId(userAccount.getId());
 
 		return res;
 	}

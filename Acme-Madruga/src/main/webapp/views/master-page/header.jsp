@@ -42,7 +42,7 @@
 					<li><a href="enrolment/brotherhood/list.do"><spring:message code="master.page.brotherhood.enrolment" /></a></li>	
 					<li><a href="member/brotherhood/list.do"><spring:message code="master.page.brotherhood.member" /></a></li>
 					<li><a href="request/brotherhood/list.do"><spring:message code="master.page.brotherhood.request" /></a></li>		
-					<li><a href="brotherhood/brotherhood/edit.do"><spring:message code="master.page.brotherhood.edit" /></a></li>							
+					<li><a href="actor/brotherhood/edit.do"><spring:message code="master.page.brotherhood.edit" /></a></li>							
 				</ul>
 			</li>
 		</security:authorize>
@@ -53,7 +53,7 @@
 					<li class="arrow"></li>
 					<li><a href="request/member/list.do"><spring:message code="master.page.member.request" /></a></li>
 					<li><a href="enrolment/member/list.do"><spring:message code="master.page.member.enrolment" /></a></li>	
-					<li><a href="member/member/edit.do"><spring:message code="master.page.member.edit" /></a></li>							
+					<li><a href="actor/member/edit.do"><spring:message code="master.page.member.edit" /></a></li>							
 				</ul>
 			</li>
 		</security:authorize>

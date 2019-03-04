@@ -7,8 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+<<<<<<< HEAD
+=======
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+>>>>>>> develop
 
 import services.AdministratorService;
 import domain.Administrator;
@@ -25,6 +28,9 @@ public class AdministratorController extends AbstractController {
 		super();
 	}
 
+<<<<<<< HEAD
+}
+=======
 	//create
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create() {
@@ -111,3 +117,4 @@ public class AdministratorController extends AbstractController {
 	}
 
 }
+>>>>>>> develop

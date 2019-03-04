@@ -49,7 +49,7 @@ public class BrotherhoodController extends AbstractController {
 		brotherhoods = this.brotherhoodService.findAll();
 
 		res = new ModelAndView("brotherhood/list");
-		// Enviamos al modelo
+
 		res.addObject("brotherhoods", brotherhoods);
 
 		res.addObject("actionURI", "brotherhood/list.do");
@@ -71,7 +71,7 @@ public class BrotherhoodController extends AbstractController {
 
 	// Edition ----------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Brotherhood brotherhood, final BindingResult binding) {
+	public ModelAndView save(@Valid Brotherhood brotherhood,  BindingResult binding) {
 
 		ModelAndView res;
 		//Brotherhood brotherhood;
