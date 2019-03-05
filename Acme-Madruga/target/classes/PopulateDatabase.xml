@@ -154,8 +154,8 @@
 	</bean>
 	
 	<!-- BROTHERHOOD -->
-	
-		<bean id="brotherhood1" class="domain.Brotherhood">
+
+	<bean id="brotherhood1" class="domain.Brotherhood">
 		<property name="name" value="Maria" />
 		<property name="middleName" value="" />
 		<property name="surname" value="Prado Nieves" />
@@ -583,7 +583,7 @@
 	<bean id="enrolment9" class="domain.Enrolment">
 		<property name="moment" value="2019/02/18" />
 		<property name="dropOutMoment" value= "2019/02/19" />
-		<property name="position" ref="position5" />
+		<property name="position"><null/></property>
 		<property name="brotherhood" ref="brotherhood3" />
 		<property name="member" ref="member1" />		
 	</bean>
@@ -591,7 +591,7 @@
 	<bean id="enrolment10" class="domain.Enrolment">
 		<property name="moment" value="2019/02/18" />
 		<property name="dropOutMoment" value= "2019/02/19" />
-		<property name="position" ref="position6" />
+		<property name="position" ><null/></property>
 		<property name="brotherhood" ref="brotherhood2" />
 		<property name="member" ref="member2" />
 	</bean>
@@ -599,7 +599,7 @@
 	<bean id="enrolment11" class="domain.Enrolment">
 		<property name="moment" value="2019/02/18" />
 		<property name="dropOutMoment" value= "2019/02/19" />
-		<property name="position" ref="position7" />
+		<property name="position" ><null/></property>
 		<property name="brotherhood" ref="brotherhood3" />
 		<property name="member" ref="member3" />
 	</bean>
@@ -607,7 +607,7 @@
 	<bean id="enrolment12" class="domain.Enrolment">
 		<property name="moment" value="2019/02/18" />
 		<property name="dropOutMoment" value= "2019/02/19" />
-		<property name="position" ref="position3" />
+		<property name="position" ><null/></property>
 		<property name="brotherhood" ref="brotherhood2" />
 		<property name="member" ref="member4" />
 	</bean>
