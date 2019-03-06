@@ -8,11 +8,13 @@ import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Position extends DomainEntity {
 
 	private Map<String, String>	name;
+
 
 
 	public Position() {

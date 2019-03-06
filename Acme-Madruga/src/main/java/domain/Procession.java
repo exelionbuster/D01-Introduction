@@ -1,4 +1,3 @@
-
 package domain;
 
 import java.util.Collection;
@@ -8,8 +7,10 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -19,14 +20,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
+@Table()
 public class Procession extends DomainEntity {
 
-	private String						title, ticker, description;
-	private Date						moment;
-	private Brotherhood					brotherhood;
-	private boolean						draft;
-	private Collection<domain.Float>	floats;
-
+	
+	private String title, ticker, description;
+	private Date moment;
+	private Brotherhood brotherhood;
+	private boolean draft;
+	private Collection<domain.Float> floats;
 
 	public Procession() {
 		super();
@@ -36,6 +38,7 @@ public class Procession extends DomainEntity {
 	public String getTitle() {
 		return this.title;
 	}
+
 	public void setTitle(final String title) {
 		this.title = title;
 	}
@@ -45,6 +48,7 @@ public class Procession extends DomainEntity {
 	public String getTicker() {
 		return this.ticker;
 	}
+
 	public void setTicker(final String ticker) {
 		this.ticker = ticker;
 	}
@@ -53,20 +57,22 @@ public class Procession extends DomainEntity {
 	public String getDescription() {
 		return this.description;
 	}
+
 	public void setDescription(final String description) {
 		this.description = description;
 	}
 
 	@Temporal(TemporalType.DATE)
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	public Date getMoment() {
 		return this.moment;
 	}
+
 	public void setMoment(final Date moment) {
 		this.moment = moment;
 	}
 
-	//RELATIONSHIPS
+	// RELATIONSHIPS
 
 	@Valid
 	@ManyToOne(optional = true)
@@ -86,6 +92,7 @@ public class Procession extends DomainEntity {
 		this.draft = draft;
 	}
 
+	@Valid
 	@ManyToMany
 	public Collection<domain.Float> getFloats() {
 		return this.floats;

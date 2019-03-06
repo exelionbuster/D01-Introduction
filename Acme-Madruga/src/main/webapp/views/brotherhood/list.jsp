@@ -25,11 +25,12 @@
 
 		<display:column property="title" titleKey="brotherhood.title" />
 		<display:column property="establishmentDate" titleKey="brotherhood.establishmentDate" />
-		<display:column property="pictures" titleKey="brotherhood.pictures" />		
+		<display:column property="pictures" titleKey="brotherhood.pictures" />	
 		
-		<security:authorize access="hasRole('BROTHERHOOD')">
-		<acme:edit titleKey="brotherhood.edit" code="brotherhood.edit" url="brotherhood/edit.do?Id=${id}" />
-		</security:authorize>
+
+			
+		
+
 
 	</display:table>
 

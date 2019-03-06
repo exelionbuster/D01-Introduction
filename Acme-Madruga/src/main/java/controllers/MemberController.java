@@ -42,7 +42,7 @@ public class MemberController extends AbstractController {
 
 	// Edition ----------------------------------------------------------------
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
-	public ModelAndView save(@Valid final Member member, final BindingResult binding) {
+	public ModelAndView save(@Valid Member member, BindingResult binding) {
 
 		ModelAndView res;
 		//Member member;
@@ -68,7 +68,7 @@ public class MemberController extends AbstractController {
 
 	// Ancillary methods ------------------------------------------------------
 
-	protected ModelAndView createEditModelAndView(final Member member) {
+	protected ModelAndView createEditModelAndView(Member member) {
 
 		ModelAndView res;
 
@@ -77,7 +77,7 @@ public class MemberController extends AbstractController {
 		return res;
 	}
 
-	protected ModelAndView createEditModelAndView(final Member member, final String message) {
+	protected ModelAndView createEditModelAndView(Member member, String message) {
 
 		ModelAndView res;
 
