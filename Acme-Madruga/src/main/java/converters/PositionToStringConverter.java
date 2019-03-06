@@ -1,10 +1,5 @@
 package converters;
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> develop
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +11,6 @@ import domain.Position;
 public class PositionToStringConverter implements Converter<Position, String> {
 
 	@Override
-<<<<<<< HEAD
 	public String convert(Position position) {
 		String result;
 
@@ -28,16 +22,3 @@ public class PositionToStringConverter implements Converter<Position, String> {
 	}
 
 }
-=======
-	public String convert(Position pos) {
-		String res;
-
-		if (pos == null)
-			res = null;
-		else
-			res = String.valueOf(pos.getId());
-		return res;
-	}
-
-}
->>>>>>> develop

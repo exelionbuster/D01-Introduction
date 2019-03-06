@@ -26,12 +26,6 @@
 		<display:column property="title" titleKey="float.title" />
 		<display:column property="description" titleKey="float.description" />
 		<display:column property="pictures" titleKey="float.pictures" />		
-		<display:column titleKey="float.edit">		
-		<a href="float/brotherhood/edit.do?floatId=${row.id}">
-		<spring:message code="float.edit.select"/>
-		</a>		
-		</display:column>
-		
 		<security:authorize access="hasRole('BROTHERHOOD')">
 		<acme:edit titleKey="float.edit" code="float.edit" url="float/brotherhood/edit.do?floatId=${row.id}" />
 		</security:authorize>

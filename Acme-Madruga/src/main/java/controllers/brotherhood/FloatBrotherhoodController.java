@@ -35,11 +35,10 @@ public class FloatBrotherhoodController extends AbstractController {
 	// Services-----------------------------------------------------------------
 
 	@Autowired
-	public BrotherhoodService	brotherhoodService;
+	public BrotherhoodService brotherhoodService;
 
 	@Autowired
-	public FloatService			floatService;
-
+	public FloatService floatService;
 
 	// Constructors -----------------------------------------------------------
 
@@ -52,7 +51,8 @@ public class FloatBrotherhoodController extends AbstractController {
 	public ModelAndView list() {
 
 		ModelAndView result;
-		Collection<domain.Float> floats = this.floatService.getAllFloatsByBrotherhood();
+		Collection<domain.Float> floats = this.floatService
+				.getAllFloatsByBrotherhood();
 
 		result = new ModelAndView("float/list");
 		result.addObject("floats", floats);
@@ -93,9 +93,10 @@ public class FloatBrotherhoodController extends AbstractController {
 	public ModelAndView save(@Valid final domain.Float floatObject, final BindingResult binding) {
 
 		ModelAndView res;
-		//Brotherhood brotherhood;
+		// Brotherhood brotherhood;
 
-		//brotherhood = this.brotherhoodService.reconstruct(brotherhood, binding);
+		// brotherhood = this.brotherhoodService.reconstruct(brotherhood,
+		// binding);
 
 		if (binding.hasErrors())
 			res = this.createEditModelAndView(floatObject);
@@ -104,24 +105,28 @@ public class FloatBrotherhoodController extends AbstractController {
 				this.floatService.save(floatObject);
 				res = new ModelAndView("redirect:list.do");
 			} catch (final Throwable oops) {
-				res = this.createEditModelAndView(floatObject, "float.commit.error");
+				res = this.createEditModelAndView(floatObject,
+						"float.commit.error");
 			}
 
 		return res;
 	}
 
 	// delete
-	@RequestMapping(value = "/delete", method = RequestMethod.POST, params = "delete")
-	public ModelAndView delete(final domain.Float floatObject) {
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final domain.Float floatObject, final BindingResult binding) {
 		ModelAndView res;
-		
-		try {
-			this.floatService.delete(floatObject);
-			res = new ModelAndView("redirect:list.do");
-		} catch (final Throwable oops) {
-			res = this.createEditModelAndView(floatObject, "float.commit.error");
-		}
 
+		if (binding.hasErrors())
+			res = this.createEditModelAndView(floatObject);
+		else
+			try {
+				this.floatService.delete(floatObject);
+				res = new ModelAndView("redirect:list.do");
+			} catch (final Throwable oops) {
+				res = this.createEditModelAndView(floatObject,
+						"float.commit.error");
+			}
 		return res;
 	}
 
@@ -136,7 +141,8 @@ public class FloatBrotherhoodController extends AbstractController {
 		return res;
 	}
 
-	protected ModelAndView createEditModelAndView(final domain.Float floatObject, final String message) {
+	protected ModelAndView createEditModelAndView(
+			final domain.Float floatObject, final String message) {
 
 		ModelAndView res;
 

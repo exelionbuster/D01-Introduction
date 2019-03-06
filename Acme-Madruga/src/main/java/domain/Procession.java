@@ -10,11 +10,13 @@ import javax.persistence.Entity;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
 
+import org.hibernate.metamodel.binding.CascadeType;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -93,7 +95,7 @@ public class Procession extends DomainEntity {
 	}
 
 	@Valid
-	@ManyToMany
+	@OneToMany
 	public Collection<domain.Float> getFloats() {
 		return this.floats;
 	}

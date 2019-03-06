@@ -52,11 +52,12 @@ public class WelcomeController extends AbstractController {
 
 		formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 		moment = formatter.format(new Date());
-
+		Configuration confi = configurationService.findAll().iterator().next();
 		
 		result = new ModelAndView("welcome/index");
 		result.addObject("locale", locale);
 		result.addObject("name", name);
+		result.addObject("banner", confi.getBannerURL());
 		result.addObject("moment", moment);
 
 		return result;
