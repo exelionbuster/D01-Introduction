@@ -11,14 +11,14 @@ import domain.Position;
 public class PositionToStringConverter implements Converter<Position, String> {
 
 	@Override
-	public String convert(Position pos) {
-		String res;
+	public String convert(Position position) {
+		String result;
 
-		if (pos == null)
-			res = null;
+		if (position == null)
+			result = null;
 		else
-			res = String.valueOf(pos.getId());
-		return res;
+			result = String.valueOf(position.getId());
+		return result;
 	}
 
 }

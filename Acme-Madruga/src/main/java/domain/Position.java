@@ -10,12 +10,14 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+
 @Entity
 @Access(AccessType.PROPERTY)
 public class Position extends DomainEntity {
 
 	private Map<String, String>		name;
 	private Collection<Enrolment>	enrolments;
+
 
 
 	public Position() {

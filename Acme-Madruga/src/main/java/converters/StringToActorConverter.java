@@ -19,7 +19,7 @@ public class StringToActorConverter implements Converter<String, Actor> {
 	ActorRepository actorRepository;
 
 	@Override
-	public Actor convert(String text) {
+	public Actor convert(final String text) {
 		Actor result;
 		int id;
 		try {

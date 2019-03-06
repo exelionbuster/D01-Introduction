@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -24,6 +25,7 @@ public class Brotherhood extends Actor {
 	private Date					establishmentDate;
 	private String					pictures;
 	private Collection<Enrolment>	enrolments;
+
 
 
 	public Brotherhood() {
