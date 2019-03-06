@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import domain.Administrator;
-import domain.Brotherhood;
 import domain.Member;
 import domain.Procession;
 
@@ -22,52 +21,47 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query("select a from Administrator a where a.userAccount.id = ?1")
 	Administrator findByUserAccountId(int id);
 
+	// The average, the minimum, the maximum, and the standard deviation of the number of members per brotherhood.
 	@Query("select avg(1.0*(select count(e.id) from Enrolment e where e.brotherhood=b.id AND e.position IS NOT NULL)), min(1.0*(select count(e.id) from Enrolment e where e.brotherhood=b.id AND e.position IS NOT NULL)), max(1.0*(select count(e.id) from Enrolment e where e.brotherhood=b.id AND e.position IS NOT NULL)), stddev(1.0*(select count(e.id) from Enrolment e where e.brotherhood=b.id AND e.position IS NOT NULL)) from Brotherhood b")
 	Collection<Object[]> brotherhoodMembersStats();
 
-	//	@Query("select b1 from Brotherhood b1 where b1.id = (select b.id from Enrolment e1 join e1.brotherhood b group by e1.brotherhood having count(e1) = max(1.0*(select count(e2) from Enrolment e2 where e2.brotherhood=b.id AND e2.position IS NOT NULL)))")
-	//	Brotherhood largestBrotherhood();
+	// The largest brotherhoods.
+	@Query("select distinct(b), count(b) as s from Brotherhood b join b.enrolments e where e.position is not null group by b order by s DESC")
+	Collection<Object[]> largestBrotherhood();
 
-	//	@Query("select b from Enrolment e join e.brotherhood b where e.position IS NOT NULL and max(1.0*(select count(e1) from Enrolment e1 where e1.brotherhood=b.id AND e1.position IS NOT NULL)) = (select count(e2) from Enrolment e2 where e2.brotherhood=b.id AND e2.position IS NOT NULL)")
-	//	Brotherhood largestBrotherhood();
+	// The smallest brotherhoods.
+	@Query("select distinct(b), count(b) as s from Brotherhood b join b.enrolments e where e.position is not null group by b order by s ASC")
+	Collection<Object[]> smallestBrotherhood();
 
-	//	@Query("select min(1.0*(select count(e.id) from Enrolment e join e.brotherhood b where e.brotherhood=b.id AND e.position IS NOT NULL)) from Enrolment e group by e.brotherhood)")
-	//	Brotherhood largestBrotherhood();
+	// The ratio of requests to march in a procession, grouped by their status.
+	@Query("select p2, 1.0*(select count(r1) from Request r1 where r2.procession = r1.procession and r1.status = 'APPROVED')/count(r2), 1.0*(select count(r3) from Request r3 where r2.procession = r3.procession and r3.status = 'PENDING')/count(r2), 1.0*(select count(r4) from Request r4 where r2.procession = r4.procession and r4.status = 'REJECTED')/count(r2) from Request r2 join r2.procession p2 group by p2")
+	Collection<Object[]> requestsRatiosForOneProcession();
 
-	@Query("select b1 from Enrolment e join e.brotherhood b1 where b1.enrolments.size = (select max(b2.enrolments.size) from Brotherhood b2) and e.position is not null")
-	Brotherhood largestBrotherhood();
-
-	@Query("select b1 from Enrolment e join e.brotherhood b1 where b1.enrolments.size = (select min(b2.enrolments.size) from Brotherhood b2) and e.position is not null")
-	Brotherhood smallestBrotherhood();
-
-	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'APPROVED')/count(r2), 1.0*(select count(r3) from Request r3 where r3.status = 'PENDING')/count(r2), 1.0*(select count(r4) from Request r4 where r4.status = 'REJECTED')/count(r2) from Request r2")
-	Collection<Object[]> requestsRatios();
-
+	// The ratio of approved requests.
 	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'APPROVED')/count(r2) from Request r2")
-	Double acceptedRequestsRatio();
+	Double approvedRequestsRatio();
 
+	// The ratio of pending requests.
 	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'PENDING')/count(r2) from Request r2")
 	Double pendingRequestsRatio();
 
+	// The ratio of rejected requests.
 	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'REJECTED')/count(r2) from Request r2")
 	Double rejectedRequestsRatio();
 
+	// The processions that are going to be organised in 30 days or less.
 	@Query("select p from Procession p where p.draft = false and p.moment between CURRENT_DATE and CURRENT_DATE + 30")
 	Collection<Procession> next30DaysProcessions();
 
-	//TODO we should change our domain model
-	@Query("select distinct(m1) from Request r1 join r1.member m1 where m1.id=r1.member and (select count(r2.id) from Request r2 join r2.member m2 where m2.id = r2.member and r2.status = 'APPROVED') >= 0.9*(select max(0.1*(select count(r3.id) from Request r3 join r3.member m3 where m3.id = r3.member)) from Request r)")
+	// The ratio of requests to march grouped by status.
+	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'APPROVED')/count(r2), 1.0*(select count(r3) from Request r3 where r3.status = 'PENDING')/count(r2), 1.0*(select count(r4) from Request r4 where r4.status = 'REJECTED')/count(r2) from Request r2")
+	Collection<Object[]> requestsRatios();
+
+	// The listing of members who have got at least 10% the maximum number of request to march accepted.
+	@Query("select distinct(m) from Member m join m.requests r where (select count(m1) from Request r join r.member m1 where m.id = m1.id and r.status = 'APPROVED' group by m) > 0.1*(select count(m1) from Request r join r.member m1 where m.id = m1.id group by m)")
 	Collection<Member> perc10MembersWithAcceptedRequests();
 
-	//	@Query("select m from Request r join r.member m where r.status = 'APPROVED' and m.requests.size >= 0.1*(select max(s) from Request r2 join r.member m2 where r.status)")
-	//	Collection<Member> perc10MembersWithAcceptedRequests();
-
-	//	@Query("select m from Request r join r.member m where m.id = r.member and m.requests.size > (select max(m.requests.size) from Member m)*0.1 and r.status='ACCEPTED'")
-	//	Collection<Member> perc10MembersWithAcceptedRequests();
-	//
-	//	@Query("select count(e) from Enrolment e group by e.position")
-	//	Integer positionsHistograms(int id);
-
-	@Query("select p.enrolments.size from Position p")
-	Integer positionsHistograms(int id);
+	// A histogram of positions.
+	@Query("select p, p.enrolments.size from Position p")
+	Collection<Object[]> positionsHistograms();
 }

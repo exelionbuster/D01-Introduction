@@ -234,6 +234,14 @@
 		<property name="phone" value="610386795" />
 		<property name="address" value="C/Villamar 12" />
 		<property name="userAccount" ref="userAccount5" />
+		<property name="requests">
+			<list>
+				<ref bean="request1" />
+				<ref bean="request3" />
+				<ref bean="request4" />
+				<ref bean="request5" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="member2" class="domain.Member">
@@ -245,6 +253,13 @@
 		<property name="phone" value="356789012" />
 		<property name="address" value="C/Betis 18" />
 		<property name="userAccount" ref="userAccount6" />
+		<property name="requests">
+			<list>
+				<ref bean="request2" />
+				<ref bean="request6" />
+				<ref bean="request7" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="member3" class="domain.Member">
@@ -256,6 +271,14 @@
 		<property name="phone" value="687955654" />
 		<property name="address" value="C/ Fernandez de Ribera 52" />
 		<property name="userAccount" ref="userAccount8" />
+		<property name="requests">
+			<list>
+				<ref bean="request8" />
+				<ref bean="request9" />
+				<ref bean="request10" />
+				<ref bean="request11" />
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="member4" class="domain.Member">
@@ -267,6 +290,13 @@
 		<property name="phone" value="666666666" />
 		<property name="address" value="C/ Av. de la Reina Mercedes s/n" />
 		<property name="userAccount" ref="userAccount9" />
+		<property name="requests">
+			<list>
+				<ref bean="request12" />
+				<ref bean="request13" />
+				<ref bean="request14" />
+			</list>
+		</property>
 	</bean>
 	
 	<!-- PROCESSION -->
@@ -422,6 +452,13 @@
 		        </entry>
 		    </map> 
 		</property>
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment1" />
+				<ref bean="enrolment5" />
+				<ref bean="enrolment7" />
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="position2" class="domain.Position">
@@ -440,6 +477,13 @@
                     <value>Vicepresidente</value>
 		        </entry>
 		    </map> 
+		</property>
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment2" />
+				<ref bean="enrolment6" />
+				<ref bean="enrolment8" />
+			</list>
 		</property>
 	</bean>	
 
@@ -460,6 +504,11 @@
 		        </entry>
 		    </map> 
 		</property>
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment3" />
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="position4" class="domain.Position">
@@ -478,6 +527,11 @@
                     <value>Tesorero</value>
 		        </entry>
 		    </map> 
+		</property>
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment4" />
+			</list>
 		</property>
 	</bean>
 
