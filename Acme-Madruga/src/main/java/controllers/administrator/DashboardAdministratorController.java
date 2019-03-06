@@ -30,11 +30,15 @@ public class DashboardAdministratorController extends AbstractController {
 
 		//declaramos las estadisiticas
 		
+		
 		//llamadas a servicios
+		
+		
 		
 		res = new ModelAndView("administrator/list");
 
 		// enviamos al modelo
+		
 		
 		res.addObject("requestURI", "administrator/list.do");
 
