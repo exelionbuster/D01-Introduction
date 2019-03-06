@@ -166,7 +166,15 @@
 		<property name="title" value="Hermandad de la Sed" />
 		<property name="establishmentDate" value="04/12/1987" />
 		<property name="pictures" value="" />
-		<property name="userAccount" ref="userAccount3" />	
+		<property name="userAccount" ref="userAccount3" />
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment1" />
+				<ref bean="enrolment2" />
+				<ref bean="enrolment3" />
+				<ref bean="enrolment4" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="brotherhood2" class="domain.Brotherhood">
@@ -182,6 +190,14 @@
 		<property name="establishmentDate" value="04/03/1975" />
 		<property name="pictures" value="" />
 		<property name="userAccount" ref="userAccount4" />
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment5" />
+				<ref bean="enrolment6" />
+				<ref bean="enrolment10" />
+				<ref bean="enrolment12" />
+			</list>
+		</property>
 	</bean>
 	
 	<bean id="brotherhood3" class="domain.Brotherhood">
@@ -197,6 +213,14 @@
 		<property name="establishmentDate" value="04/06/1945" />
 		<property name="pictures" value="http://hermandadsagradamortaja.org/wp-content/uploads/2016/02/CONVIVENCIA-2.jpg" />
 		<property name="userAccount" ref="userAccount7" />
+		<property name="enrolments">
+			<list>
+				<ref bean="enrolment7" />
+				<ref bean="enrolment8" />
+				<ref bean="enrolment9" />
+				<ref bean="enrolment11" />
+			</list>
+		</property>
 	</bean>
 	
 	<!-- MEMBER -->
@@ -251,7 +275,7 @@
 		<property name="title" value="Cristo de Burgos" />
 		<property name="ticker" value="190417-aeiou" />
 		<property name="description" value="Su estación de penitencia es el miercoles santo" />
-		<property name="moment" value="17/04/2019" />
+		<property name="moment" value="03/17/2019" />
 		<property name="brotherhood" ref="brotherhood1" />
 		<property name="draft" value="false" />
 		<property name="floats">
@@ -266,7 +290,7 @@
 		<property name="title" value="Pasion" />
 		<property name="ticker" value="190418-aeiou" />
 		<property name="description" value="Heredera directa de la antigua procesion del Pregon" />
-		<property name="moment" value="16/04/2019" />
+		<property name="moment" value="04/01/2019" />
 		<property name="brotherhood" ref="brotherhood1" />		
 		<property name="draft" value="false" />
 		<property name="floats">
@@ -295,7 +319,7 @@
 		<property name="title" value="Macarena" />
 		<property name="ticker" value="190419-aeiou" />
 		<property name="description" value="Localizada en el distrito de Macarena, sale durante la madruga" />
-		<property name="moment" value="19/04/2019" />
+		<property name="moment" value="04/19/2019" />
 		<property name="brotherhood" ref="brotherhood2" />		
 		<property name="draft" value="false" />
 		<property name="floats">
@@ -309,7 +333,7 @@
 		<property name="title" value="Divina Pastora Capuchinos" />
 		<property name="ticker" value="190420-aeiou" />
 		<property name="description" value="En honor a la Divina Pastora de las almas Coronada de Capuchinos" />
-		<property name="moment" value="20/04/2019" />
+		<property name="moment" value="04/20/2019" />
 		<property name="brotherhood" ref="brotherhood3" />		
 		<property name="draft" value="false" />
 		<property name="floats">
@@ -324,7 +348,7 @@
 		<property name="title" value="A decidir" />
 		<property name="ticker" value="190430-aeiou" />
 		<property name="description" value="Cuando lo sepamos, lo pondremos" />
-		<property name="moment" value="30/04/2019" />
+		<property name="moment" value="04/30/2019" />
 		<property name="brotherhood" ref="brotherhood3" />		
 		<property name="draft" value="true" />
 		<property name="floats">

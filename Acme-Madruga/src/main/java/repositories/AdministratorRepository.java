@@ -52,11 +52,11 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'REJECTED')/count(r2) from Request r2")
 	Double rejectedRequestsRatio();
 
-	@Query("select p from Procession p where p.moment < ?1")
-	Collection<Procession> next30DaysProcessions(String date);
+	@Query("select p from Procession p where p.draft = false and p.moment between CURRENT_DATE and CURRENT_DATE + 30")
+	Collection<Procession> next30DaysProcessions();
 
 	//TODO we should change our domain model
-	@Query("select distinct(m1) from Request r1 join r1.member m1 where m1.id=r1.member and (select count(r2.id) from Request r2 join r2.member m2 where m2.id = r2.member and r2.status = 'APPROVED') >= 0.1*(select max(1.0*(select count(r3.id) from Request r3 join r3.member m3 where m3.id = r3.member and r3.status = 'APPROVED')) from Request r)")
+	@Query("select distinct(m1) from Request r1 join r1.member m1 where m1.id=r1.member and (select count(r2.id) from Request r2 join r2.member m2 where m2.id = r2.member and r2.status = 'APPROVED') >= 0.9*(select max(0.1*(select count(r3.id) from Request r3 join r3.member m3 where m3.id = r3.member)) from Request r)")
 	Collection<Member> perc10MembersWithAcceptedRequests();
 
 	//	@Query("select m from Request r join r.member m where r.status = 'APPROVED' and m.requests.size >= 0.1*(select max(s) from Request r2 join r.member m2 where r.status)")
@@ -64,8 +64,10 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
 	//	@Query("select m from Request r join r.member m where m.id = r.member and m.requests.size > (select max(m.requests.size) from Member m)*0.1 and r.status='ACCEPTED'")
 	//	Collection<Member> perc10MembersWithAcceptedRequests();
+	//
+	//	@Query("select count(e) from Enrolment e group by e.position")
+	//	Integer positionsHistograms(int id);
 
-	//TODO check
-	@Query("select p, count(p) from Position p where p.id = ?1")
+	@Query("select p.enrolments.size from Position p")
 	Integer positionsHistograms(int id);
 }

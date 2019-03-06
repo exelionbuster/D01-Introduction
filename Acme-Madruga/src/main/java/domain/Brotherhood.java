@@ -3,11 +3,13 @@ package domain;
 
 // import java.util.Collection;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -18,9 +20,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Brotherhood extends Actor {
 
-	private String	title;
-	private Date	establishmentDate;
-	private String	pictures;
+	private String					title;
+	private Date					establishmentDate;
+	private String					pictures;
+	private Collection<Enrolment>	enrolments;
 
 
 	public Brotherhood() {
@@ -52,6 +55,15 @@ public class Brotherhood extends Actor {
 
 	public void setPictures(final String pictures) {
 		this.pictures = pictures;
+	}
+
+	@OneToMany
+	public Collection<Enrolment> getEnrolments() {
+		return this.enrolments;
+	}
+
+	public void setEnrolments(final Collection<Enrolment> enrolments) {
+		this.enrolments = enrolments;
 	}
 
 }

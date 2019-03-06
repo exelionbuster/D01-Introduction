@@ -27,5 +27,4 @@ public class Position extends DomainEntity {
 	public void setName(final Map<String, String> name) {
 		this.name = name;
 	}
-
 }
