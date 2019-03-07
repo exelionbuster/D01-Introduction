@@ -1,10 +1,11 @@
 
 package services;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -16,7 +17,6 @@ import security.UserAccount;
 import domain.Administrator;
 import domain.Brotherhood;
 import domain.Member;
-import domain.Procession;
 
 @Service
 @Transactional
@@ -92,7 +92,7 @@ public class AdministratorService {
 		Administrator res;
 		UserAccount userAccount;
 
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		// Asegurarme que está en el sistema
@@ -107,33 +107,37 @@ public class AdministratorService {
 
 	//----------------------------------DASHBOARD--------------------------------------
 	//Q1 (REVISAR)
-	public Collection<Object[]> brotherhoodMembersStats() {
+	public List<Double> brotherhoodMembersStats() {
 
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		Collection<Object[]> res = null;
-		res = this.administratorRepository.brotherhoodMembersStats();
+		final List<Double> res = new ArrayList<Double>();
+		final List<Object[]> aux = new ArrayList<Object[]>(this.administratorRepository.brotherhoodMembersStats());
+		Assert.notNull(aux);
+		Assert.notEmpty(aux);
+		res.add((Double) aux.get(0)[0]);
+		res.add((Double) aux.get(0)[1]);
+		res.add((Double) aux.get(0)[2]);
+		res.add((Double) aux.get(0)[3]);
 		return res;
 	}
 
 	//Q2
-	public Brotherhood largestBrotherhood() {
-		Authority authority = new Authority();
+	public Collection<Brotherhood> largestBrotherhood() {
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		Brotherhood res = null;
-		res = this.administratorRepository.largestBrotherhood();
-		return res;
+		return this.administratorRepository.largestBrotherhood();
 	}
 
 	//Q3
 	public Brotherhood smallestBrotherhood() {
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
@@ -145,7 +149,7 @@ public class AdministratorService {
 
 	//Q4
 	public Collection<Object[]> requestsRatios() {
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
@@ -157,7 +161,7 @@ public class AdministratorService {
 
 	//Q5.1
 	public Double acceptedRequestsRatio() {
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
@@ -169,7 +173,7 @@ public class AdministratorService {
 
 	//Q5.2
 	public Double pendingRequestsRatio() {
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
@@ -181,7 +185,7 @@ public class AdministratorService {
 
 	//Q5.3
 	public Double rejectedRequestsRatio() {
-		Authority authority = new Authority();
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
@@ -192,13 +196,15 @@ public class AdministratorService {
 	}
 
 	//Q6
-	/*Collection<Procession> next30DaysProcessions(String date){
-		
-	}*/
+	/*
+	 * Collection<Procession> next30DaysProcessions(String date){
+	 * 
+	 * }
+	 */
 
 	//Q7
-	Collection<Member> perc10MembersWithAcceptedRequests(){
-		Authority authority = new Authority();
+	Collection<Member> perc10MembersWithAcceptedRequests() {
+		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Collection<Member> res = null;
@@ -207,16 +213,18 @@ public class AdministratorService {
 	}
 
 	//Q8
-	/*public Integer positionsHistograms(int id){
-		Authority authority = new Authority();
-		authority.setAuthority("ADMINISTRATOR");
-
-		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
-
-		Assert.notNull(id);
-		
-		Integer res = null;
-		res = this.administratorRepository.positionsHistograms(id);
-		return res;
-	}*/
+	/*
+	 * public Integer positionsHistograms(int id){
+	 * Authority authority = new Authority();
+	 * authority.setAuthority("ADMINISTRATOR");
+	 * 
+	 * Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
+	 * 
+	 * Assert.notNull(id);
+	 * 
+	 * Integer res = null;
+	 * res = this.administratorRepository.positionsHistograms(id);
+	 * return res;
+	 * }
+	 */
 }
