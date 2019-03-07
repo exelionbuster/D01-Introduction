@@ -36,19 +36,7 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 
 	// Q4 - The ratio of requests to march in a procession, grouped by their status.
 	@Query("select p2, 1.0*(select count(r1) from Request r1 where r2.procession = r1.procession and r1.status = 'APPROVED')/count(r2), 1.0*(select count(r3) from Request r3 where r2.procession = r3.procession and r3.status = 'PENDING')/count(r2), 1.0*(select count(r4) from Request r4 where r2.procession = r4.procession and r4.status = 'REJECTED')/count(r2) from Request r2 join r2.procession p2 group by p2")
-	Collection<Object[]> requestsRatiosForOneProcession();
-
-	// Q4b - The ratio of approved requests.
-	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'APPROVED')/count(r2) from Request r2")
-	Double approvedRequestsRatio();
-
-	// Q4b - The ratio of pending requests.
-	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'PENDING')/count(r2) from Request r2")
-	Double pendingRequestsRatio();
-
-	// Q4b - The ratio of rejected requests.
-	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'REJECTED')/count(r2) from Request r2")
-	Double rejectedRequestsRatio();
+	Collection<Object[]> requestsRatiosPerProcession();
 
 	// Q5 - The processions that are going to be organised in 30 days or less.
 	@Query("select p from Procession p where p.draft = false and p.moment between CURRENT_DATE and CURRENT_DATE + 30")
@@ -57,6 +45,18 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	// Q6 - The ratio of requests to march grouped by status.
 	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'APPROVED')/count(r2), 1.0*(select count(r3) from Request r3 where r3.status = 'PENDING')/count(r2), 1.0*(select count(r4) from Request r4 where r4.status = 'REJECTED')/count(r2) from Request r2")
 	Collection<Object[]> requestsRatios();
+
+	// Q6.1 - The ratio of approved requests.
+	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'APPROVED')/count(r2) from Request r2")
+	Double approvedRequestsRatio();
+
+	// Q6.2 - The ratio of pending requests.
+	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'PENDING')/count(r2) from Request r2")
+	Double pendingRequestsRatio();
+
+	// Q6.3 - The ratio of rejected requests.
+	@Query("select 1.0*(select count(r1) from Request r1 where r1.status = 'REJECTED')/count(r2) from Request r2")
+	Double rejectedRequestsRatio();
 
 	// Q7 - The listing of members who have got at least 10% the maximum number of request to march accepted.
 	@Query("select distinct(m) from Member m join m.requests r where (select count(m1) from Request r join r.member m1 where m.id = m1.id and r.status = 'APPROVED' group by m) > 0.1*(select count(m1) from Request r join r.member m1 where m.id = m1.id group by m)")

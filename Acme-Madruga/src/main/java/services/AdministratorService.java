@@ -15,8 +15,8 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Administrator;
-import domain.Brotherhood;
 import domain.Member;
+import domain.Procession;
 
 @Service
 @Transactional
@@ -106,7 +106,7 @@ public class AdministratorService {
 	}
 
 	//----------------------------------DASHBOARD--------------------------------------
-	//Q1 (REVISAR)
+	//Q1
 	public List<Double> brotherhoodMembersStats() {
 
 		final Authority authority = new Authority();
@@ -114,10 +114,11 @@ public class AdministratorService {
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		final List<Double> res = new ArrayList<Double>();
 		final List<Object[]> aux = new ArrayList<Object[]>(this.administratorRepository.brotherhoodMembersStats());
 		Assert.notNull(aux);
 		Assert.notEmpty(aux);
+
+		final List<Double> res = new ArrayList<Double>();
 		res.add((Double) aux.get(0)[0]);
 		res.add((Double) aux.get(0)[1]);
 		res.add((Double) aux.get(0)[2]);
@@ -126,105 +127,114 @@ public class AdministratorService {
 	}
 
 	//Q2
-	public Collection<Brotherhood> largestBrotherhood() {
+	public List<Object[]> largestBrotherhood() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
-
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		return this.administratorRepository.largestBrotherhood();
+		final List<Object[]> res = new ArrayList<Object[]>(this.administratorRepository.largestBrotherhood());
+		Assert.notNull(res);
+		Assert.notEmpty(res);
+		return res;
 	}
 
 	//Q3
-	public Brotherhood smallestBrotherhood() {
+	public List<Object[]> smallestBrotherhood() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
-
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		Brotherhood res = null;
-		res = this.administratorRepository.smallestBrotherhood();
+		final List<Object[]> res = new ArrayList<Object[]>(this.administratorRepository.smallestBrotherhood());
+		Assert.notNull(res);
+		Assert.notEmpty(res);
 		return res;
 	}
 
 	//Q4
-	public Collection<Object[]> requestsRatios() {
+	public List<Object[]> requestsRatiosPerProcession() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		Collection<Object[]> res = null;
-		res = this.administratorRepository.requestsRatios();
+		final List<Object[]> res = new ArrayList<Object[]>(this.administratorRepository.requestsRatiosPerProcession());
+		Assert.notNull(res);
+		Assert.notEmpty(res);
 		return res;
 	}
 
-	//Q5.1
-	public Double acceptedRequestsRatio() {
+	//Q5
+	public Collection<Procession> next30DaysProcessions() {
+		final Authority authority = new Authority();
+		authority.setAuthority("ADMINISTRATOR");
+
+		return this.administratorRepository.next30DaysProcessions();
+	}
+
+	//Q6
+	public List<Double> requestRatios() {
+		final Authority authority = new Authority();
+		authority.setAuthority("ADMINISTRATOR");
+
+		final List<Object[]> aux = new ArrayList<Object[]>(this.administratorRepository.requestsRatios());
+		Assert.notNull(aux);
+		Assert.notEmpty(aux);
+
+		final List<Double> res = new ArrayList<Double>();
+		res.add((Double) aux.get(0)[0]);
+		res.add((Double) aux.get(0)[1]);
+		res.add((Double) aux.get(0)[2]);
+		return res;
+	}
+
+	//Q6.1
+	public Double approvedRequestsRatio() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		Double res = null;
-		res = this.administratorRepository.acceptedRequestsRatio();
-		return res;
+		return this.administratorRepository.approvedRequestsRatio();
 	}
 
-	//Q5.2
+	//Q6.2
 	public Double pendingRequestsRatio() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		Double res = null;
-		res = this.administratorRepository.pendingRequestsRatio();
-		return res;
+		return this.administratorRepository.pendingRequestsRatio();
 	}
 
-	//Q5.3
+	//Q6.3
 	public Double rejectedRequestsRatio() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		Double res = null;
-		res = this.administratorRepository.rejectedRequestsRatio();
-		return res;
+		return this.administratorRepository.rejectedRequestsRatio();
 	}
-
-	//Q6
-	/*
-	 * Collection<Procession> next30DaysProcessions(String date){
-	 * 
-	 * }
-	 */
 
 	//Q7
 	Collection<Member> perc10MembersWithAcceptedRequests() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
+		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		Collection<Member> res = null;
-		res = this.administratorRepository.perc10MembersWithAcceptedRequests();
-		return res;
+		return this.administratorRepository.perc10MembersWithAcceptedRequests();
 	}
 
 	//Q8
-	/*
-	 * public Integer positionsHistograms(int id){
-	 * Authority authority = new Authority();
-	 * authority.setAuthority("ADMINISTRATOR");
-	 * 
-	 * Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
-	 * 
-	 * Assert.notNull(id);
-	 * 
-	 * Integer res = null;
-	 * res = this.administratorRepository.positionsHistograms(id);
-	 * return res;
-	 * }
-	 */
+
+	public Collection<Object[]> positionsHistograms() {
+		final Authority authority = new Authority();
+		authority.setAuthority("ADMINISTRATOR");
+
+		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
+
+		return this.positionsHistograms();
+	}
+
 }
