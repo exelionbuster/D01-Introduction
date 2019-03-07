@@ -35,7 +35,7 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	Collection<Object[]> smallestBrotherhood();
 
 	// Q4 - The ratio of requests to march in a procession, grouped by their status.
-	@Query("select p2, 1.0*(select count(r1) from Request r1 where r2.procession = r1.procession and r1.status = 'APPROVED')/count(r2), 1.0*(select count(r3) from Request r3 where r2.procession = r3.procession and r3.status = 'PENDING')/count(r2), 1.0*(select count(r4) from Request r4 where r2.procession = r4.procession and r4.status = 'REJECTED')/count(r2) from Request r2 join r2.procession p2 group by p2")
+	@Query("select distinct(p2), 1.0*(select count(r1) from Request r1 where r2.procession = r1.procession and r1.status = 'APPROVED')/count(r2), 1.0*(select count(r3) from Request r3 where r2.procession = r3.procession and r3.status = 'PENDING')/count(r2), 1.0*(select count(r4) from Request r4 where r2.procession = r4.procession and r4.status = 'REJECTED')/count(r2) from Request r2 join r2.procession p2 group by p2")
 	Collection<Object[]> requestsRatiosPerProcession();
 
 	// Q5 - The processions that are going to be organised in 30 days or less.

@@ -1,9 +1,7 @@
 
 package services;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -107,60 +105,40 @@ public class AdministratorService {
 
 	//----------------------------------DASHBOARD--------------------------------------
 	//Q1
-	public List<Double> brotherhoodMembersStats() {
-
+	public Collection<Object[]> brotherhoodMembersStats() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		final List<Object[]> aux = new ArrayList<Object[]>(this.administratorRepository.brotherhoodMembersStats());
-		Assert.notNull(aux);
-		Assert.notEmpty(aux);
-
-		final List<Double> res = new ArrayList<Double>();
-		res.add((Double) aux.get(0)[0]);
-		res.add((Double) aux.get(0)[1]);
-		res.add((Double) aux.get(0)[2]);
-		res.add((Double) aux.get(0)[3]);
-		return res;
+		return this.administratorRepository.brotherhoodMembersStats();
 	}
 
 	//Q2
-	public List<Object[]> largestBrotherhood() {
+	public Collection<Object[]> largestBrotherhood() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		final List<Object[]> res = new ArrayList<Object[]>(this.administratorRepository.largestBrotherhood());
-		Assert.notNull(res);
-		Assert.notEmpty(res);
-		return res;
+		return this.administratorRepository.largestBrotherhood();
 	}
 
 	//Q3
-	public List<Object[]> smallestBrotherhood() {
+	public Collection<Object[]> smallestBrotherhood() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		final List<Object[]> res = new ArrayList<Object[]>(this.administratorRepository.smallestBrotherhood());
-		Assert.notNull(res);
-		Assert.notEmpty(res);
-		return res;
+		return this.administratorRepository.smallestBrotherhood();
 	}
 
 	//Q4
-	public List<Object[]> requestsRatiosPerProcession() {
+	public Collection<Object[]> requestsRatiosPerProcession() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
-
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
 
-		final List<Object[]> res = new ArrayList<Object[]>(this.administratorRepository.requestsRatiosPerProcession());
-		Assert.notNull(res);
-		Assert.notEmpty(res);
-		return res;
+		return this.administratorRepository.requestsRatiosPerProcession();
 	}
 
 	//Q5
@@ -172,19 +150,11 @@ public class AdministratorService {
 	}
 
 	//Q6
-	public List<Double> requestRatios() {
+	public Collection<Object[]> requestRatios() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 
-		final List<Object[]> aux = new ArrayList<Object[]>(this.administratorRepository.requestsRatios());
-		Assert.notNull(aux);
-		Assert.notEmpty(aux);
-
-		final List<Double> res = new ArrayList<Double>();
-		res.add((Double) aux.get(0)[0]);
-		res.add((Double) aux.get(0)[1]);
-		res.add((Double) aux.get(0)[2]);
-		return res;
+		return this.administratorRepository.requestsRatios();
 	}
 
 	//Q6.1
@@ -218,7 +188,7 @@ public class AdministratorService {
 	}
 
 	//Q7
-	Collection<Member> perc10MembersWithAcceptedRequests() {
+	public Collection<Member> perc10MembersWithAcceptedRequests() {
 		final Authority authority = new Authority();
 		authority.setAuthority("ADMINISTRATOR");
 		Assert.isTrue(this.actorService.findByPrincipal().getUserAccount().getAuthorities().contains(authority));
