@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 @Entity
@@ -49,6 +51,8 @@ public class Enrolment extends DomainEntity {
 	//RELATIONSHIPS
 
 	@ManyToOne(optional = false)
+	@Valid
+	@NotNull
 	public Brotherhood getBrotherhood() {
 		return this.brotherhood;
 	}
@@ -58,6 +62,7 @@ public class Enrolment extends DomainEntity {
 	}
 
 	@ManyToOne(optional = false)
+	@Valid
 	public Member getMember() {
 		return this.member;
 	}
@@ -67,6 +72,7 @@ public class Enrolment extends DomainEntity {
 	}
 
 	@ManyToOne(optional = true)
+	@Valid
 	public Position getPosition() {
 		return this.position;
 	}

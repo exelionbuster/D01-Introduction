@@ -16,22 +16,30 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <form:form action="${actionURI}" modelAttribute="procession">
 
 	<form:hidden path="id" />
 	<form:hidden path="version" />		
 	<form:hidden path="brotherhood" />
-	<form:hidden path="requests" />
+	<form:hidden path="draft" />
+	<form:hidden path="ticker" />
 	<form:hidden path="floats" />
 	
 	<acme:textbox code="procession.title" path="title" />	
 	<acme:textarea code="procession.description" path="description" />
-	<acme:textbox code="procession.moment" path="moment" />
-
+	<form:input type="text" path="moment" class="date" name="moment"
+		  title="dd/MM/yyyy"  />
+			<form:errors path="moment" cssClass="error" />
 	
-	<acme:submit code="procession.submit" name="processionSubmit" /> 	
-	<acme:cancel url="procesion/brotherhood/list.do" code="procession.cancel"/>
+	
+	
+	<acme:submit code="procession.submit" name="save" /> 	
+	<acme:cancel url="procession/brotherhood/list.do" code="procession.cancel"/>
+		<jstl:if test="${procession.id!= 0}">	
+	<acme:submit code="procession.delete" name="delete" />		
+	</jstl:if>
 	
 	
 </form:form>

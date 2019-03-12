@@ -1,20 +1,20 @@
 
 package services;
 
+
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
-import org.springframework.validation.BindingResult;
+
 
 import repositories.BrotherhoodRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Brotherhood;
-import forms.BrotherhoodForm;
 
 @Service
 @Transactional
@@ -34,32 +34,30 @@ public class BrotherhoodService {
 	// Supporting Services
 
 	@Autowired
-	private ActorService			actorService;
+	private UserAccountService	userAccountService;
 
-	@Autowired
-	private UserAccountService		userAccountService;
+/*	@Autowired
+	private Validator	validator;*/
 
-
-	/*
-	 * @Autowired
-	 * private Validator validator;
-	 */
 
 	// Simple CRUD methods
 
 	//CREATE
 	public Brotherhood create() {
 
-		final Authority authority = new Authority();
+		Authority authority = new Authority();
 		authority.setAuthority("BROTHERHOOD");
-		final Brotherhood res = new Brotherhood();
+		Brotherhood res = new Brotherhood();
 
-		final UserAccount userAccount = this.userAccountService.create("BROTHERHOOD");
+		UserAccount userAccount = this.userAccountService.create("BROTHERHOOD");
+
 
 		res.setUserAccount(userAccount);
 
+
 		return res;
 	}
+	
 	//FINDALL
 	public Collection<Brotherhood> findAll() {
 
@@ -113,21 +111,21 @@ public class BrotherhoodService {
 
 		Brotherhood res;
 		UserAccount userAccount;
-		final Authority authority = new Authority();
+		Authority authority = new Authority();
 		authority.setAuthority("BROTHERHOOD");
-
-		Assert.notNull(LoginService.getPrincipal());
-
+		
 		userAccount = LoginService.getPrincipal();
+		
+		Assert.notNull(userAccount);		
 
 		Assert.isTrue(userAccount.getAuthorities().contains(authority));
 
-		res = this.brotherhoodRepository.finByUserAccountId(userAccount.getId());
+		res = this.brotherhoodRepository.findByUserAccountId(userAccount.getId());
 
 		return res;
 	}
 
-	public Brotherhood reconstruct(final BrotherhoodForm brotherhoodForm, final BindingResult binding) {
+/*	public Brotherhood reconstruct(BrotherhoodForm brotherhoodForm, BindingResult binding) {
 		Brotherhood result;
 
 		result = this.brotherhoodRepository.findOne(brotherhoodForm.getId());
@@ -142,6 +140,6 @@ public class BrotherhoodService {
 		//this.validator.validate(result, binding);
 
 		return result;
-	}
+	}*/
 
 }

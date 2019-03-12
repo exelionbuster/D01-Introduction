@@ -5,6 +5,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -43,6 +44,7 @@ public class Request extends DomainEntity {
 
 	//RELATIONSHIPS
 
+	@Valid
 	@ManyToOne(optional = false)
 	public Member getMember() {
 		return this.member;
@@ -52,6 +54,7 @@ public class Request extends DomainEntity {
 		this.member = member;
 	}
 
+	@Valid
 	@ManyToOne(optional = false)
 	public Procession getProcession() {
 		return this.procession;
